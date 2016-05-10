@@ -1,9 +1,10 @@
 # General API
 
-API development URL : [api-sandbox.tiket.com](http://api-sandbox.tiket.com)
+API development URL : [api-sandbox.tiket.com](http://api-sandbox.tiket.com) 
 API production URL : [api.tiket.com](https://api.tiket.com)
 
 NOTE :
+
 * Data that is provided for testing is different from the actual
 
 These are the API command for general configurations
@@ -13,6 +14,7 @@ These are the API command for general configurations
 Use to access the API, active until checkout payment.
 
 Important Info:
+
 * Secret key only used for this link when you get token. For the other link you only need to use token.
 
 ### Parameters
@@ -22,8 +24,14 @@ Name | Description | Format    | Default   | Mandatory
 method | Request Method | CONST | getToken | TRUE
 secretkey | API secret key given by Tiket.com | CHAR(128) |  | TRUE
 
-```http
+```md
 https://api-sandbox.tiket.com/apiv1/payexpress?method=getToken&secretkey=56c8624d6a62e1ab22f0d9915ff2d43c
+```
+
+```http
+GET /apiv1/payexpress HTTP/1.1
+Host: api-sandbox.tiket.com
+User-Agent: twh:123456789;Partner Name;
 ```
 
 ```xml
