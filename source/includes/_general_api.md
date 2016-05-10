@@ -15,7 +15,7 @@ These are the API command for general configurations
 GET /apiv1/payexpress?method=getToken&secretkey=56c8624d6a62e1ab22f0d9915ff2d43c&output=[json|xml|serialize|array] HTTP/1.1
 Host: api-sandbox.tiket.com
 User-Agent: twh:123456789;Partner Name;
-Content-Type: application/x-www-form-urlencoded
+Content-Type: text/plain
 ```
 
 ```xml
@@ -52,7 +52,7 @@ Content-Type: application/x-www-form-urlencoded
 }
 ```
 
-```php
+```matlab
 a: 4: {
   s: 10: "diagnostic";a: 7: {
     s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.1005";s: 11: "memoryusage";s: 14: "4.48MB";s: 14: "unix_timestamp";i: 1399524810;s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
