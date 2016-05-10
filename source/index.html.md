@@ -5,7 +5,7 @@ language_tabs:
   - http : Request
   - xml : XML
   - json : JSON
-  - html : Serialize
+  - javascript : Serialize
 
 toc_footers:
   - <a href='http://sandbox.tiket.com/affiliate'>Sign Up for a Developer Key</a>
