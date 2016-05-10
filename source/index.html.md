@@ -2,10 +2,9 @@
 title: Tiket.com API Documentation
 
 language_tabs:
-  - http : Request
   - xml : XML
   - json : JSON
-  - m : Serialize
+  - matlab : Serialize
 
 toc_footers:
   - <a href='http://sandbox.tiket.com/affiliate'>Sign Up for a Developer Key</a>
