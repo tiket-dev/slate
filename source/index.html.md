@@ -11,8 +11,8 @@ toc_footers:
 
 
 includes:
-  - getting_api_key
-  - general_api
+  - b_getting_api_key
+  - d_general_api
   
 search: true
 ---
