@@ -15,7 +15,7 @@ Attention :
 
 We require you to send header data user-agent when requesting API using the following format:
 
-<aside class="warning">twh:[BUSINESS_ID];[BUSINESS_NAME]</aside>
+<aside class="notice">twh:[BUSINESS_ID];[BUSINESS_NAME]</aside>
 
 All API request without this format will be blocked by the firewall.
 
