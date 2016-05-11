@@ -20,11 +20,9 @@ User-Agent: twh:123456789;Partner Name;
 Content-Type: text/plain
 ```
 <aside class="notice">
-<p>Attention :</p>
+We require you to send header data user-agent when requesting API using the following format:
 
-<p>We require you to send header data user-agent when requesting API using the following format:</p>
+<p><code>twh:[BUSINESS_ID];[BUSINESS_NAME];</code></p>
 
-<code>twh:[BUSINESS_ID];[BUSINESS_NAME];</code>
-
-<p>All API request without this format will be blocked by the firewall.
-</p></aside>
+<p>All API request without this format will be blocked by the firewall.</p>
+</aside>
