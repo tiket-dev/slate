@@ -19,11 +19,10 @@ Host: api-sandbox.tiket.com
 User-Agent: twh:123456789;Partner Name;
 Content-Type: text/plain
 ```
-Attention :
+<aside class="notice">Attention :
 
 We require you to send header data user-agent when requesting API using the following format:
 
-<aside class="notice">twh:[BUSINESS_ID];[BUSINESS_NAME];</aside>
+<code>twh:[BUSINESS_ID];[BUSINESS_NAME];</code>
 
-All API request without this format will be blocked by the firewall.
-
+All API request without this format will be blocked by the firewall.</aside>
