@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Tiket.com API Documentation</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;xml&quot;,&quot;json&quot;,&quot;matlab&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,9 +101,9 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="xml">XML</a>
+              <a href="#" data-language-name="json">JSON</a>
+              <a href="#" data-language-name="matlab">PHP Serialize</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -112,14 +112,603 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='http://sandbox.tiket.com/affiliate'>Sign Up for a Developer Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id="introduction">Introduction</h1>
+
+<p>Tiket.com offers an all you can book experience. You can book flights, hotels, train, concerts, and attractions all in one place. And the good part is, they are all available through API!</p>
+
+<p>You can develop your own website or mobile application according to your desires. All data needed will be provided by API from Tiket.com.</p>
+
+<p>You can register for an API here,
+and for development here</p>
+
+<p>Before continuing develop your Web or Apps using Tiket.com API, you must understand and agree with the following items:</p>
+
+<ul>
+<li>The email address that you will submit to Tiket.com API must be the user’s email address. Sometimes our partner will send notification to the customers via the email address submitted about rescheduled flight or change in the hotel booking. If at one point we find out that you are not using customers email when you submit your booking and the customer complained about not receiving email notification on changes in booking, then <em>we will reserve the right to **suspend</em>* or <strong>terminate</strong> your API account*.</li>
+<li>This also goes to the user’s mobile phone number. You must submit user’s mobile phone, because airlines sometimes update our customers schedule or flight itinerary through text messaging (SMS).</li>
+<li>There is no customized PDF vouchers. The email that we send to the customers is AS IS and no changes can be done with how the PDF vouchers look.</li>
+<li>Tiket.com is an OTA business and not GDS or white-label business. Our license and operation are designed as a travel agent. Tiket.com will always be held liable and responsible for any bookings, even through the Tiket.com API. Thus we require you to adhere with our policy.</li>
+</ul>
+
+<aside class="success">
+To access our API, kindly user the following URL:
+<ul>
+<li>API development URL : <a href="https://api-sandbox.tiket.com" target="_blank">https://api-sandbox.tiket.com</a></li>
+<li>API production URL : <a href="https://api.tiket.com" target="_blank">https://api.tiket.com</a></li>
+</ul>
+</aside>
+
+<p>API are available in JSON, XML, and PHP serialized format. There are two flow of payments that you can choose:</p>
+
+<ul>
+<li><strong>deposit</strong>: by putting money deposit at Tiket.com, you can manage your own transaction and payment. API will return insufficient fund if you have ran out of deposit. You can’t continue using the API if you haven’t deposit any.</li>
+<li><strong>regular</strong>: Tiket.com offers diverse payment channel. You can ask user to pay using API (for bank transfer and KlikBCA), or redirect them to our payment gateway (for credit card and BCA KlikPay). You don’t have to put any deposit if you are using this flow of payment.</li>
+</ul>
+
+<aside class="notice">The Development API (api-sandbox.tiket.com) will emit  SSL error when using the HTTPS protocol. This is normal. You can actually use the HTTP protocol in the Development API to avoid SSL error, but you must use HTTPS at the Production API.</aside>
+
+          <h1 id="getting-api-key">Getting API Key</h1>
+
+<p>Before you can use our API, you have to get your secret key. You can access http://www.tiket.com/affiliate and enter your detail information there. After submitting, you will receive your username, password and API key. This account can be used for affiliate program and reseller program.</p>
+
+<p>When you are done implementing this, we will require you to go through some UAT tests (user acceptance test). This test is to ensure that you have properly implement our API and booking flow untuk payment. Detail of the UAT test cases can be downloaded here.</p>
+
+<p>We have two URL with totally different server data:</p>
+
+<p>API development : <a href="http://api-sandbox.tiket.com">api-sandbox.tiket.com</a>
+API production : <a href="https://api.tiket.com">api.tiket.com</a></p>
+
+<p>Both might have different content, so please don’t compare api-sandbox.tiket.com data with the real data at www.tiket.com</p>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/apiv1/payexpress?method=getToken&amp;secretkey=56c8624d6a62e1ab22f0d9915ff2d43c&amp;output=[json|xml|serialize|array]</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api-sandbox.tiket.com</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">twh:123456789;Partner Name;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+</code></pre>
+
+<aside class="notice">
+We require you to send header data user-agent when requesting API using the following format:
+<br /><br />
+<p><code>twh:[BUSINESS_ID];[BUSINESS_NAME];</code></p>
+
+<p>All API request without this format will be blocked by the firewall.</p>
+</aside>
+
+          <h1 id="uat-scenario">UAT Scenario</h1>
+
+          <h1 id="general-api">General API</h1>
+
+<p>API development URL : <a href="http://api-sandbox.tiket.com">api-sandbox.tiket.com</a> 
+API production URL : <a href="https://api.tiket.com">api.tiket.com</a></p>
+
+<p>NOTE :</p>
+
+<ul>
+<li>Data that is provided for testing is different from the actual</li>
+</ul>
+
+<p>These are the API command for general configurations</p>
+
+<h2 id="get-token">Get Token</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/apiv1/payexpress?method=getToken&amp;secretkey=56c8624d6a62e1ab22f0d9915ff2d43c&amp;output=[json|xml|serialize|array]</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api-sandbox.tiket.com</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">twh:123456789;Partner Name;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+</code></pre>
+<pre class="highlight xml"><code><span class="nt">&lt;tiket&gt;</span>
+  <span class="nt">&lt;diagnostic&gt;</span>
+    <span class="nt">&lt;status&gt;</span>200<span class="nt">&lt;/status&gt;</span>
+    <span class="nt">&lt;elapsetime&gt;</span>0.0586<span class="nt">&lt;/elapsetime&gt;</span>
+    <span class="nt">&lt;memoryusage&gt;</span>4.49MB<span class="nt">&lt;/memoryusage&gt;</span>
+    <span class="nt">&lt;unix_timestamp&gt;</span>1399524305<span class="nt">&lt;/unix_timestamp&gt;</span>
+    <span class="nt">&lt;confirm&gt;</span>success<span class="nt">&lt;/confirm&gt;</span>
+    <span class="nt">&lt;lang&gt;</span>id<span class="nt">&lt;/lang&gt;</span>
+    <span class="nt">&lt;currency&gt;</span>IDR<span class="nt">&lt;/currency&gt;</span>
+  <span class="nt">&lt;/diagnostic&gt;</span>
+  <span class="nt">&lt;output_type&gt;</span>xml<span class="nt">&lt;/output_type&gt;</span>
+  <span class="nt">&lt;login_status&gt;</span>false<span class="nt">&lt;/login_status&gt;</span>
+  <span class="nt">&lt;token&gt;</span>712402a7c363b12d87f6b02749f6f0c91b64c47e<span class="nt">&lt;/token&gt;</span>
+<span class="nt">&lt;/tiket&gt;</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"diagnostic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"elapsetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0555"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"memoryusage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.48MB"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"unix_timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399524662</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"confirm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"output_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"login_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"712402a7c363b12d87f6b02749f6f0c91b64c47e"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre class="highlight matlab"><code><span class="n">a</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">s</span><span class="p">:</span> <span class="mi">10</span><span class="p">:</span> <span class="err">"</span><span class="n">diagnostic</span><span class="err">"</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">7</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">s</span><span class="p">:</span> <span class="mi">6</span><span class="p">:</span> <span class="err">"</span><span class="n">status</span><span class="err">"</span><span class="p">;</span><span class="nb">i</span><span class="p">:</span> <span class="mi">200</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">10</span><span class="p">:</span> <span class="err">"</span><span class="n">elapsetime</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">14</span><span class="p">:</span> <span class="err">"</span><span class="mf">0.1005</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">11</span><span class="p">:</span> <span class="err">"</span><span class="n">memoryusage</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">14</span><span class="p">:</span> <span class="err">"</span><span class="mf">4.48</span><span class="n">MB</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">14</span><span class="p">:</span> <span class="err">"</span><span class="n">unix_timestamp</span><span class="err">"</span><span class="p">;</span><span class="nb">i</span><span class="p">:</span> <span class="mi">1399524810</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">7</span><span class="p">:</span> <span class="err">"</span><span class="n">confirm</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">7</span><span class="p">:</span> <span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">lang</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="err">"</span><span class="n">id</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">8</span><span class="p">:</span> <span class="err">"</span><span class="n">currency</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">IDR</span><span class="err">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">s</span><span class="p">:</span> <span class="mi">11</span><span class="p">:</span> <span class="err">"</span><span class="n">output_type</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">9</span><span class="p">:</span> <span class="err">"</span><span class="n">serialize</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">12</span><span class="p">:</span> <span class="err">"</span><span class="n">login_status</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">5</span><span class="p">:</span> <span class="err">"</span><span class="nb">false</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">5</span><span class="p">:</span> <span class="err">"</span><span class="n">token</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">40</span><span class="p">:</span> <span class="err">"</span><span class="mi">712402</span><span class="n">a7c363b12d87f6b02749f6f0c91b64c47e</span><span class="err">"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Use to access the API, active until checkout payment.</p>
+
+<p>Important Info:</p>
+
+<ul>
+<li>Secret key only used for this link when you get token. For the other link you only need to use token.</li>
+</ul>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api-sandbox.tiket.com/apiv1/payexpress?method=getToken&amp;secretkey=56c8624d6a62e1ab22f0d9915ff2d43c</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Format</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>method</td>
+<td>Request Method</td>
+<td>CONST</td>
+<td>getToken</td>
+<td>TRUE</td>
+</tr>
+<tr>
+<td>secretkey</td>
+<td>API secret key given by Tiket.com</td>
+<td>CHAR(128)</td>
+<td></td>
+<td>TRUE</td>
+</tr>
+</tbody></table>
+
+<h2 id="change-output-format">Change Output Format</h2>
+
+<p>To change output, you can add parameter output in URL format.
+Type of parameter output :</p>
+
+<ul>
+<li><strong>array</strong></li>
+<li>xml</li>
+<li>json</li>
+<li>serialize</li>
+</ul>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">https://api-sandbox.tiket.com/order?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f&amp;output=xml</code></p>
+
+<h3 id="parameter">Parameter</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Format</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>Output format</td>
+<td>CONST</td>
+<td>array</td>
+<td>FALSE</td>
+</tr>
+</tbody></table>
+
+<p>## List Currency</p>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/general_api/listCurrency?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api-sandbox.tiket.com</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">twh:123456789;Partner Name;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+</code></pre>
+<pre class="highlight xml"><code><span class="nt">&lt;tiket&gt;</span>
+  <span class="nt">&lt;diagnostic&gt;</span>
+    <span class="nt">&lt;status&gt;</span>200<span class="nt">&lt;/status&gt;</span>
+    <span class="nt">&lt;elapsetime&gt;</span>0.0591<span class="nt">&lt;/elapsetime&gt;</span>
+    <span class="nt">&lt;memoryusage&gt;</span>4.49MB<span class="nt">&lt;/memoryusage&gt;</span>
+    <span class="nt">&lt;unix_timestamp&gt;</span>1399537382<span class="nt">&lt;/unix_timestamp&gt;</span>
+    <span class="nt">&lt;confirm&gt;</span>success<span class="nt">&lt;/confirm&gt;</span>
+    <span class="nt">&lt;lang&gt;</span>id<span class="nt">&lt;/lang&gt;</span>
+    <span class="nt">&lt;currency&gt;</span>IDR<span class="nt">&lt;/currency&gt;</span>
+  <span class="nt">&lt;/diagnostic&gt;</span>
+  <span class="nt">&lt;output_type&gt;</span>xml<span class="nt">&lt;/output_type&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>AUD<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Dolar Australia (AUD)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>BND<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Dolar Brunei (BND)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>CAD<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Dolar Kanada (CAD)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>CHF<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Swiss Franc (CHF)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>CNY<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Yuan China (CNY)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>DKK<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Danish Krone (DKK)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>EUR<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Euro (EUR)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>GBP<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>British Pound (GBP)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>HKD<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Dolar Hongkong (HKD)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>IDR<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Rupiah Indonesia (IDR)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>JPY<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Yen Jepang (JPY)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>KRW<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Won Korea (KRW)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>KWD<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Kuwaiti Dinar (KWD)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>MOP<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Macau Pataca (MOP)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>MYR<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Ringgit Malaysia (MYR)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>NOK<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Norwegian Krone (NOK)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>NPR<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Nepal Rupee (NPR)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>NZD<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Dolar Selandia Baru (NZD)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>PGK<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Papua New Guinean Kina (PGK)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>PHP<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Peso Filipina (PHP)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>RUB<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Rubel Rusia (RUB)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>SAR<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Saudi Riyal (SAR)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>SEK<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Swedish Krona (SEK)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>SGD<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Dolar Singapura (SGD)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>THB<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Baht Thailand (THB)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>TWD<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Dolar Taiwan (TWD)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>USD<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Dolar Amerika (USD)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;result&gt;</span>
+    <span class="nt">&lt;code&gt;</span>VND<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Dong Vietnam (VND)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;login_status&gt;</span>false<span class="nt">&lt;/login_status&gt;</span>
+  <span class="nt">&lt;token&gt;</span>c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f<span class="nt">&lt;/token&gt;</span>
+<span class="nt">&lt;/tiket&gt;</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"diagnostic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"elapsetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0564"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"memoryusage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.48MB"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"unix_timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1399537660</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"confirm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"output_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dolar Australia (AUD)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BND"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dolar Brunei (BND)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dolar Kanada (CAD)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHF"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Swiss Franc (CHF)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yuan China (CNY)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DKK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Danish Krone (DKK)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euro (EUR)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"British Pound (GBP)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dolar Hongkong (HKD)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDR"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rupiah Indonesia (IDR)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JPY"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yen Jepang (JPY)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Won Korea (KRW)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuwaiti Dinar (KWD)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MOP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Macau Pataca (MOP)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ringgit Malaysia (MYR)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norwegian Krone (NOK)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NPR"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal Rupee (NPR)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NZD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dolar Selandia Baru (NZD)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PGK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Papua New Guinean Kina (PGK)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peso Filipina (PHP)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rubel Rusia (RUB)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAR"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saudi Riyal (SAR)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Swedish Krona (SEK)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SGD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dolar Singapura (SGD)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THB"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Baht Thailand (THB)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TWD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dolar Taiwan (TWD)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dolar Amerika (USD)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VND"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dong Vietnam (VND)"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"login_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre class="highlight matlab"><code><span class="n">a</span><span class="p">:</span> <span class="mi">5</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">s</span><span class="p">:</span> <span class="mi">10</span><span class="p">:</span> <span class="err">"</span><span class="n">diagnostic</span><span class="err">"</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">7</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">s</span><span class="p">:</span> <span class="mi">6</span><span class="p">:</span> <span class="err">"</span><span class="n">status</span><span class="err">"</span><span class="p">;</span><span class="nb">i</span><span class="p">:</span> <span class="mi">200</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">10</span><span class="p">:</span> <span class="err">"</span><span class="n">elapsetime</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">14</span><span class="p">:</span> <span class="err">"</span><span class="mf">0.0633</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">11</span><span class="p">:</span> <span class="err">"</span><span class="n">memoryusage</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">14</span><span class="p">:</span> <span class="err">"</span><span class="mf">4.49</span><span class="n">MB</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">14</span><span class="p">:</span> <span class="err">"</span><span class="n">unix_timestamp</span><span class="err">"</span><span class="p">;</span><span class="nb">i</span><span class="p">:</span> <span class="mi">1399538021</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">7</span><span class="p">:</span> <span class="err">"</span><span class="n">confirm</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">7</span><span class="p">:</span> <span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">lang</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="err">"</span><span class="n">id</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">8</span><span class="p">:</span> <span class="err">"</span><span class="n">currency</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">IDR</span><span class="err">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">s</span><span class="p">:</span> <span class="mi">11</span><span class="p">:</span> <span class="err">"</span><span class="n">output_type</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">9</span><span class="p">:</span> <span class="err">"</span><span class="n">serialize</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">6</span><span class="p">:</span> <span class="err">"</span><span class="n">result</span><span class="err">"</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">28</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">AUD</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Dolar</span> <span class="n">Australia</span> <span class="p">(</span><span class="n">AUD</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">BND</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Dolar</span> <span class="n">Brunei</span> <span class="p">(</span><span class="n">BND</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">2</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">CAD</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Dolar</span> <span class="n">Kanada</span> <span class="p">(</span><span class="n">CAD</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">3</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">CHF</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Swiss</span> <span class="n">Franc</span> <span class="p">(</span><span class="n">CHF</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">4</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">CNY</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Yuan</span> <span class="n">China</span> <span class="p">(</span><span class="n">CNY</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">5</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">DKK</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Danish</span> <span class="n">Krone</span> <span class="p">(</span><span class="n">DKK</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">6</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">EUR</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Euro</span> <span class="p">(</span><span class="n">EUR</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">7</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">GBP</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">British</span> <span class="n">Pound</span> <span class="p">(</span><span class="n">GBP</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">8</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">HKD</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Dolar</span> <span class="n">Hongkong</span> <span class="p">(</span><span class="n">HKD</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">9</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">IDR</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Rupiah</span> <span class="n">Indonesia</span> <span class="p">(</span><span class="n">IDR</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">10</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">JPY</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Yen</span> <span class="n">Jepang</span> <span class="p">(</span><span class="n">JPY</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">11</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">KRW</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Won</span> <span class="n">Korea</span> <span class="p">(</span><span class="n">KRW</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">12</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">KWD</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Kuwaiti</span> <span class="n">Dinar</span> <span class="p">(</span><span class="n">KWD</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">13</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">MOP</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Macau</span> <span class="n">Pataca</span> <span class="p">(</span><span class="n">MOP</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">14</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">MYR</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Ringgit</span> <span class="n">Malaysia</span> <span class="p">(</span><span class="n">MYR</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">15</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">NOK</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Norwegian</span> <span class="n">Krone</span> <span class="p">(</span><span class="n">NOK</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">16</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">NPR</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Nepal</span> <span class="n">Rupee</span> <span class="p">(</span><span class="n">NPR</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">17</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">NZD</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Dolar</span> <span class="n">Selandia</span> <span class="n">Baru</span> <span class="p">(</span><span class="n">NZD</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">18</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">PGK</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Papua</span> <span class="n">New</span> <span class="n">Guinean</span> <span class="n">Kina</span> <span class="p">(</span><span class="n">PGK</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">19</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">PHP</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Peso</span> <span class="n">Filipina</span> <span class="p">(</span><span class="n">PHP</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">20</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">RUB</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Rubel</span> <span class="n">Rusia</span> <span class="p">(</span><span class="n">RUB</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">21</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">SAR</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Saudi</span> <span class="n">Riyal</span> <span class="p">(</span><span class="n">SAR</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">22</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">SEK</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Swedish</span> <span class="n">Krona</span> <span class="p">(</span><span class="n">SEK</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">23</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">SGD</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Dolar</span> <span class="n">Singapura</span> <span class="p">(</span><span class="n">SGD</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">24</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">THB</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Baht</span> <span class="n">Thailand</span> <span class="p">(</span><span class="n">THB</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">25</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">TWD</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Dolar</span> <span class="n">Taiwan</span> <span class="p">(</span><span class="n">TWD</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">26</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">USD</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Dolar</span> <span class="n">Amerika</span> <span class="p">(</span><span class="n">USD</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">i</span><span class="p">:</span> <span class="mi">27</span><span class="p">;</span><span class="n">a</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">code</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">3</span><span class="p">:</span> <span class="err">"</span><span class="n">VND</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">4</span><span class="p">:</span> <span class="err">"</span><span class="n">name</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span> <span class="err">"</span><span class="n">Dong</span> <span class="n">Vietnam</span> <span class="p">(</span><span class="n">VND</span><span class="p">)</span><span class="err">"</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">s</span><span class="p">:</span> <span class="mi">12</span><span class="p">:</span> <span class="err">"</span><span class="n">login_status</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">5</span><span class="p">:</span> <span class="err">"</span><span class="nb">false</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">5</span><span class="p">:</span> <span class="err">"</span><span class="n">token</span><span class="err">"</span><span class="p">;</span><span class="n">s</span><span class="p">:</span> <span class="mi">40</span><span class="p">:</span> <span class="err">"</span><span class="n">c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f</span><span class="err">"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>List of all the currency available at Tiket.com</p>
+
+<p>### HTTP Request</p>
+
+<p><code class="prettyprint">http://api-sandbox.tiket.com/general_api/listCurrency?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f</code></p>
+
+<p>### Parameter</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Format</th>
+<th>Default</th>
+<th>Mandatory</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>Output format</td>
+<td>CONST</td>
+<td>array</td>
+<td>FALSE</td>
+</tr>
+</tbody></table>
+
+          <h1 id="payment">Payment</h1>
+
+          <h1 id="order-history">Order History</h1>
+
+          <h1 id="deposit-payment">Deposit Payment</h1>
+
+          <h1 id="flight-api">Flight API</h1>
+
+          <h1 id="hotel-api">Hotel API</h1>
+
+          <h1 id="event-api">Event API</h1>
+
+          <h1 id="train-api">Train API</h1>
+
+          <h1 id="introduction">Introduction</h1>
+
+<p>API development URL : <a href="http://api-sandbox.tiket.com">api-sandbox.tiket.com</a>
+API production URL : <a href="https://api.tiket.com">api.tiket.com</a></p>
+
+<p>Tiket.com offers an all you can book experience. You can book flights, hotels, train, concerts, and attractions all in one place. And the good part is, they are all available through API!</p>
+
+<p>You can develop your own website or mobile application according to your desires. All data needed will be provided by API from Tiket.com.</p>
+
+<p>You can register for an API here,
+and for development here</p>
+
+<p>Before continuing develop your Web or Apps using Tiket.com API, you must understand and agree with the following items:</p>
+
+<ul>
+<li>The email address that you will submit to Tiket.com API must be the user’s email address. Sometimes our partner will send notification to the customers via the email address submitted about rescheduled flight or change in the hotel booking. If at one point we find out that you are not using customers email when you submit your booking and the customer complained about not receiving email notification on changes in booking, then <em>we will reserve the right to **suspend</em>* or <strong>terminate</strong> your API account*.</li>
+<li>This also goes to the user’s mobile phone number. You must submit user’s mobile phone, because airlines sometimes update our customers schedule or flight itinerary through text messaging (SMS).</li>
+<li>There is no customized PDF vouchers. The email that we send to the customers is AS IS and no changes can be done with how the PDF vouchers look.</li>
+<li>Tiket.com is an OTA business and not GDS or white-label business. Our license and operation are designed as a travel agent. Tiket.com will always be held liable and responsible for any bookings, even through the Tiket.com API. Thus we require you to adhere with our policy.</li>
+</ul>
+
+<p>API are available in JSON, XML, and PHP serialized format. There are two flow of payments that you can choose:</p>
+
+<ul>
+<li>deposit: by putting money deposit at Tiket.com, you can manage your own transaction and payment. API will return insufficient fund if you have ran out of deposit. You can’t continue using the API if you haven’t deposit any.</li>
+<li>regular: Tiket.com offers diverse payment channel. You can ask user to pay using API (for bank transfer and KlikBCA), or redirect them to our payment gateway (for credit card and BCA KlikPay). You don’t have to put any deposit if you are using this flow of payment.</li>
+</ul>
+
+<p>PS : The Development API (api-sandbox.tiket.com) will emit  SSL error when using the HTTPS protocol. This is normal. You can actually use the HTTP protocol in the Development API to avoid SSL error, but you must use HTTPS at the Production API.</p>
 
 <p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
 
@@ -277,70 +866,12 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </tbody></table>
 
-          <h1 id="errors">Errors</h1>
-
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
-</tr>
-</tbody></table>
-
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="xml">XML</a>
+                <a href="#" data-language-name="json">JSON</a>
+                <a href="#" data-language-name="matlab">PHP Serialize</a>
           </div>
       </div>
     </div>
