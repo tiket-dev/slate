@@ -21,7 +21,7 @@ Content-Type: text/plain
 ```
 <aside class="notice">
 We require you to send header data user-agent when requesting API using the following format:
-
+<br /><br />
 <p><code>twh:[BUSINESS_ID];[BUSINESS_NAME];</code></p>
 
 <p>All API request without this format will be blocked by the firewall.</p>
