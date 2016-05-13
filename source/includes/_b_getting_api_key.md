@@ -6,8 +6,8 @@ When you are done implementing this, we will require you to go through some UAT 
 
 We have two URL with totally different server data:
 
-API development : [api-sandbox.tiket.com](http://api-sandbox.tiket.com)
-API production : [api.tiket.com](https://api.tiket.com)
+* API development : [api-sandbox.tiket.com](http://api-sandbox.tiket.com)
+* API production : [api.tiket.com](https://api.tiket.com)
 
 Both might have different content, so please don’t compare api-sandbox.tiket.com data with the real data at www.tiket.com
 
