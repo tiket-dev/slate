@@ -331,7 +331,7 @@ Content-Type: text/plain
 }
 ```
 
-```matlib
+```matlab
 a: 5: {
   s: 10: ”diagnostic”;a: 7: {
     s: 6: ”status”;i: 200;s: 10: ”elapsetime”;s: 14: ”0.3551″;s: 11: ”memoryusage”;s: 14: ”4.47 MB”;s: 14: ”unix_timestamp”;i: 1399539348;s: 7: ”confirm”;s: 7: ”success”;s: 4: ”lang”;s: 2: ”id”;s: 8: ”currency”;s: 3: ”IDR”;
@@ -595,7 +595,7 @@ Content-Type: text/plain
 }
 ```
 
-```matlib
+```matlab
 a: 5: {
   s: 10: "diagnostic";a: 7: {
     s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.0704";s: 11: "memoryusage";s: 14: "4.59MB";s: 14: "unix_timestamp";i: 1399539812;s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
