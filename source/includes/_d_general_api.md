@@ -366,7 +366,6 @@ token | Token acquired from gettoken | CHAR(128) |  | TRUE
 
 ## List Country
 
-
 ```http
 GET /general_api/listCountry?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f HTTP/1.1
 Host: api-sandbox.tiket.com
@@ -480,6 +479,159 @@ Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
 token | Token acquired from gettoken | CHAR(128) |  | TRUE
 
+## Get Transaction Policies
+
+
+```http
+GET /general_api/getPolicies?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f&lang=id HTTP/1.1
+Host: api-sandbox.tiket.com
+User-Agent: twh:123456789;Partner Name;
+Content-Type: text/plain
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<diagnostic>
+  <status>200</status>
+  <elapsetime>0.0664</elapsetime>
+  <memoryusage>4.6MB</memoryusage>
+  <unix_timestamp>1399539657</unix_timestamp>
+  <confirm>success</confirm>
+  <lang>id</lang>
+  <currency>IDR</currency>
+</diagnostic>
+<output_type>xml</output_type>
+<policies>
+  <klikbca>
+    <name>KlikBCA</name>
+    <before>
+      Jika setelah transaksi anda menerima pesan gagal seperti \"Transaction Failed, Please Call Tiket.com Call Center\", umumnya dana telah di debet dan transaksi diproses. Mohon periksa email anda untuk voucher booking anda. Jika setelah 15 menit and belum
+      menerima voucher booking anda, mohon print screen dan email ke cs@tiket.com atau menghubungi customer service kami di +62 21 2963 3600
+    </before>
+    <before>
+      User ID KlikBCA yang dimasukkan adalah User ID yang telah terdaftar pada KlikBCA.
+    </before>
+    <before>
+      Pembayaran harus dilakukan dalam 60 menit setelah pemesanan.
+    </before>
+    <before>
+      Transaksi akan dibatalkan (berakhir) jika anda tidak melakukan pembayaran pada periode waktu yang telah ditentukan.
+    </before>
+    <before>
+      Untuk konfirmasi dan pencetakan bukti pembayaran, anda perlu melakukan login kembali ke Tiket.com
+    </before>
+    <before>
+      Setelah menyelesaikan pembayaran, dalam 5 menit anda akan menerima email berisi Voucher Hotel / Event / Pesawat untuk pembelian Hotel / Tiket Event / Tiket Pesawat atau kode pemesanan
+    </before>
+  </klikbca>
+  <jatis>
+    <name>ATM Transfer</name>
+    <before>
+      Hanya transfer ATM via jaringan Bersama atau jaringan Prima yang bisa diproses oleh metode pembayaran ini. Untuk Internet Banking/Mobile Banking/Transfer melalui Teller/Non ATM , harap gunakan metode pembayaran transfer lewat bank
+    </before>
+    <before>
+      Akan dikenakan biaya IDR 5.000/transaksi (tidak termasuk di total transaksi) untuk pembayaran melalui jaringan ATM bersama, Prima atau Alto. Biaya yang dikenakan sesuai dengan ketetapan ATM Bersama, Prima dan Alto.
+    </before>
+    <before>
+      Untuk pengguna ATM Mandiri, minimum transaksi adalah IDR 50.000
+    </before>
+    <before>
+      Hanya transfer ATM via jaringan Bersama atau jaringan Prima yang bisa diproses oleh metode pembayaran ini. Untuk Internet Banking/Mobile Banking/Transfer melalui Teller/Non ATM , harap gunakan metode pembayaran transfer lewat bank
+    </before>
+    <before>
+      Transaksi akan dibatalkan (berakhir) jika anda tidak melakukan pembayaran pada periode waktu yang telah ditentukan.
+    </before>
+    <before>
+      Untuk konfirmasi dan pencetakan bukti pembayaran, anda perlu melakukan login kembali ke Tiket.com
+    </before>
+    <before>
+      Setelah menyelesaikan pembayaran, dalam 5 menit anda akan menerima email berisi Voucher Hotel / Event / Pesawat untuk pembelian Hotel / Tiket Event / Tiket Pesawat atau kode pemesanan
+    </before>
+    <after>
+      Hanya transfer ATM via jaringan Bersama atau jaringan Prima yang bisa diproses oleh metode pembayaran ini. Untuk Internet Banking/Mobile Banking/Transfer melalui Teller/Non ATM , harap gunakan metode pembayaran transfer lewat bank
+    </after>
+    <after>
+      10 Digit terakhir nomor Virtual Account adalah order id anda
+    </after>
+    <after>
+      Akan dikenakan biaya IDR 5.000/transaksi (tidak termasuk di total transaksi) untuk pembayaran melalui jaringan ATM bersama, Prima atau Alto. Biaya yang dikenakan sesuai dengan ketetapan ATM Bersama, Prima dan Alto.
+    </after>
+    <after>
+      Untuk pengguna ATM Mandiri, minimum transaksi adalah IDR 50.000
+    </after>
+  </jatis>
+</policies>
+<login_status>false</login_status>
+<token>c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f</token>
+</tiket>
+```
+
+```json
+{
+  "diagnostic": {
+    "status": 200,
+    "elapsetime": "0.0630",
+    "memoryusage": "4.59MB",
+    "unix_timestamp": 1399539790,
+    "confirm": "success",
+    "lang": "id",
+    "currency": "IDR"
+  },
+  "output_type": "json",
+  "policies": {
+    "klikbca": {
+      "name": "KlikBCA",
+      "before": ["Jika setelah transaksi anda menerima pesan gagal seperti \"Transaction Failed, Please Call Tiket.com Call Center\", umumnya dana telah di debet dan transaksi diproses. Mohon periksa email anda untuk voucher booking anda. Jika setelah 15 menit and belum menerima voucher booking anda, mohon print screen dan email ke cs@tiket.com atau menghubungi customer service kami di +62 21 2963 3600", "User ID KlikBCA yang dimasukkan adalah User ID yang telah terdaftar pada KlikBCA.", "Pembayaran harus dilakukan dalam 60 menit setelah pemesanan.", "Transaksi akan dibatalkan (berakhir) jika anda tidak melakukan pembayaran pada periode waktu yang telah ditentukan.", "Untuk konfirmasi dan pencetakan bukti pembayaran, anda perlu melakukan login kembali ke Tiket.com", "Setelah menyelesaikan pembayaran, dalam 5 menit anda akan menerima email berisi  Voucher Hotel / Event / Pesawat untuk pembelian Hotel / Tiket Event / Tiket Pesawat atau kode pemesanan"],
+      "after": []
+    },
+    "jatis": {
+      "name": "ATM Transfer",
+      "before": ["Hanya transfer ATM via jaringan Bersama atau jaringan Prima yang bisa diproses oleh metode pembayaran ini. Untuk Internet Banking/Mobile Banking/Transfer melalui Teller/Non ATM , harap gunakan metode pembayaran transfer lewat bank", "Akan dikenakan biaya IDR 5.000/transaksi (tidak termasuk di total transaksi) untuk pembayaran melalui jaringan ATM bersama, Prima atau Alto. Biaya yang dikenakan sesuai dengan ketetapan ATM Bersama, Prima dan Alto. ", "Untuk pengguna ATM Mandiri, minimum transaksi adalah IDR 50.000", "Hanya transfer ATM via jaringan Bersama atau jaringan Prima yang bisa diproses oleh metode pembayaran ini. Untuk Internet Banking/Mobile Banking/Transfer melalui Teller/Non ATM , harap gunakan metode pembayaran transfer lewat bank", "Transaksi akan dibatalkan (berakhir) jika anda tidak melakukan pembayaran pada periode waktu yang telah ditentukan.", "Untuk konfirmasi dan pencetakan bukti pembayaran, anda perlu melakukan login kembali ke Tiket.com", "Setelah menyelesaikan pembayaran, dalam 5 menit anda akan menerima email berisi  Voucher Hotel / Event / Pesawat untuk pembelian Hotel / Tiket Event / Tiket Pesawat atau kode pemesanan"],
+      "after": ["Hanya transfer ATM via jaringan Bersama atau jaringan Prima yang bisa diproses oleh metode pembayaran ini. Untuk Internet Banking/Mobile Banking/Transfer melalui Teller/Non ATM , harap gunakan metode pembayaran transfer lewat bank", "10 Digit terakhir nomor Virtual Account adalah order id anda", "Akan dikenakan biaya IDR 5.000/transaksi (tidak termasuk di total transaksi) untuk pembayaran melalui jaringan ATM bersama, Prima atau Alto. Biaya yang dikenakan sesuai dengan ketetapan ATM Bersama, Prima dan Alto. ", "Untuk pengguna ATM Mandiri, minimum transaksi adalah IDR 50.000"]
+    }
+  },
+  "login_status": "false",
+  "token": "c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f"
+}
+```
+
+```matlib
+a: 5: {
+  s: 10: "diagnostic";a: 7: {
+    s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.0704";s: 11: "memoryusage";s: 14: "4.59MB";s: 14: "unix_timestamp";i: 1399539812;s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+  }
+  s: 11: "output_type";s: 9: "serialize";s: 8: "policies";a: 2: {
+    s: 7: "klikbca";a: 3: {
+      s: 4: "name";s: 7: "KlikBCA";s: 6: "before";a: 6: {
+        i: 0;s: 46: "Jika setelah transaksi anda menerima pesan gagal seperti \"Transaction Failed, Please Call Tiket.com Call Center\", umumnya dana telah di debet dan transaksi diproses. Mohon periksa email anda untuk voucher booking anda. Jika setelah 15 menit and belum menerima voucher booking anda, mohon print screen dan email ke cs@tiket.com atau menghubungi customer service kami di +62 21 2963 3600";i: 1;s: 36: "User ID KlikBCA yang dimasukkan adalah User ID yang telah terdaftar pada KlikBCA.";i: 2;s: 36: "Pembayaran harus dilakukan dalam 60 menit setelah pemesanan.";i: 3;s: 32: "Transaksi akan dibatalkan (berakhir) jika anda tidak melakukan pembayaran pada periode waktu yang telah ditentukan.";i: 4;s: 36: "Untuk konfirmasi dan pencetakan bukti pembayaran, anda perlu melakukan login kembali ke Tiket.com";i: 5;s: 34: "Setelah menyelesaikan pembayaran, dalam 5 menit anda akan menerima email berisi Voucher Hotel / Event / Pesawat untuk pembelian Hotel / Tiket Event / Tiket Pesawat atau kode pemesanan";
+      }
+      s: 5: "after";a: 0: {}
+    }
+    s: 5: "jatis";a: 3: {
+      s: 4: "name";s: 12: "ATM Transfer";s: 6: "before";a: 7: {
+        i: 0;s: 36: "Hanya transfer ATM via jaringan Bersama atau jaringan Prima yang bisa diproses oleh metode pembayaran ini. Untuk Internet Banking/Mobile Banking/Transfer melalui Teller/Non ATM , harap gunakan metode pembayaran transfer lewat bank";i: 1;s: 35: "Akan dikenakan biaya IDR 5.000/transaksi (tidak termasuk di total transaksi) untuk pembayaran melalui jaringan ATM bersama, Prima atau Alto. Biaya yang dikenakan sesuai dengan ketetapan ATM Bersama, Prima dan Alto. ";i: 2;s: 26: "Untuk pengguna ATM Mandiri, minimum transaksi adalah IDR 50.000";i: 3;s: 36: "Hanya transfer ATM via jaringan Bersama atau jaringan Prima yang bisa diproses oleh metode pembayaran ini. Untuk Internet Banking/Mobile Banking/Transfer melalui Teller/Non ATM , harap gunakan metode pembayaran transfer lewat bank";i: 4;s: 32: "Transaksi akan dibatalkan (berakhir) jika anda tidak melakukan pembayaran pada periode waktu yang telah ditentukan.";i: 5;s: 36: "Untuk konfirmasi dan pencetakan bukti pembayaran, anda perlu melakukan login kembali ke Tiket.com";i: 6;s: 34: "Setelah menyelesaikan pembayaran, dalam 5 menit anda akan menerima email berisi Voucher Hotel / Event / Pesawat untuk pembelian Hotel / Tiket Event / Tiket Pesawat atau kode pemesanan";
+      }
+      s: 5: "after";a: 4: {
+        i: 0;s: 36: "Hanya transfer ATM via jaringan Bersama atau jaringan Prima yang bisa diproses oleh metode pembayaran ini. Untuk Internet Banking/Mobile Banking/Transfer melalui Teller/Non ATM , harap gunakan metode pembayaran transfer lewat bank";i: 1;s: 19: "10 Digit terakhir nomor Virtual Account adalah order id anda";i: 2;s: 35: "Akan dikenakan biaya IDR 5.000/transaksi (tidak termasuk di total transaksi) untuk pembayaran melalui jaringan ATM bersama, Prima atau Alto. Biaya yang dikenakan sesuai dengan ketetapan ATM Bersama, Prima dan Alto. ";i: 3;s: 26: "Untuk pengguna ATM Mandiri, minimum transaksi adalah IDR 50.000";
+      }
+    }
+  }
+  s: 12: "login_status";s: 5: "false";s: 5: "token";s: 40: "c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f";
+}
+```
+
+Text to be used on you checkout process. <code>before</code> means the text is placed before customer finalize payment. <code>after</code> means the text is placed right after customer finish checking out.
+
+### HTTP Request
+
+`GET https://api-sandbox.tiket.com/general_api/getPolicies?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f&lang=id`
+
+### Parameter
+
+Name | Description | Format    | Default   | Mandatory
+--------- | ------- | ----------- | ----------- | -----------
+token | Token acquired from gettoken | CHAR(128) |  | TRUE
+lang  | The language used. Ref: [List Language](#list-language) | CHAR(2) | id | FALSE
 
 
 
