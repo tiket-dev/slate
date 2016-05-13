@@ -364,8 +364,121 @@ Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
 token | Token acquired from gettoken | CHAR(128) |  | TRUE
 
+## List Country
 
 
+```http
+GET /general_api/listCountry?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f HTTP/1.1
+Host: api-sandbox.tiket.com
+User-Agent: twh:123456789;Partner Name;
+Content-Type: text/plain
+```
+
+```xml
+<tiket>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>0.0754</elapsetime>
+    <memoryusage>5.05MB</memoryusage>
+    <unix_timestamp>1399538816</unix_timestamp>
+    <confirm>success</confirm>
+    <lang>id</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <output_type>xml</output_type>
+  <listCountry>
+    <country_id>id</country_id>
+    <country_name>Indonesia</country_name>
+    <country_areacode>+62</country_areacode>
+  </listCountry>
+  <listCountry>
+    <country_id>sg</country_id>
+    <country_name>Singapore</country_name>
+    <country_areacode>+65</country_areacode>
+  </listCountry>
+  <listCountry>
+    <country_id>gb</country_id>
+    <country_name>United Kingdom</country_name>
+    <country_areacode>+44</country_areacode>
+  </listCountry>
+  <listCountry>
+    <country_id>us</country_id>
+    <country_name>United States</country_name>
+    <country_areacode>+1</country_areacode>
+  </listCountry>
+  <login_status>false</login_status>
+  <token>c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f</token>
+</tiket>
+```
+
+```json
+{
+  "diagnostic": {
+    "status": 200,
+    "elapsetime": "0.0574",
+    "memoryusage": "5.02MB",
+    "unix_timestamp": 1399538966,
+    "confirm": "success",
+    "lang": "id",
+    "currency": "IDR"
+  },
+  "output_type": "json",
+  "listCountry": [{
+    "country_id": "id",
+    "country_name": "Indonesia",
+    "country_areacode": "+62"
+  }, {
+    "country_id": "sg",
+    "country_name": "Singapore ",
+    "country_areacode": "+65"
+  }, {
+    "country_id": "gb",
+    "country_name": "United Kingdom ",
+    "country_areacode": "+44"
+  }, {
+    "country_id": "us",
+    "country_name": "United States ",
+    "country_areacode": "+1"
+  }],
+  "login_status": "false",
+  "token": "c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f"
+}
+```
+
+```matlib
+a: 5: {
+  s: 10: "diagnostic";a: 7: {
+    s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.0617";s: 11: "memoryusage";s: 14: "5.03MB";s: 14: "unix_timestamp";i: 1399539028;s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+  }
+  s: 11: "output_type";s: 9: "serialize";s: 11: "listCountry";a: 4: {
+    i: 0;a: 3: {
+      s: 10: "country_id";s: 2: "id";s: 12: "country_name";s: 9: "Indonesia";s: 16: "country_areacode";s: 3: "+62";
+    }
+    i: 1;a: 3: {
+      s: 10: "country_id";s: 2: "sg";s: 12: "country_name";s: 10: "Singapore ";s: 16: "country_areacode";s: 3: "+65";
+    }
+    i: 2;a: 3: {
+      s: 10: "country_id";s: 2: "gb";s: 12: "country_name";s: 15: "United Kingdom ";s: 16: "country_areacode";s: 3: "+44";
+    }
+    i: 3;a: 3: {
+      s: 10: "country_id";s: 2: "us";s: 12: "country_name";s: 14: "United States ";s: 16: "country_areacode";s: 2: "+1";
+    }
+  }
+  s: 12: "login_status";s: 5: "false";s: 5: "token";s: 40: "c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f";
+}
+```
+
+List all available countries.
+
+### HTTP Request
+
+`GET https://api-sandbox.tiket.com/general_api/listCountry?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f`
+
+### Parameter
+
+Name | Description | Format    | Default   | Mandatory
+--------- | ------- | ----------- | ----------- | -----------
+token | Token acquired from gettoken | CHAR(128) |  | TRUE
 
 
 
