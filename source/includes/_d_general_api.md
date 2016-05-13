@@ -59,11 +59,11 @@ Use this to access the API, the token will be active  until checkout payment. On
 
 <aside class="notice">Secretkey is only used to generate token. For every other activity, you are only required to use token.</aside>
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api-sandbox.tiket.com/apiv1/payexpress?method=getToken&secretkey=56c8624d6a62e1ab22f0d9915ff2d43c`
 
-### Parameters
+#### Parameters
 
 Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
@@ -124,11 +124,11 @@ Content-Type: text/plain
 Similar to getToken, but once the token expire, you have to call getToken again. If you want to keep logged in users from logged out, use this function instead.
 
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api-sandbox.tiket.com/apiv1/payexpress?method=getToken&secretkey=56c8624d6a62e1ab22f0d9915ff2d43c&token=712402a7c363b12d87f6b02749f6f0c91b64c47e`
 
-### Parameters
+#### Parameters
 
 Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
@@ -150,11 +150,11 @@ Type of parameter output :
 * json
 * serialize
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api-sandbox.tiket.com/order?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f&output=xml`
 
-### Parameter
+#### Parameter
 
 Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
@@ -258,11 +258,11 @@ a: 5: {
 
 List of all the currency available at Tiket.com
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api-sandbox.tiket.com/general_api/listCurrency?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f`
 
-### Parameter
+#### Parameter
 
 Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
@@ -354,11 +354,11 @@ To change the languages, just add parameter <code>lang=&lt;code&gt;</code>. For 
 
 `GET https://api-sandox.tiket.com/order?lang=id&token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f`
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api-sandbox.tiket.com/general_api/listLanguage?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f`
 
-### Parameter
+#### Parameter
 
 Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
@@ -469,11 +469,11 @@ a: 5: {
 
 List all available countries.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api-sandbox.tiket.com/general_api/listCountry?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f`
 
-### Parameter
+#### Parameter
 
 Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
@@ -622,11 +622,11 @@ a: 5: {
 
 Text to be used on you checkout process. <code>before</code> means the text is placed before customer finalize payment. <code>after</code> means the text is placed right after customer finish checking out.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api-sandbox.tiket.com/general_api/getPolicies?token=c992866a6ffb08e59a86fc6a050ca7c7bdec6c2f&lang=id`
 
-### Parameter
+#### Parameter
 
 Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
