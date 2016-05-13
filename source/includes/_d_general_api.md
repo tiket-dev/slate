@@ -631,7 +631,7 @@ Text to be used on you checkout process. <code>before</code> means the text is p
 Name | Description | Format    | Default   | Mandatory
 --------- | ------- | ----------- | ----------- | -----------
 token | Token acquired from gettoken | CHAR(128) |  | TRUE
-lang  | The language used. Ref: [List Language](#list-language) | CHAR(2) | id | FALSE
+lang  | The [language](#list-language) used | CHAR(2) | id | FALSE
 
 
 
