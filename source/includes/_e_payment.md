@@ -26,7 +26,16 @@
 </tiket>
 ```
 
+```json
+See XML tab for example
+```
+
+```matlab
+See XML tab for example
+```
+
 > Grand_subtotal - payment_discount = sub_total
+
 > subtotal + payment_charge + unique_code = grand_total
 
 Completing checkout process with selected payment method.
