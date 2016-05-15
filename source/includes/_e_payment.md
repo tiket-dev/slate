@@ -38,130 +38,24 @@
 
 > subtotal + payment_charge + unique_code = grand_total
 
+Checkout payment is a method where when you checkout, you will have to ask customer to do certain process outside your website or apps. For instance, for KlikBCA, user will be asked to go to https://klikbca.com to pay. Or if you chooese bank transfer, you will ask user do certain actions via ATM or online banking.
+
 Completing checkout process with selected payment method.
 
 Because Tiket.com domicile in Indonesia, it is mandatory that the payment is in IDR (Indonesia Rupiah). When you checkout using <code>checkout_payment</code>, you must pass the parameter <code>&currency=IDR</code> to ensure that the payment is in IDR.
 
 <aside class="notice">When you submit without <code>btn_booking</code>, then it will only show payment information without processing the payment itself. This is useful if you wanted to know how much is the final price for the selected payment method</aside>
 
-### Bank Transfer
 
-```http
-GET /checkout/checkout_payment/2?token=2ee91e32f9113e863da4c57e235098d1&currency=IDR&btn_booking=1 HTTP/1.1
-Host: api-sandbox.tiket.com
-User-Agent: twh:123456789;Partner Name;
-Content-Type: text/plain
-```
 
-```xml
-<tiket>
-  <output_type>xml</output_type>
-  <diagnostic>
-    <status>200</status>
-    <elapsetime>1.7780</elapsetime>
-    <memoryusage>11.14MB</memoryusage>
-    <confirm>success</confirm>
-    <lang>id</lang>
-    <currency>IDR</currency>
-  </diagnostic>
-  <orderId>120004</orderId>
-  <banks>
-    <bank>
-      <photo_1>httpss://www.sandbox.tiket.com/images/ico_bca.png</photo_1>
-      <photo_2>httpss://www.sandbox.tiket.com/images/ico_prima.png</photo_2>
-      <Nama>PT. Global Tiket Network</Nama>
-      <Bank>BCA</Bank>
-      <Cabang>Jakarta</Cabang>
-      <NoRekening>52 6032 2488</NoRekening>
-    </bank>
-    <bank>
-      <photo_1>
-        httpss://www.sandbox.tiket.com/images/ico_mandiri.png
-      </photo_1>
-      <photo_2>httpss://www.sandbox.tiket.com/images/ico_atm.png</photo_2>
-      <Nama>PT. Global Tiket Network</Nama>
-      <Bank>Mandiri</Bank>
-      <Cabang>Pelni</Cabang>
-      <NoRekening>11 7000 606 9959</NoRekening>
-    </bank>
-  </banks>
-  <message>
-    Silakan transfer pembayaran untuk memesan. Anda memiliki waktu <strong>3 jam</strong> untuk melakukan pembayaran.
-  </message>
-  <confirm_payment>
-    httpss://api-sandbox.tiket.com/confirmpayment/save?orderId=120004&hash=19b4c9956d2b5173ec023d1dbb13a1a3
-  </confirm_payment>
-  <grand_total>60044</grand_total>
-  <token>2ee91e32f9113e863da4c57e235098d1</token>
-</tiket>
-```
 
-```json
-{
-  "output_type": "json",
-  "diagnostic": {
-    "status": 200,
-    "elapsetime": "1.7074",
-    "memoryusage": "11.09MB",
-    "confirm": "success",
-    "lang": "en",
-    "currency": "IDR"
-  },
-  "orderId": 120003,
-  "banks": [{
-    "photo_1": "httpss:\/\/www.sandbox.tiket.com\/images\/ico_bca.png",
-    "photo_2": "httpss:\/\/www.sandbox.tiket.com\/images\/ico_prima.png",
-    "Nama": "PT. Global Tiket Network",
-    "Bank": "BCA",
-    "Cabang": "Jakarta",
-    "No Rekening": "52 6032 2488"
-  }, {
-    "photo_1": "httpss:\/\/www.sandbox.tiket.com\/images\/ico_mandiri.png",
-    "photo_2": "httpss:\/\/www.sandbox.tiket.com\/images\/ico_atm.png",
-    "Nama": "PT. Global Tiket Network",
-    "Bank": " Mandiri",
-    "Cabang": "Pelni",
-    "No Rekening": "11 7000 606 9959"
-  }],
-  "message": "Please transfer the payment to make a booking. You have <strong>3 hours</strong> to complete the payment.",
-  "confirm_payment": "httpss:\/\/api-sandbox.tiket.com\/confirmpayment\/save?orderId=120003&hash=51ea6013f6a4347411e92cbbf98452de",
-  "grand_total": 60045,
-  "token": "5a80dc2ccce351eeb412e835b651edb9"
-}
-```
 
-```matlab
-a: 8: {
-  s: 11: "output_type";s: 9: "serialize";s: 10: "diagnostic";a: 6: {
-    s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "2.3195";s: 11: "memoryusage";s: 14: "11.1MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "en";s: 8: "currency";s: 3: "IDR";
-  }
-  s: 7: "orderId";i: 120010;s: 5: "banks";a: 2: {
-    i: 0;a: 6: {
-      s: 7: "photo_1";s: 48: "httpss://www.sandbox.tiket.com/images/ico_bca.png";s: 7: "photo_2";s: 50: "httpss://www.sandbox.tiket.com/images/ico_prima.png";s: 4: "Nama";s: 24: "PT. Global Tiket Network";s: 4: "Bank";s: 3: "BCA";s: 6: "Cabang";s: 7: "Jakarta";s: 11: "No Rekening";s: 12: "52 6032 2488";
-    }
-    i: 1;a: 6: {
-      s: 7: "photo_1";s: 52: "httpss://www.sandbox.tiket.com/images/ico_mandiri.png";s: 7: "photo_2";s: 48: "httpss://www.sandbox.tiket.com/images/ico_atm.png";s: 4: "Nama";s: 24: "PT. Global Tiket Network";s: 4: "Bank";s: 8: " Mandiri";s: 6: "Cabang";s: 5: "Pelni";s: 11: "No Rekening";s: 16: "11 7000 606 9959";
-    }
-  }
-  s: 7: "message";s: 35: "Please transfer the payment to make a booking. You have <strong>3 hours</strong> to complete the payment.";s: 15: "confirm_payment";s: 102: "httpss://api-sandbox.tiket.com/confirmpayment/save?orderId=120010&hash=dbd0c974292ebc4c278b7461e4706a4c";s: 11: "grand_total";d: 60050;s: 5: "token";s: 32: "9d4ccf0c966e37a4c112c59ac2bc2e97";
-}
-```
 
-Bank transfer to Tiket.com regular corporate account. Customer will have to pay an additional amount so that the transfer is unique (unique transfer amount). Please note that the payment will not be instant, because we will have to check it manually. Also, the availability time will vary too. Usually we closes the payment at 7 PM and open again at 9 AM. 
 
-<aside class="warning">This payment method will be deprecated shortly.</aside>
 
-#### HTTP Request
 
-`GET https://api-sandbox.tiket.com/checkout/checkout_payment/2?token=2ee91e32f9113e863da4c57e235098d1&currency=IDR&btn_booking=1&output=json`
 
-#### Parameter
 
-Name | Description | Format    | Default   | Mandatory
---------- | ------- | ----------- | ----------- | -----------
-token | Token acquired from gettoken | CHAR(128) |  | TRUE
-btn_booking | Set to 1 to continue checkout. Set to 0 to check the total price | INT |  | TRUE
-currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 
 ### KlikBCA
 
@@ -295,8 +189,21 @@ After you receive status code `200`, kindly create a UI that looks similar to th
 ##### KlikBCA (English) 
 ![KlikBCA (English)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/klikbca-English.jpg)
 
-##### KlikBCA (English) 
-![KlikBCA (Indonesia)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/klikbca-indonesia.jpg)
+##### KlikBCA (Indonesia) 
+![KlikBCA (Indonesia)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/klikbca-indonesia .jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### Bank Transfer (Instant confirmation)
@@ -400,8 +307,175 @@ After you receive status code `200`, kindly create a UI that looks similar to th
 ##### Bank Transfer (English) 
 ![Bank Transfer (English)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/bank-transfer-english.jpg)
 
-##### Bank Transfer (English) 
+##### Bank Transfer (Indonesia) 
 ![Bank Transfer (Indonesia)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/bank-transfer-indonesia.jpg)
+
+
+
+
+
+
+
+### Bank Transfer (manual confirmation)
+
+```http
+GET /checkout/checkout_payment/2?token=2ee91e32f9113e863da4c57e235098d1&currency=IDR&btn_booking=1 HTTP/1.1
+Host: api-sandbox.tiket.com
+User-Agent: twh:123456789;Partner Name;
+Content-Type: text/plain
+```
+
+```xml
+<tiket>
+  <output_type>xml</output_type>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>1.7780</elapsetime>
+    <memoryusage>11.14MB</memoryusage>
+    <confirm>success</confirm>
+    <lang>id</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <orderId>120004</orderId>
+  <banks>
+    <bank>
+      <photo_1>httpss://www.sandbox.tiket.com/images/ico_bca.png</photo_1>
+      <photo_2>httpss://www.sandbox.tiket.com/images/ico_prima.png</photo_2>
+      <Nama>PT. Global Tiket Network</Nama>
+      <Bank>BCA</Bank>
+      <Cabang>Jakarta</Cabang>
+      <NoRekening>52 6032 2488</NoRekening>
+    </bank>
+    <bank>
+      <photo_1>
+        httpss://www.sandbox.tiket.com/images/ico_mandiri.png
+      </photo_1>
+      <photo_2>httpss://www.sandbox.tiket.com/images/ico_atm.png</photo_2>
+      <Nama>PT. Global Tiket Network</Nama>
+      <Bank>Mandiri</Bank>
+      <Cabang>Pelni</Cabang>
+      <NoRekening>11 7000 606 9959</NoRekening>
+    </bank>
+  </banks>
+  <message>
+    Silakan transfer pembayaran untuk memesan. Anda memiliki waktu <strong>3 jam</strong> untuk melakukan pembayaran.
+  </message>
+  <confirm_payment>
+    httpss://api-sandbox.tiket.com/confirmpayment/save?orderId=120004&hash=19b4c9956d2b5173ec023d1dbb13a1a3
+  </confirm_payment>
+  <grand_total>60044</grand_total>
+  <token>2ee91e32f9113e863da4c57e235098d1</token>
+</tiket>
+```
+
+```json
+{
+  "output_type": "json",
+  "diagnostic": {
+    "status": 200,
+    "elapsetime": "1.7074",
+    "memoryusage": "11.09MB",
+    "confirm": "success",
+    "lang": "en",
+    "currency": "IDR"
+  },
+  "orderId": 120003,
+  "banks": [{
+    "photo_1": "httpss:\/\/www.sandbox.tiket.com\/images\/ico_bca.png",
+    "photo_2": "httpss:\/\/www.sandbox.tiket.com\/images\/ico_prima.png",
+    "Nama": "PT. Global Tiket Network",
+    "Bank": "BCA",
+    "Cabang": "Jakarta",
+    "No Rekening": "52 6032 2488"
+  }, {
+    "photo_1": "httpss:\/\/www.sandbox.tiket.com\/images\/ico_mandiri.png",
+    "photo_2": "httpss:\/\/www.sandbox.tiket.com\/images\/ico_atm.png",
+    "Nama": "PT. Global Tiket Network",
+    "Bank": " Mandiri",
+    "Cabang": "Pelni",
+    "No Rekening": "11 7000 606 9959"
+  }],
+  "message": "Please transfer the payment to make a booking. You have <strong>3 hours</strong> to complete the payment.",
+  "confirm_payment": "httpss:\/\/api-sandbox.tiket.com\/confirmpayment\/save?orderId=120003&hash=51ea6013f6a4347411e92cbbf98452de",
+  "grand_total": 60045,
+  "token": "5a80dc2ccce351eeb412e835b651edb9"
+}
+```
+
+```matlab
+a: 8: {
+  s: 11: "output_type";s: 9: "serialize";s: 10: "diagnostic";a: 6: {
+    s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "2.3195";s: 11: "memoryusage";s: 14: "11.1MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "en";s: 8: "currency";s: 3: "IDR";
+  }
+  s: 7: "orderId";i: 120010;s: 5: "banks";a: 2: {
+    i: 0;a: 6: {
+      s: 7: "photo_1";s: 48: "httpss://www.sandbox.tiket.com/images/ico_bca.png";s: 7: "photo_2";s: 50: "httpss://www.sandbox.tiket.com/images/ico_prima.png";s: 4: "Nama";s: 24: "PT. Global Tiket Network";s: 4: "Bank";s: 3: "BCA";s: 6: "Cabang";s: 7: "Jakarta";s: 11: "No Rekening";s: 12: "52 6032 2488";
+    }
+    i: 1;a: 6: {
+      s: 7: "photo_1";s: 52: "httpss://www.sandbox.tiket.com/images/ico_mandiri.png";s: 7: "photo_2";s: 48: "httpss://www.sandbox.tiket.com/images/ico_atm.png";s: 4: "Nama";s: 24: "PT. Global Tiket Network";s: 4: "Bank";s: 8: " Mandiri";s: 6: "Cabang";s: 5: "Pelni";s: 11: "No Rekening";s: 16: "11 7000 606 9959";
+    }
+  }
+  s: 7: "message";s: 35: "Please transfer the payment to make a booking. You have <strong>3 hours</strong> to complete the payment.";s: 15: "confirm_payment";s: 102: "httpss://api-sandbox.tiket.com/confirmpayment/save?orderId=120010&hash=dbd0c974292ebc4c278b7461e4706a4c";s: 11: "grand_total";d: 60050;s: 5: "token";s: 32: "9d4ccf0c966e37a4c112c59ac2bc2e97";
+}
+```
+
+Bank transfer to Tiket.com regular corporate account. Customer will have to pay an additional amount so that the transfer is unique (unique transfer amount). Please note that the payment will not be instant, because we will have to check it manually. Also, the availability time will vary too. Usually we closes the payment at 7 PM and open again at 9 AM. 
+
+<aside class="warning">This payment method will be deprecated shortly.</aside>
+
+#### HTTP Request
+
+`GET https://api-sandbox.tiket.com/checkout/checkout_payment/2?token=2ee91e32f9113e863da4c57e235098d1&currency=IDR&btn_booking=1&output=json`
+
+#### Parameter
+
+Name | Description | Format    | Default   | Mandatory
+--------- | ------- | ----------- | ----------- | -----------
+token | Token acquired from gettoken | CHAR(128) |  | TRUE
+btn_booking | Set to 1 to continue checkout. Set to 0 to check the total price | INT |  | TRUE
+currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
+
+
+
+
+
+
+
+
+
+## Payment Gateway
+
+### General
+
+With this method of payment, you will redirect your customer to Tiket.com's very own payment gateway. The reason for this is because there are certain security measure that cannot be shifted through API, such as hash signature process etc. Also, for Credit Card payment, the domain name **must** be Tiket.com as required for PCI-DSS compliance.
+
+There are some configuration changes that you can do for payment gateway:
+
+#### Change the Logo in the PG or the voucher
+
+1. Login first at http://www.tiket.com/affiliate so that you can access the partner area.
+2. Click the Settings > setting menu http://www.tiket.com/partner/logo/
+3. You can change the logo by uploading your own. File must be in JPG format and the height will automatically resized to 62 pixels.
+
+#### Display your own contact and address
+
+1. Login first at http://www.tiket.com/affiliate so that you can access the partner area.
+2. Click the Settings > setting menu http://www.tiket.com/partner/logo/
+3. You can change the address with your own address by ticking the _use own address_ and enter your address and contact informations.
+
+#### Change the background color of PG
+
+1. Login first at http://www.tiket.com/affiliate so that you can access the partner area.
+2. Click the Settings > setting menu http://www.tiket.com/partner/logo/
+3. You can change the background coor of the PG by choosing from the color picker or write down the color hexcode.
+
+#### Change the redirect page if payment successful or failed
+
+1. Login first at http://www.tiket.com/affiliate so that you can access the partner area.
+2. Click the Developer > API menu http://www.tiket.com/partner/api
+3. Write down in the _callback url development_ the link where successful transaction will be redirect. The link must be in HTTPS protocol.
+    <aside class="warning">Leave it to empty or <code>https://</code> if you don't have your own payment success page. Changing this to a URL that doesn't exists will confuse user, and user will think that the payment didn't succeed, resulting in complaints and refunds request. Use this with caution!</aside>
+
 
 
 
