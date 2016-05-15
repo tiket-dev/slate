@@ -290,6 +290,14 @@ btn_booking | Set to 1 to continue checkout. Set to 0 to check the total price |
 currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 user_bca | KlikBCA User ID (ex: username1234) | CHAR(12) | | TRUE
 
+After you receive status code `200`, kindly create a UI that looks similar to the following screenshots:
+
+##### KlikBCA (English) 
+![KlikBCA (English)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/klikbca-English.jpg)
+
+##### KlikBCA (English) 
+![KlikBCA (Indonesia)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/klikbca-indonesia.jpg)
+
 
 ### Bank Transfer (Instant confirmation)
 
@@ -391,6 +399,10 @@ After you receive status code `200`, kindly create a UI that looks similar to th
 
 ##### Bank Transfer (English) 
 ![Bank Transfer (English)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/bank-transfer-english.jpg)
+
+##### Bank Transfer (English) 
+![Bank Transfer (Indonesia)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/bank-transfer-indonesia.jpg)
+
 
 
 
