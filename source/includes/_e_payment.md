@@ -389,8 +389,7 @@ currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 
 After you receive status code `200`, kindly create a UI that looks similar to the following screenshots:
 
-Bank Transfer (English) 
-
+##### Bank Transfer (English) 
 ![Bank Transfer (English)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/bank-transfer-english.jpg)
 
 
