@@ -362,7 +362,7 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 30px;
+    font-size: 35px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ccc;
@@ -379,7 +379,7 @@ html, body {
 
   h2 {
     @extend %header-font;
-    font-size: 20px;
+    font-size: 25px;
     margin-top: 4em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
@@ -388,6 +388,18 @@ html, body {
     background-image: linear-gradient(to bottom, rgba(#fff, 0.4), rgba(#fff, 0));
   }
 
+  h3 {
+    @extend %header-font;
+    font-size: 20px;
+    margin-top: 4em;
+    margin-bottom: 0;
+    border-top: 1px solid #ccc;
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
+    background-image: linear-gradient(to bottom, rgba(#fff, 0.4), rgba(#fff, 0));
+  }
+  
+  
   // h2s right after h1s should bump right up
   // against the h1s.
   h1 + h2, h1 + div + h2 {
@@ -395,7 +407,7 @@ html, body {
     border-top: none;
   }
 
-  h3, h4, h5, h6 {
+  h4, h5, h6 {
     @extend %header-font;
     font-size: 15px;
     margin-top: 2.5em;
