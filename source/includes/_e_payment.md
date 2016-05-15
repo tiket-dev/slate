@@ -362,7 +362,29 @@ btn_booking | Set to 1 to continue checkout. Set to 0 to check the total price |
 currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 
 
+```xml
+// to be generated. View JSON version for sample output
+```
 
+```json
+{
+  "output_type": "json",
+  "diagnostic": {
+    "status": 209,
+    "error_msgs": "your order has expired please recheck your order",
+    "elapsetime": "0.2049",
+    "memoryusage": "7.93MB",
+    "lang": "en",
+    "currency": "IDR"
+  },
+  "token": "8040d5dab0d283a1be360ffe70fb7e7f"
+}
+```
 
+```matlab
+// to be generated. View JSON version instead
+```
+
+<aside class="warning">If the order has expired, it will emit status code <code>209</code> instead. </aside>
 
 
