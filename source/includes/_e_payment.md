@@ -500,6 +500,7 @@ checkouttoken | Token acquired from gettoken | CHAR(128) |  | TRUE
 For testing purpose in the `sandbox.tiket.com`, you can use the following dummy credit cards:
 
 Variable | Value
+------------ | ------------------
 Credit Card Number | 4000000000000002
   | 4000000000000119
   |  4000000000000101
@@ -529,6 +530,8 @@ Once customer entered the correct information and/or finish their 3DS (3 Domain 
 ![Success mobile page](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/CC-Succesfull-Mobile.png)
 
 <aside class="success">You can redirect the final success (or failed) transaction to your own page by <a href="#general-configuration">changing the redirection URL</a></aside>
+
+
 
 
 
