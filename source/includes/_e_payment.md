@@ -206,6 +206,8 @@ After you receive status code `200`, kindly create a UI that looks similar to th
 
 ### Bank Transfer (Instant confirmation)
 
+> Status code 200 response
+
 ```http
 GET /checkout/checkout_payment/35?token=2ee91e32f9113e863da4c57e235098d1&btn_booking=1&currency=IDR HTTP/1.1
 Host: api-sandbox.tiket.com
@@ -473,7 +475,63 @@ Below is some general configuration changes that you can do for payment gateway:
 1. Login first at http://www.tiket.com/affiliate so that you can access the partner area.
 2. Click the Developer > API menu http://www.tiket.com/partner/api
 3. Write down in the _callback url development_ the link where successful transaction will be redirect. The link must be in HTTPS protocol.
-    <aside class="warning">Leave it to empty or <code>https://</code> if you don't have your own payment success page. Changing this to a URL that doesn't exists will confuse user, and user will think that the payment didn't succeed, resulting in complaints and refunds request. Use this with caution!</aside>
+    <aside class="warning">Leave it to empty or <code>https://</code> if you don't have your own payment success page. Changing this to a URL that doesn't exists will redirect the page to a 404 file not found error, confuse user, and user will think that the payment didn't succeed, resulting in complaints and refunds request. Use this with caution!</aside>
+
+
+### Credit Card Payment
+
+This payment gateway checks you out through our Credit Card payment gateway. We have the best and most secure payment gateway, with fraud rate of only 0.01%. The [average fraud chargeback rate is 0.47%](https://payment-services.ingenico.com/~/media/files/2015-global-online-fraud-panorama_en.ashx?la=en). If fraud accured, you as the developer will **not** be held responsible for the fraud.
+
+
+#### HTTP Request
+
+`GET http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49`
+
+<aside class="notice">Notice that the URL is <code>sandbox.tiket.com</code> for development and <code>www.tiket.com</code> for production.</aside>
+
+#### Parameter
+
+Name | Description | Format    | Default   | Mandatory
+--------- | ------- | ----------- | ----------- | -----------
+checkouttoken | Token acquired from gettoken | CHAR(128) |  | TRUE
+
+#### Testing cards
+
+For testing purpose in the `sandbox.tiket.com`, you can use the following dummy credit cards:
+
+Variable | Value
+Credit Card Number | 4000000000000002
+  | 4000000000000119
+  |  4000000000000101
+  | 4000000000000127
+  | 5200000000000007
+  | 5200000000000114
+  | 5200000000000122
+  | 5200000000000106
+Expiry Date | Any month and year greater than this month
+Card Holder Name | Your own name
+CVV  | You can use any 3 digits number
+
+#### Output UI
+
+
+If you are developing an apps, kindly call the HTTP Request above using WebView. The UI will be like this:
+
+##### Credit Card Checkout Page
+![Credit Card Checkout Page](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/Credit-Card-Payment.png)
+
+Once customer entered the correct information and/or finish their 3DS (3 Domain Security) process, then the result is this output:
+
+##### Successful transaction (web version)
+![Success web page](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/Langkah-2.png)
+
+##### Successful transaction (mobile version)
+![Success mobile page](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/CC-Succesfull-Mobile.png)
+
+<aside class="success">You can redirect the final success (or failed) transaction to your own page by <a href="#general-configuration">changing the redirection URL</a></aside>
+
+
+
 
 
 

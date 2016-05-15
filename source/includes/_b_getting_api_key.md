@@ -9,7 +9,10 @@ We have two URL with totally different server data:
 * API development : [api-sandbox.tiket.com](http://api-sandbox.tiket.com)
 * API production : [api.tiket.com](https://api.tiket.com)
 
-Both might have different content, so please don’t compare api-sandbox.tiket.com data with the real data at www.tiket.com
+* PG development : [sandbox.tiket.com](http://sandbox.tiket.com)
+* PG production : [www.tiket.com](https://www.tiket.com)
+
+Both might have different content, so please don’t compare the contect from the **sandbox** data with the real data at api.tiket.com/www.tiket.com.
 
 
 
