@@ -192,7 +192,7 @@ Content-Type: text/plain
             ]]>
     </step>
     <step>
-      <![CDATA[Login using your user ID. (juliani9031)]]>
+      <![CDATA[Login using your user ID. (username1234)]]>
     </step>
     <step>
       <![CDATA[Go to menu
@@ -220,7 +220,7 @@ Content-Type: text/plain
             then make payment.]]>
     </step>
     <step>
-      <![CDATA[After you have completed the payment, you will receive an           e-mail within 5 minutes]]>
+      <![CDATA[After you have completed the payment, you will receive an e-mail within 5 minutes]]>
     </step>
   </steps>
   <grand_total/>
