@@ -40,8 +40,6 @@
 
 Checkout payment is a method where when you checkout, you will have to ask customer to do certain process outside your website or apps. For instance, for KlikBCA, user will be asked to go to https://klikbca.com to pay. Or if you chooese bank transfer, you will ask user do certain actions via ATM or online banking.
 
-Completing checkout process with selected payment method.
-
 Because Tiket.com domicile in Indonesia, it is mandatory that the payment is in IDR (Indonesia Rupiah). When you checkout using <code>checkout_payment</code>, you must pass the parameter <code>&currency=IDR</code> to ensure that the payment is in IDR.
 
 <aside class="notice">When you submit without <code>btn_booking</code>, then it will only show payment information without processing the payment itself. This is useful if you wanted to know how much is the final price for the selected payment method</aside>
@@ -169,7 +167,7 @@ a: 7: {
 }
 ```
 
-Payment using [KlikBCA](https://ibank.klikbca.com/).
+Payment using [KlikBCA](https://ibank.klikbca.com/). Once you trigger this and return `200` code, you can proceed by telling customer to do the `<steps>` activity.
 
 #### HTTP Request
 
@@ -190,7 +188,7 @@ After you receive status code `200`, kindly create a UI that looks similar to th
 ![KlikBCA (English)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/klikbca-English.jpg)
 
 ##### KlikBCA (Indonesia) 
-![KlikBCA (Indonesia)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/klikbca-indonesia .jpg)
+![KlikBCA (Indonesia)](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/klikbca-indonesia.jpg)
 
 
 
@@ -262,7 +260,7 @@ Content-Type: text/plain
 // to be generated
 ```
 
-Payment using bank transfer through virtual account. Payment will be paid to Bank Permata virtual account.
+Payment using bank transfer through virtual account. Payment will be paid to Bank Permata virtual account. Once you trigger this and return `200` code, you can proceed by telling customer to do the `<steps>` activity.
 
 #### HTTP Request
 
@@ -276,6 +274,7 @@ token | Token acquired from gettoken | CHAR(128) |  | TRUE
 btn_booking | Set to 1 to continue checkout. Set to 0 to check the total price | INT |  | TRUE
 currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 
+> Status code 209 response
 
 ```xml
 // to be generated. View JSON version for sample output
@@ -447,7 +446,7 @@ currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 
 With this method of payment, you will redirect your customer to Tiket.com's very own payment gateway. The reason for this is because there are certain security measure that cannot be shifted through API, such as hash signature process etc. Also, for Credit Card payment, the domain name **must** be Tiket.com as required for PCI-DSS compliance.
 
-### General configuration
+### General Configuration
 
 Below is some general configuration changes that you can do for payment gateway:
 
