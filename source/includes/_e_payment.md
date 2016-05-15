@@ -387,4 +387,12 @@ currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 
 <aside class="warning">If the order has expired, it will emit status code <code>209</code> instead. </aside>
 
+After you receive status code `200`, kindly create a UI that looks similar to the following screenshots:
+
+![alt text][e_bank_transfer_1]
+
+[e_bank_transfer_1]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+
+
+
 
