@@ -291,6 +291,78 @@ currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 user_bca | KlikBCA User ID (ex: username1234) | CHAR(12) | | TRUE
 
 
+### Bank Transfer (Instant confirmation)
+
+```http
+GET /checkout/checkout_payment/35?token=2ee91e32f9113e863da4c57e235098d1&btn_booking=1&currency=IDR HTTP/1.1
+Host: api-sandbox.tiket.com
+User-Agent: twh:123456789;Partner Name;
+Content-Type: text/plain
+```
+
+```xml
+<tiket>
+  <output_type>xml</output_type>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>2.0213</elapsetime>
+    <memoryusage>11.78MB</memoryusage>
+    <confirm>success</confirm>
+    <lang>en</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <orderId>129621</orderId>
+  <result/>
+  <steps>
+    <!-- to be generated -->
+  </steps>
+  <grand_total/>
+  <message>
+    <![CDATA[Silakan transfer pembayaran untuk memesan. Anda memiliki waktu <strong>3 jam</strong> untuk melakukan pembayaran.]]>
+  </message>
+  <token>19fa2a3a3c611d9616970d03e6f66286</token>
+</tiket>
+```
+
+```json
+{
+  "output_type": "json",
+  "diagnostic": {
+    "status": 200,
+    "elapsetime": "0.2100",
+    "memoryusage": "8.67MB",
+    "confirm": "success",
+    "lang": "en",
+    "currency": "IDR"
+  },
+  "orderId": 120005,
+  "grand_total": 59680,
+  "message": "Silakan transfer pembayaran untuk memesan. Anda memiliki waktu <strong>3 jam</strong> untuk melakukan pembayaran.",
+  "steps": ["// to be generated"],
+  "token": "a0336694655bbf6fb442c68eb50f98e7"
+}
+```
+
+```matlab
+// to be generated
+```
+
+Payment using bank transfer through virtual account. Payment will be paid to Bank Permata virtual account.
+
+#### HTTP Request
+
+`GET http://api-sandbox.tiket.com/checkout/checkout_payment/35?token=4c71d60d367bbffa1b293cb663afc4e9&btn_booking=1&currency=IDR&output=json`
+
+#### Parameter
+
+Name | Description | Format    | Default   | Mandatory
+--------- | ------- | ----------- | ----------- | -----------
+token | Token acquired from gettoken | CHAR(128) |  | TRUE
+btn_booking | Set to 1 to continue checkout. Set to 0 to check the total price | INT |  | TRUE
+currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
+
+
+
 
 
 
