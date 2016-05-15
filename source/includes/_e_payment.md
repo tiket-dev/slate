@@ -445,11 +445,11 @@ currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 
 ## Payment Gateway
 
-### General
-
 With this method of payment, you will redirect your customer to Tiket.com's very own payment gateway. The reason for this is because there are certain security measure that cannot be shifted through API, such as hash signature process etc. Also, for Credit Card payment, the domain name **must** be Tiket.com as required for PCI-DSS compliance.
 
-There are some configuration changes that you can do for payment gateway:
+### General configuration
+
+Below is some general configuration changes that you can do for payment gateway:
 
 #### Change the Logo in the PG or the voucher
 
