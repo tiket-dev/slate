@@ -70,11 +70,11 @@ username,your username as the one who link to the business,VARCHAR(20),,TRUE
 
 #### Input
 
-    [plain]http://api-sandbox.tiket.com/partner/transactionApi/get_saldo?secretkey=[SECRET_KEY]&confirmkey=[CONFIRM_KEY]&username=[USERNAME][/plain]
+    `http://api-sandbox.tiket.com/partner/transactionApi/get_saldo?secretkey=[SECRET_KEY]&confirmkey=[CONFIRM_KEY]&username=[USERNAME]`
 
 #### Output
 
-    [xml collapse="1" title="XML Format"]
+```xml
     This XML file does not appear to have any style information associated with it. The document tree is shown below.
     <tiket>
        <diagnostic>
@@ -90,11 +90,11 @@ username,your username as the one who link to the business,VARCHAR(20),,TRUE
        <login_status>false</login_status>
        <token>bafeb06cc887594c1657b6bdcbfd513e</token>
     </tiket>
-    [/xml]
+```
 
 
 
-    [js collapse="1" title="JSON Format"]
+```json
     {
        "diagnostic":
        {
@@ -110,13 +110,13 @@ username,your username as the one who link to the business,VARCHAR(20),,TRUE
        "login_status":"false",
        "token":"bafeb06cc887594c1657b6bdcbfd513e"
     }
-    [/js]
+```
 
 
 
-    [js collapse="1" title="Serialize Format"]
+```matlab
     a:5:{s:10:"diagnostic";a:6:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.3394";s:11:"memoryusage";s:14:"13.48MB";s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:11:"output_type";s:9:"serialize";s:7:"results";s:10:"1035151.00";s:12:"login_status";s:5:"false";s:5:"token";s:32:"bafeb06cc887594c1657b6bdcbfd513e";}
-    [/js]
+```
     
 ## Checkout payment using deposit
 
@@ -132,11 +132,11 @@ btn_booking,flag for continue,INT,TRUE
 
 #### Input
 
-    [plain]http://api-sandbox.tiket.com/checkout/checkout_payment/8?btn_booking=1&token=d69843dde291670e75bce3434300f821&output=json[/plain]
+    `http://api-sandbox.tiket.com/checkout/checkout_payment/8?btn_booking=1&token=d69843dde291670e75bce3434300f821&output=json`
 
 #### Output
 
-    [xml collapse="1" title="XML Format"]
+```xml
     This XML file does not appear to have any style information associated with it. The document tree is shown below.
     <tiket>
     	<output_type>xml</output_type>
@@ -157,11 +157,11 @@ btn_booking,flag for continue,INT,TRUE
     	<grand_total>250000</grand_total>
     	<token>902c1966b790400c2abdce91615019eb</token>
     </tiket>
-    [/xml]
+```
 
 
 
-    [js collapse="1" title="JSON Format"]
+```json
     {
     	output_type: "json",
     	diagnostic: {
@@ -178,13 +178,13 @@ btn_booking,flag for continue,INT,TRUE
     	grand_total: 250000,
     	token: "05de09951056763af4b49e7a9ba5229c"
     }
-    [/js]
+```
 
 
 
-    [js collapse="1" title="Serialize Format"]
+```matlab
     a:6:{s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:6:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.6324";s:11:"memoryusage";s:14:"14.69MB";s:7:"confirm";s:7:"success";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:7:"orderId";i:148849;s:7:"message";s:35:"Please transfer the payment to make a booking. You have 3 hours to complete the payment.";s:11:"grand_total";d:250000;s:5:"token";s:32:"90e00ce63c00b92616ca15c7e6ef28d1";}
-    [/js]
+```
     
     
 ## Confirm Transaction by Web
@@ -212,11 +212,11 @@ username,your username as the one who link to the business,CHAR(128),,TRUE
 
 h4>Input
 
-    [plain]http://api-sandbox.tiket.com/partner/transactionApi?secretkey=cd919016311e870f4409b8fdcd1892fe&confirmkey=7c4d3b&username=you_julin@yahoo.com&output=json[/plain]
+    `http://api-sandbox.tiket.com/partner/transactionApi?secretkey=cd919016311e870f4409b8fdcd1892fe&confirmkey=7c4d3b&username=you_julin@yahoo.com&output=json`
 
 #### Output
 
-    [xml collapse="1" title="XML Format"]
+```xml
     This XML file does not appear to have any style information associated with it. The document tree is shown below.
     <tiket>
     	<output_type>xml</output_type>
@@ -266,11 +266,11 @@ h4>Input
     	</diagnostic>
     	<token>73af5d205a8d9c41efbb1aeeb1462644</token>
     </tiket>
-    [/xml]
+```
 
 
 
-    [js collapse="1" title="JSON Format"]
+```json
     {
     output_type: "json",
     result: [
@@ -321,13 +321,13 @@ h4>Input
     },
     token: "73af5d205a8d9c41efbb1aeeb1462644"
     }
-    [/js]
+```
 
 
 
-    [js collapse="1" title="Serialize Format"]
+```matlab
     a:5:{s:11:"output_type";s:9:"serialize";s:6:"result";a:1:{i:0;a:15:{s:8:"order_id";s:6:"154250";s:10:"account_id";s:6:"105970";s:15:"order_timestamp";s:19:"2012-12-06 16:17:35";s:14:"payment_status";s:8:"checkout";s:20:"total_customer_price";s:9:"350000.00";s:17:"customer_currency";s:3:"IDR";s:16:"account_username";s:19:"you_julin@yahoo.com";s:14:"all_order_type";s:5:"hotel";s:23:"account_salutation_name";s:3:"Mr.";s:4:"name";s:8:"Juli Ami";s:13:"account_phone";s:9:"087526332";s:17:"order_cart_detail";a:1:{i:0;a:7:{s:15:"order_detail_id";s:5:"36901";s:10:"order_type";s:5:"hotel";s:17:"customer_currency";s:3:"IDR";s:14:"customer_price";s:9:"350000.00";s:19:"order_detail_status";s:6:"active";s:12:"total_ticket";s:1:"1";s:11:"description";s:48:"Resort: Hotel Testing (Deluxe Room), For 1 Night";}}s:5:"price";s:14:"IDR 350.000,00";s:11:"confirm_uri";s:172:"https://api-sandbox.tiket.com/partner/transactionApi/confirmPayment?account_id=105970&order_id=154250&order_type=hotel&price=350000.00&account_username=you_julin@yahoo.com";s:6:"status";s:7:"confirm";}}s:6:"search";a:7:{s:4:"page";i:1;s:6:"offset";i:20;s:10:"total_data";i:1;s:10:"total_page";d:1;s:9:"startdate";s:10:"2012-11-05";s:7:"enddate";s:10:"2012-12-06";s:8:"searchId";s:0:"";}s:10:"diagnostic";a:6:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.3691";s:11:"memoryusage";s:14:"9.99MB";s:7:"confirm";s:7:"success";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:5:"token";s:32:"73af5d205a8d9c41efbb1aeeb1462644";}
-    [/js]
+```
     
     
 ## Confirm Transaction by API
@@ -348,11 +348,11 @@ username,your username as the one who link to the business,CHAR(128),,TRUE
 
 h4>Input
 
-    [plain]https://api-sandbox.tiket.com/partner/transactionApi/confirmPayment?order_id=154250&secretkey=e10adc3949ba59abbe56e057f20f883e&confirmkey=7c4d3b&username=you_julin@yahoo.com&textarea_note=test&tanggal=2012-12-06&output=json[/plain]
+    `https://api-sandbox.tiket.com/partner/transactionApi/confirmPayment?order_id=154250&secretkey=e10adc3949ba59abbe56e057f20f883e&confirmkey=7c4d3b&username=you_julin@yahoo.com&textarea_note=test&tanggal=2012-12-06&output=json`
 
 #### Output
 
-    [xml collapse="1" title="XML Format"]
+```xml
     This XML file does not appear to have any style information associated with it. The document tree is shown below.
     <tiket>
     	<output_type>xml</output_type>
@@ -366,9 +366,9 @@ h4>Input
     	</diagnostic>
     	<token>feb69563ac764ae38276376b8bcbc71f</token>
     </tiket>
-    [/xml]
+```
 
-    [js collapse="1" title="JSON Format"]
+```json
     {
     	output_type: "json",
     	diagnostic: {
@@ -381,10 +381,10 @@ h4>Input
     	},
     	token: "feb69563ac764ae38276376b8bcbc71f"
     }
-    [/js]
+```
 
-    [js collapse="1" title="Serialize Format"]
+```matlab
     a:3:{s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:6:{s:6:"status";s:3:"200";s:10:"elapsetime";s:14:"1.2691";s:11:"memoryusage";s:14:"17.56MB";s:10:"confirm";s:39:"success";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:5:"token";s:32:"feb69563ac764ae38276376b8bcbc71f"
-    [/js]
+```
 
 

@@ -542,7 +542,7 @@ Once customer entered the correct information and/or finish their 3DS (3 Domain 
 
 Especially for Klikpay payment, you must access this link:
 
-    [plain]http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=4[/plain]
+    `http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=4`
 
 #### Output
 
@@ -560,11 +560,11 @@ after finish it will immediately redirect to the callback url (see [PG - General
 
 the defualt link
 
-    [plain]https://www.tiket.com/payment/dummyConfirmPage[/plain]
+    `https://www.tiket.com/payment/dummyConfirmPage`
 
 Will be redirected to this link with additional parameters :
 
-    [plain]https://www.tiket.com/payment/dummyConfirmPage?checkouttoken=6c47ff90598a6bf05eb264ee76194cca&orderid=147934&referenceid=147934&message=&paymenttype=klikpay&status=200[/plain]
+    `https://www.tiket.com/payment/dummyConfirmPage?checkouttoken=6c47ff90598a6bf05eb264ee76194cca&orderid=147934&referenceid=147934&message=&paymenttype=klikpay&status=200`
 
 if the variable  
 status = 200 => success  
@@ -580,7 +580,7 @@ diagnostic['status']
 
 Especially for CIMB Clicks payment, you must access this link:
 
-    [plain]http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=31[/plain]
+    `http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=31`
 
 #### Output
 
@@ -600,11 +600,11 @@ after finish it will immediately redirect to the callback url (see [PG - General
 
 the defualt link
 
-    [plain]https://www.tiket.com/payment/dummyConfirmPage[/plain]
+    `https://www.tiket.com/payment/dummyConfirmPage`
 
 Will be redirected to this link with additional parameters :
 
-    [plain]https://www.tiket.com/payment/dummyConfirmPage?checkouttoken=6c47ff90598a6bf05eb264ee76194cca&orderid=147934&referenceid=147934&message=&paymenttype=klikpay&status=200[/plain]
+    `https://www.tiket.com/payment/dummyConfirmPage?checkouttoken=6c47ff90598a6bf05eb264ee76194cca&orderid=147934&referenceid=147934&message=&paymenttype=klikpay&status=200`
 
 if the variable  
 status = 200 => success  
@@ -620,7 +620,7 @@ diagnostic['status']
 
 Especially for ePay BRI payment, you must access this link:
 
-    [plain]http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=33[/plain]
+    `http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=33`
 
 #### Output
 
@@ -638,11 +638,11 @@ after finish it will immediately redirect to the callback url (see [PG - General
 
 the defualt link
 
-    [plain]https://www.tiket.com/payment/dummyConfirmPage[/plain]
+    `https://www.tiket.com/payment/dummyConfirmPage`
 
 Will be redirected to this link with additional parameters :
 
-    [plain]https://www.tiket.com/payment/dummyConfirmPage?checkouttoken=6c47ff90598a6bf05eb264ee76194cca&orderid=147934&referenceid=147934&message=&paymenttype=klikpay&status=200[/plain]
+    `https://www.tiket.com/payment/dummyConfirmPage?checkouttoken=6c47ff90598a6bf05eb264ee76194cca&orderid=147934&referenceid=147934&message=&paymenttype=klikpay&status=200`
 
 if the variable  
 status = 200 => success  
