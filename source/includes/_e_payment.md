@@ -538,6 +538,122 @@ Once customer entered the correct information and/or finish their 3DS (3 Domain 
 
 
 
+### Klikpay Payment
+
+Especially for Klikpay payment, you must access this link:
+
+    [plain]http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=4[/plain]
+
+#### Output
+
+[![klikpay](http://docs.tiket.com/wp-content/uploads/2013/01/klikpay-300x206.png "klikpay")](http://docs.tiket.com/wp-content/uploads/2013/01/klikpay.png)
+
+- fill the data and you will redirect to page redirection
+
+[![klikpay - redirect](http://docs.tiket.com/wp-content/uploads/2013/01/klikpay-redirect-300x148.png "klikpay - redirect")](http://docs.tiket.com/wp-content/uploads/2013/01/klikpay-redirect.png)
+
+- wait for the page to redirect or press the button to redirect to Klikpay web page
+
+[![KlikPay - web](http://docs.tiket.com/wp-content/uploads/2013/01/KlikPay-web-300x146.png "KlikPay - web")](http://docs.tiket.com/wp-content/uploads/2013/01/KlikPay-web.png)
+
+after finish it will immediately redirect to the callback url (see [PG - General ](http://docs.tiket.com/#pg-general-342))
+
+the defualt link
+
+    [plain]https://www.tiket.com/payment/dummyConfirmPage[/plain]
+
+Will be redirected to this link with additional parameters :
+
+    [plain]https://www.tiket.com/payment/dummyConfirmPage?checkouttoken=6c47ff90598a6bf05eb264ee76194cca&orderid=147934&referenceid=147934&message=&paymenttype=klikpay&status=200[/plain]
+
+if the variable  
+status = 200 => success  
+status = 300 => failed
+
+if use the default link (dummyConfirmPage) the view generate to API like usual and read the variable  
+diagnostic['status']
+
+* what ever the return (200 or 300) the token cannot be used to order anymore
+
+
+### CIMB Clicks payment
+
+Especially for CIMB Clicks payment, you must access this link:
+
+    [plain]http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=31[/plain]
+
+#### Output
+
+[![cimbclicks](http://docs.tiket.com/wp-content/uploads/2013/01/cimbclicks-300x188.png "cimbclicks")](http://docs.tiket.com/wp-content/uploads/2013/01/cimbclicks.png)
+
+- fill the data and you will redirect to page redirection
+
+[![cimbclicks - redirect](http://docs.tiket.com/wp-content/uploads/2013/01/cimbclicks-redirect--300x148.png "cimbclicks - redirect")](http://docs.tiket.com/wp-content/uploads/2013/01/cimbclicks-redirect-.png)
+
+- wait for the page to redirect or press the button to redirect to CIMB Clicks web page
+
+[![](http://docs.tiket.com/wp-content/uploads/2013/01/cimbclicks-web-300x136.png "cimbclicks - web")](http://docs.tiket.com/wp-content/uploads/2013/01/cimbclicks-web.png)
+
+
+
+after finish it will immediately redirect to the callback url (see [PG - General ](http://docs.tiket.com/#pg-general-342))
+
+the defualt link
+
+    [plain]https://www.tiket.com/payment/dummyConfirmPage[/plain]
+
+Will be redirected to this link with additional parameters :
+
+    [plain]https://www.tiket.com/payment/dummyConfirmPage?checkouttoken=6c47ff90598a6bf05eb264ee76194cca&orderid=147934&referenceid=147934&message=&paymenttype=klikpay&status=200[/plain]
+
+if the variable  
+status = 200 => success  
+status = 300 => failed
+
+if use the default link (dummyConfirmPage) the view generate to API like usual and read the variable  
+diagnostic['status']
+
+* what ever the return (200 or 300) the token cannot be used to order anymore
+
+
+### ePay BRI payment
+
+Especially for ePay BRI payment, you must access this link:
+
+    [plain]http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=33[/plain]
+
+#### Output
+
+[![ePay BRI](http://docs.tiket.com/wp-content/uploads/2013/01/ePay-BRI--300x195.png "ePay BRI")](http://docs.tiket.com/wp-content/uploads/2013/01/ePay-BRI-.png)
+
+- fill the data and you will redirect to page redirection
+
+[![ePay BRI - redirect](http://docs.tiket.com/wp-content/uploads/2013/01/ePay-BRI-redirect-300x148.png "ePay BRI - redirect")](http://docs.tiket.com/wp-content/uploads/2013/01/ePay-BRI-redirect.png)
+
+- wait for the page to redirect or press the button to redirect to ePay BRI web page
+
+[![ePay BRI - web](http://docs.tiket.com/wp-content/uploads/2013/01/ePay-BRI-web-300x225.png "ePay BRI - web")](http://docs.tiket.com/wp-content/uploads/2013/01/ePay-BRI-web.png)
+
+after finish it will immediately redirect to the callback url (see [PG - General ](http://docs.tiket.com/#pg-general-342))
+
+the defualt link
+
+    [plain]https://www.tiket.com/payment/dummyConfirmPage[/plain]
+
+Will be redirected to this link with additional parameters :
+
+    [plain]https://www.tiket.com/payment/dummyConfirmPage?checkouttoken=6c47ff90598a6bf05eb264ee76194cca&orderid=147934&referenceid=147934&message=&paymenttype=klikpay&status=200[/plain]
+
+if the variable  
+status = 200 => success  
+status = 300 => failed
+
+if use the default link (dummyConfirmPage) the view generate to API like usual and read the variable  
+diagnostic['status']
+
+* what ever the return (200 or 300) the token cannot be used to order anymore
+
+
 
 
 
