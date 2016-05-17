@@ -1,13 +1,13 @@
 # Deposit Payment
 
-They are 2 tipe of payment method
+There are 2 tipe of payment method
 
-1. Regular Payment  
-    payment handle by Tiket.com
-2. Deposit Payment  
-    Payment handle by partner
+1. **Regular Payment**  
+    Payment handled by Tiket.com
+2. **Deposit Payment**
+    Payment handled by partner
 
-The default of the payment method is "Regular payment", to change to "Deposit payment" please follow the instructions below:
+The default of the payment method is "Regular payment". To change to "Deposit payment" please follow the instructions below:
 
 1. Register your business in https://sandbox.tiket.com/affiliate/
 2. Login with the credentials inputed before
@@ -57,67 +57,72 @@ when the payment approved your saldo will increase
 
 ## Check Deposit Balance
 
-You use this parameter if you want to pay the current user using your deposit.
-
-#### Parameters
-
-  
-Name,Description,Format,Default,Mandatory  
-secretkey,API secret key given by Tiket.com,CHAR(128),,TRUE  
-confirmkey,confirmkey given by Tiket.com,CHAR(128),,TRUE  
-username,your username as the one who link to the business,VARCHAR(20),,TRUE  
-
-
-#### HTTP Request
-
-    `http://api-sandbox.tiket.com/partner/transactionApi/get_saldo?secretkey=[SECRET_KEY]&confirmkey=[CONFIRM_KEY]&username=[USERNAME]`
-
-#### Output
 
 ```xml
-    This XML file does not appear to have any style information associated with it. The document tree is shown below.
-    <tiket>
-       <diagnostic>
-          <status>200</status>
-          <elapsetime>0.3991</elapsetime>
-          <memoryusage>13.52MB</memoryusage>
-          <confirm>success</confirm>
-          <lang>id</lang>
-          <currency>IDR</currency>
-       </diagnostic>
-       <output_type>xml</output_type>
-       <results>1035151.00</results>
-       <login_status>false</login_status>
-       <token>bafeb06cc887594c1657b6bdcbfd513e</token>
-    </tiket>
+<tiket>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>0.3991</elapsetime>
+    <memoryusage>13.52MB</memoryusage>
+    <confirm>success</confirm>
+    <lang>id</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <output_type>xml</output_type>
+  <results>1035151.00</results>
+  <login_status>false</login_status>
+  <token>bafeb06cc887594c1657b6bdcbfd513e</token>
+</tiket>
 ```
 
 
 
 ```json
-    {
-       "diagnostic":
-       {
-           "status":200,
-           "elapsetime":"0.3516",
-           "memoryusage":"13.48MB",
-           "confirm":"success",
-           "lang":"id",
-           "currency":"IDR"
-       },
-       "output_type":"json",
-       "results":"1035151.00",
-       "login_status":"false",
-       "token":"bafeb06cc887594c1657b6bdcbfd513e"
-    }
+{
+  "diagnostic": {
+    "status": 200,
+    "elapsetime": "0.3516",
+    "memoryusage": "13.48MB",
+    "confirm": "success",
+    "lang": "id",
+    "currency": "IDR"
+  },
+  "output_type": "json",
+  "results": "1035151.00",
+  "login_status": "false",
+  "token": "bafeb06cc887594c1657b6bdcbfd513e"
+}
 ```
 
 
 
 ```matlab
-    a:5:{s:10:"diagnostic";a:6:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.3394";s:11:"memoryusage";s:14:"13.48MB";s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:11:"output_type";s:9:"serialize";s:7:"results";s:10:"1035151.00";s:12:"login_status";s:5:"false";s:5:"token";s:32:"bafeb06cc887594c1657b6bdcbfd513e";}
+a: 5: {
+  s: 10: "diagnostic";a: 6: {
+    s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.3394";s: 11: "memoryusage";s: 14: "13.48MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+  }
+  s: 11: "output_type";s: 9: "serialize";s: 7: "results";s: 10: "1035151.00";s: 12: "login_status";s: 5: "false";s: 5: "token";s: 32: "bafeb06cc887594c1657b6bdcbfd513e";
+}
 ```
-    
+
+
+You use this parameter if you want to pay the current user using your deposit.
+
+
+#### HTTP Request
+
+`http://api-sandbox.tiket.com/partner/transactionApi/get_saldo?secretkey=[SECRET_KEY]&confirmkey=[CONFIRM_KEY]&username=[USERNAME]`
+
+
+#### Parameters
+
+Name | Description | Format | Default | Mandatory  
+---- | ----------  | -----  | ------- | ---------
+secretkey | API secret key given by Tiket.com | CHAR(128) |  | TRUE  
+confirmkey | confirmkey given by Tiket.com | CHAR(128) |  | TRUE  
+username | your username as the one who link to the business | VARCHAR(20) |  | TRUE  
+
+
 ## Checkout payment using deposit
 
 You use this parameter if you want to pay the current user using your deposit.
@@ -125,16 +130,17 @@ You use this parameter if you want to pay the current user using your deposit.
 #### Parameters
 
   
-Name,Description,Format,Default,Mandatory  
-token,for saving transaction that done by user,CHAR(128),,TRUE  
-btn_booking,flag for continue,INT,TRUE  
+Name | Description | Format | Default | Mandatory  
+---- | ----------  | -----  | ------- | ---------
+token | for saving transaction that done by user | CHAR(128) |  | TRUE  
+btn_booking | flag for continue | INT | TRUE  
 
 
 #### HTTP Request
 
     `http://api-sandbox.tiket.com/checkout/checkout_payment/8?btn_booking=1&token=d69843dde291670e75bce3434300f821&output=json`
 
-#### Output
+
 
 ```xml
     This XML file does not appear to have any style information associated with it. The document tree is shown below.
@@ -337,13 +343,14 @@ Link get from confirm_uri in Show transaction by API
 #### Parameters
 
   
-Name,Description,Format,Default,Mandatory  
-order_id,for customer order id,CHAR(128),,TRUE  
-textarea_note,note for the confirmation,CHAR(128),,TRUE  
-tanggal,confirmation date,YYYY-MM-DD,,TRUE  
-secretkey,secretkey given by Tiket.com,CHAR(128),,TRUE  
-confirmkey,confirmkey given by Tiket.com,CHAR(128),,TRUE  
-username,your username as the one who link to the business,CHAR(128),,TRUE  
+Name | Description | Format | Default | Mandatory 
+---- | ----------  | -----  | ------- | ---------
+order_id | for customer order id | CHAR(128) |  | TRUE  
+textarea_note | note for the confirmation | CHAR(128) |  | TRUE  
+tanggal | confirmation date | YYYY-MM-DD |  | TRUE  
+secretkey | secretkey given by Tiket.com | CHAR(128) |  | TRUE  
+confirmkey | confirmkey given by Tiket.com | CHAR(128) |  | TRUE  
+username | your username as the one who link to the business | CHAR(128) |  | TRUE  
 
 
 h4>Input
