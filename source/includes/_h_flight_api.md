@@ -26,7 +26,7 @@ Child and Infant price will be given if the requested value is greater than 0. I
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 d,Departure airport code,CHAR(3),,TRUE  
 a,Arrival airport code,CHAR(3),,TRUE  
@@ -36,9 +36,9 @@ adult,number of adult passenger,INT,1,FALSE
 child,number of child passenger,INT,0,FALSE  
 infant,number of infant passenger,INT,0,FALSE  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-v,version of the search,INT,1,FALSE[/table]
+v,version of the search,INT,1,FALSE
 
-#### Input
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/search/flight?d=CGK&a=DPS&date=2014-05-25&ret_date=2014-05-30&adult=1&child=0&infant=0&token=626de6cbccc25cf3f7a652fc933e49187efdbc54&v=3&output=xml`
 
@@ -1615,12 +1615,12 @@ v,version of the search,INT,1,FALSE[/table]
 
 #### Version Info
 
-[table]  
+  
 Ver no.,Description  
 1,"Flight Sriwijaya, Lion Air, Garuda, Merpati"  
 2,Flight Citilink added. New variable **birthdatea1** (birthdate for adult) required for [flight Add Order](http://docs.tiket.com/#add-order-121)  
 3,"Flight Mandala and Tiger added. New variable **dcheckinbaggagea1[$i]** (departure baggage for adult) ,**dcheckinbaggagec1[$i]** (departure baggage for child), **rcheckinbaggagea1[$i]** (return baggage for child),**rcheckinbaggagec1[$i]** (return baggage for child),required for [flight Add Order](http://docs.tiket.com/#add-order-121)  
-[/table]
+
 
 
 ## Flight Promo
@@ -1629,12 +1629,12 @@ Get flight rute with promo price
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/general_api/get_flight_promo?token=b8cca7a82b3a3575948ed43422cc6310e201c154`
 
@@ -1872,13 +1872,13 @@ token,for saving transaction that done by user,CHAR(128),,TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
 ip,ip address user,CHAR(20),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/flight_api/getNearestAirport?token=c5a32cce21b11d6e9a764ca685b5ee10378647ee&ip=182.253.203.58`
 
@@ -1929,14 +1929,14 @@ ip,ip address user,CHAR(20),,TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
 latitude,latitude position user,CHAR(20),,TRUE  
 longitude,latitude position user,CHAR(20),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/flight_api/getNearestAirport?token=905f0af68759becf520885084c42469b&latitude=-6.195062&longitude=106.803181&output=json`
 
@@ -1983,13 +1983,13 @@ longitude,latitude position user,CHAR(20),,TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
 depart,depart airport code,CHAR(20),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/flight_api/getPopularDestination?token=c5a32cce21b11d6e9a764ca685b5ee10378647ee&depart=CGK`
 
@@ -2092,12 +2092,12 @@ List of all available flight routes
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/flight_api/getAllRouteList?token=6a95beb8efe5fb601824430a12826c48`
 
@@ -2242,12 +2242,12 @@ List of all airport
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/flight_api/all_airport?token=2b2f462814af7c0d2e1b40f28e2d9dff5e900f24`
 
@@ -3414,7 +3414,7 @@ To get the latest data, search function must be called again.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 d,Departure airport code,CHAR(3),,TRUE  
 a,Arrival airport code,CHAR(3),,TRUE  
@@ -3424,9 +3424,9 @@ child,number of child passenger,INT,0,FALSE
 infant,number of infant passenger,INT,0,FALSE  
 time,Timestamp (time()),timestamp,,TRUE  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/ajax/mCheckFlightUpdated?token=2b2f462814af7c0d2e1b40f28e2d9dff5e900f24&d=CGK&a=DPS&date=2014-05-30&adult=1&child=0&infant=0&time=134078435`
 
@@ -3472,12 +3472,12 @@ If it exists, the captcha and sessionid must be included while calling add order
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/flight_api/getLionCaptcha?token=adcefff7d50618ff205473975adf9d64&output=json`
 
@@ -3532,18 +3532,18 @@ token,for saving transaction that done by user,CHAR(128),,TRUE
 
 After search, call this function when user choose the flight to ensure the data.
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 flight_id, flight_id want to order , CHAR,,TRUE  
 date, date want to travel , CHAR,,TRUE  
 ret_flight_id, ret_flight_id want to order for return flight , CHAR,,TRUE/FALSE  
 ret_date, return date want to travel , CHAR,,TRUE  
 token, , CHAR,,TRUE  
-[/table]
+
 
 *This function contains response of **required, **which is the required fields to be used in Flight Add Order. please ensure every field in the required is send when add order*
 
-#### Input
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/flight_api/get_flight_data?flight_id=16825942&token=2b2f462814af7c0d2e1b40f28e2d9dff5e900f24&date=2014-05-30`
 
@@ -3721,13 +3721,13 @@ token, , CHAR,,TRUE
 
 Specially for **Mandala, Tiger and airasia** flights, you must input baggage code when add order.  
 this is the baggage list.  
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 flight_id, flight_id want to order , CHAR,,TRUE  
 ret_flight_id, ret_flight_id want to order for return flight , CHAR,,TRUE/FALSE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/flight_api/list_baggage?flight_id=9670962&output=xml&token=647e7ddad6b934c97715d5b825ce2dae&output=json`
 
@@ -3916,7 +3916,7 @@ Maximal passenger infant : 6
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
 flight_id,flight id that choosen by user,CHAR(~),,TRUE  
@@ -3947,14 +3947,14 @@ firstnamei1,"as an array like firstnamei1, firstnamei2 if you have infant passag
 lastnamei1,"as an array like lastnamei1, lastnamei2 if you have infant passager",CHAR(50),,TRUE  
 birthdatei1,"as an array like birthdatei1, birthdatei2 if you have infant passager : format YYYY-MM-DD",DATE,,TRUE  
 idi1,"as an array like idi1, idi2 if you have child passager",CHAR(50),,FALSE  
-[/table]
+
 
 #### Additional Fields According to Airlines
 
 Each Airlines has its specific required fields, you can use the Get Flight Data function to checks the required field.  
 This is the list of field to may appears
 
-[table]
+
 
 Name,Description,Format,Default,Mandatory  
 passportnoa1,"as an array like passportnoa1, passportnoa2 if you have adult passenger",CHAR(50),,TRUE  
@@ -3964,22 +3964,22 @@ birthdatea1,"as an array like birthdatea1, birthdatea2 if you have adult passeng
 passportissuinga1,"as an array like passportissuinga1, passportissuinga2 if you have adult passenger (select from list country ex id for indonesia)",CHAR(50),,TRUE  
 passportnationalitya1,"as an array like passportnationalitya1, passportnationalitya2 if you have adult passenger (select from list country ex id for indonesia)",CHAR(50),,TRUE
 
-[/table]
+
 
 #### Additonal Fields For Mandala, Tiger and Airasia Flight
 
 Some airlines may required to submit the baggage fields, here is the example
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 dcheckinbaggagea11,"departure baggage code for adult passanger as an array like dcheckinbaggagea11, dcheckinbaggagea12 if you have adult passenger and array like dcheckinbaggagea11,dcheckinbaggagea21 if transit flight",CHAR(18),TRUE  
 dcheckinbaggagec11,"departure baggage code for child passanger as an array like dcheckinbaggagec11, dcheckinbaggagec12 if you have adult passenge and array like dcheckinbaggagec11, dcheckinbaggagec21 if transit flight ",CHAR(18),TRUE  
 rcheckinbaggagea11,"return baggage code for adult passanger as an array like rcheckinbaggagea11, rcheckinbaggagea12 if you have adult passenger and array like rcheckinbaggagea11, rcheckinbaggagea21 if transit flight",CHAR(18),TRUE  
 rcheckinbaggagec11,"return baggage cod for child passanger as an array like rcheckinbaggagec11, rcheckinbaggagec12 if you have adult passenger and array like rcheckinbaggagec11, rcheckinbaggagec21 if transit flight",CHAR(18),TRUE
 
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order/add/flight?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&flight_id=20203327&child=1&adult=1&infant=1&conSalutation=Mrs&conFirstName=budianto&conLastName=wijaya&conPhone=%2B6287880182218&conEmailAddress=you_julin@yahoo.com&firstnamea1=susi&lastnamea1=wijaya&ida1=1116057107900001&titlea1=Mr&conOtherPhone=%2B628521342534&titlec1=Ms&firstnamec1=carreen&lastnamec1=athalia&birthdatec1=2005-02-02&titlei1=Mr&parenti1=1&firstnamei1=wendy&lastnamei1=suprato&birthdatei1=2011-06-29&output=XML`
 
@@ -4019,12 +4019,12 @@ rcheckinbaggagec11,"return baggage cod for child passanger as an array like rche
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&output=xml`
 
@@ -4161,13 +4161,13 @@ link url can be get from order, variable delete_uri
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 order_detail_id,Order detail ID that want to delete from order,NUMBER,,TRUE  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order/delete_order?order_detail_id=8092570&token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&output=xml`
 
@@ -4208,12 +4208,12 @@ link url can be get from order, variable checkout.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order/checkout/20604252/IDR?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf`
 
@@ -4252,7 +4252,7 @@ Get from order page in checkout variable.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 salutation,"your title( ex: Mr.,Mrs.,Ms.)",CHAR(5),,TRUE  
 firstName,your first name,CHAR(50),,TRUE  
@@ -4260,9 +4260,9 @@ lastName,your last name,CHAR(50),,TRUE
 emailAddress,your email,CHAR(50),,TRUE  
 phone,"your phone, ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter",CHAR(20),,TRUE  
 saveContinue,"Flag for save unregistered user data (value=2)",,,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/checkout/checkout_customer?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&salutation=Ms&firstName=ba&lastName=ca&emailAddress=fatmamiharja@gmail.com&phone=%2B62878434343&saveContinue=2`
 
@@ -4309,12 +4309,12 @@ user akan dikirimkan email untuk mengubah password loginnya.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
 

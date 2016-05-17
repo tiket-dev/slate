@@ -36,7 +36,7 @@ We will inform you if its already provided in production server (api.tiket.com)
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 d,Depart train station code,CHAR(3),,TRUE  
 a,Arrival train station code,CHAR(3),,TRUE  
@@ -47,9 +47,9 @@ child,"number of child passenger (max adult+child+infant 4 persons)",INT,0,FALSE
 infant,"number of infant passenger (max adult+child+infant 4 persons)",INT,0,FALSE  
 class,"train class (ALL)",all|bis|eks|eco,all,FALSE  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/search/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&class=all&token=80bfe5297f7c4fbaa7a1e6c022585946&output=json`
 
@@ -111,10 +111,10 @@ Display all train station and their codes for use in search train API (variable 
 
 Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
+
 
 Input
 
@@ -164,7 +164,7 @@ Get train seat map.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 date,"Departure date",yyyy-mm-dd,,true  
 train_id,"Train ID that choosen by user",CHAR(~),,TRUE  
@@ -172,9 +172,9 @@ subclass,"Subclass from train that choosen by user",CHAR(~),,FALSE
 token,"for saving transaction that done by user",CHAR(128),,TRUE  
 org,"Depart train station code",CHAR(3),,TRUE  
 dest,"Arrival train station code",CHAR(3),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/general_api/get_train_seat_map?date=2015-06-30&train_id=A32&subclass=A&org=GMR&dest=BD&token=a86d0826af2e445be7c8ad36a5ab2b601358c040`
 
@@ -279,7 +279,7 @@ Add train order to shopping cart.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 d,Depart,train station code,CHAR(3),,TRUE  
 a,Arrival train station code,CHAR(3),,TRUE  
@@ -309,9 +309,9 @@ birthDateChild1,"as an array like birthDateChild1 birthDateChild2 if you have Ch
 salutationInfant1,"as an array like salutationInfant1 salutationInfant2 if you have infant passager : Mr.,Ms.,Mrs.",CHAR(4),,  
 nameInfant1,as an array like nameInfant1 nameInfant2 if you have infant passager,CHAR(50),,  
 birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have infant passager : format YYYY-MM-DD [infant must below 2 years old],DATE,,  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order/add/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&token=13fc239d306bf7085708566b3d085b29&train_id=IVHAN1&subclass=A&output=json&conSalutation=Mr&conFirstName=b&conLastName=bl&conEmailAddress=be@scom&conPhone=0878121&nameAdult1=a&IdCardAdult1=111&noHpAdult1=%2B62878222&salutationAdult1=Mr&birthDateAdult1=1990-02-02`
 
@@ -353,12 +353,12 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
     
     #### Parameters
     
-    [table]  
+      
     Name,Description,Format,Default,Mandatory  
     token,for saving transaction that done by user,CHAR(128),,TRUE  
-    [/table]
     
-    #### Input
+    
+    #### HTTP Request
     
         `https://api-sandbox.tiket.com/order?token=2279a50a996f5a54a15db6b10bfc5657&output=json`
     
@@ -435,12 +435,12 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
     
     #### Parameters
     
-    [table]  
+      
     Name,Description,Format,Default,Mandatory  
     token,for saving transaction that done by user,CHAR(128),,TRUE  
-    [/table]
     
-    #### Input
+    
+    #### HTTP Request
     
         `https://api-sandbox.tiket.com/order/checkout/119978/IDR?token=9991e3092aea96042964220181374b60&output=json`
     
@@ -480,7 +480,7 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
 
 * #### Parameters
     
-    [table]  
+      
     Name,Description,Format,Default,Mandatory  
     salutation,"your title( ex: Mr.,Mrs.,Ms.)",CHAR(5),,TRUE  
     firstName,your first name,CHAR(50),,TRUE  
@@ -488,9 +488,9 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
     emailAddress,your email,CHAR(50),,TRUE  
     phone,"your phone, ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter",CHAR(20),,TRUE  
     saveContinue,Flag for login (value=2),,,TRUE  
-    [/table]
     
-    #### Input
+    
+    #### HTTP Request
     
         [code]https://api-sandbox.tiket.com/checkout/checkout_customer?token=87da88eaaa429d5513a3a3658b01701e&salutation=Ms&firstName=ba&lastName=ca&emailAddress=test@yahoocom&phone=%2B62878434343&saveContinue=2[/code]
     
@@ -527,12 +527,12 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
 
 * #### Parameters
     
-    [table]  
+      
     Name,Description,Format,Default,Mandatory  
     token,for saving transaction that done by user,CHAR(128),,TRUE  
-    [/table]
     
-    #### Input
+    
+    #### HTTP Request
     
         `http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
     
@@ -614,7 +614,7 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
     
     #### Parameters
     
-    [table]  
+      
     Name,Description,Format,Default,Mandatory  
     firstName,your firstname,CHAR,,TRUE  
     lastName,your lastname,CHAR,,TRUE  
@@ -622,9 +622,9 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
     password,your password min 6 char,CHAR,,TRUE  
     conPassword,confirm password,CHAR,,TRUE  
     country,"your country [must in country list]",CHAR(50),,TRUE  
-    [/table]
     
-    #### Input
+    
+    #### HTTP Request
     
         `https://api-sandbox.tiket.com/auth/register?token=9d941b962ff17f828046a1d45432c6d4&firstName=cob&lastName=kib&email=youjulin@gmailcom&password=hahaha&conPassword=hahaha&country=id&output=json`
     
@@ -659,13 +659,13 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
 
 * #### Parameters
     
-    [table]  
+      
     Name,Description,Format,Default,Mandatory  
     d,Departure station,CHAR,,TRUE  
     date,Date to depart,DATE,,TRUE  
-    [/table]
     
-    #### Input
+    
+    #### HTTP Request
     
         `https://api-sandbox.tiket.com/train_api/train_promo?d=GMR&date=2012-06-28&token=4206f440696c91b855581fb2eafac225&output=json`
     
@@ -758,7 +758,7 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
     
     #### Parameters
     
-    [table]  
+      
     Name,Description,Format,Default,Mandatory  
     booking_code,"Booking Code",CHAR(6),,TRUE  
     kode_wagon,"Wagon Code",VARCHAR(5),,TRUE  
@@ -766,9 +766,9 @@ birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have 
     nomor_kursi,"Seating Number",VARCHAR(3),,TRUE  
     order_detail_id,"Order Detail ID",NUMERIC,,TRUE  
     token,for saving transaction that done by user,CHAR(128),,TRUE  
-    [/table]
     
-    #### Input
+    
+    #### HTTP Request
     
         `http://api.tiket.com/general_api/train_change_seat?output=json&booking_code=5WWAS1&kode_wagon=EKS&nomor_wagon=2&nomor_kursi=4D&order_detail_id=327247&token=6d360dfd1dab82b3fa42e453abafff91`
     

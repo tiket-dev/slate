@@ -61,14 +61,14 @@ You use this parameter if you want to pay the current user using your deposit.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 secretkey,API secret key given by Tiket.com,CHAR(128),,TRUE  
 confirmkey,confirmkey given by Tiket.com,CHAR(128),,TRUE  
 username,your username as the one who link to the business,VARCHAR(20),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/partner/transactionApi/get_saldo?secretkey=[SECRET_KEY]&confirmkey=[CONFIRM_KEY]&username=[USERNAME]`
 
@@ -124,13 +124,13 @@ You use this parameter if you want to pay the current user using your deposit.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
 btn_booking,flag for continue,INT,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/checkout/checkout_payment/8?btn_booking=1&token=d69843dde291670e75bce3434300f821&output=json`
 
@@ -203,12 +203,12 @@ To get List deposit transaction.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 secretkey,secretkey given by Tiket.com,CHAR(128),,TRUE  
 confirmkey,confirmkey given by Tiket.com,CHAR(128),,TRUE  
 username,your username as the one who link to the business,CHAR(128),,TRUE  
-[/table]
+
 
 h4>Input
 
@@ -336,7 +336,7 @@ Link get from confirm_uri in Show transaction by API
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 order_id,for customer order id,CHAR(128),,TRUE  
 textarea_note,note for the confirmation,CHAR(128),,TRUE  
@@ -344,7 +344,7 @@ tanggal,confirmation date,YYYY-MM-DD,,TRUE
 secretkey,secretkey given by Tiket.com,CHAR(128),,TRUE  
 confirmkey,confirmkey given by Tiket.com,CHAR(128),,TRUE  
 username,your username as the one who link to the business,CHAR(128),,TRUE  
-[/table]
+
 
 h4>Input
 

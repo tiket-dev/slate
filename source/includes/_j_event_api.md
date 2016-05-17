@@ -14,12 +14,12 @@ Diagram Flow for Event API:
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/search/event?token=c551ad2aee8e7acf14907c0fac2644d9&output=json`
 
@@ -71,12 +71,12 @@ Get from event uri at search event
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/jasonmraz?token=c551ad2aee8e7acf14907c0fac2644d9&output=json`
 
@@ -202,13 +202,13 @@ token,for saving transaction that done by user,CHAR(128),,TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
 qty[tiket_id],number of tiket that want to order,INT(5),TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/order/add/event?token=c551ad2aee8e7acf14907c0fac2644d9&qty[64]=1&qty[65]=2&output=json`
 
@@ -242,12 +242,12 @@ qty[tiket_id],number of tiket that want to order,INT(5),TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order?token=c551ad2aee8e7acf14907c0fac2644d9&output=json`
 
@@ -350,12 +350,12 @@ link url can be get from order, variable checkout .
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order/checkout/119978/IDR?token=9991e3092aea96042964220181374b60&output=json`
 
@@ -394,7 +394,7 @@ token,for saving transaction that done by user,CHAR(128),,TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 salutation,"your title( ex: Mr.,Mrs.,Ms.)",CHAR(5),,TRUE  
 firstName,your first name,CHAR(50),,TRUE  
@@ -402,9 +402,9 @@ lastName,your last name,CHAR(50),,TRUE
 emailAddress,your email,CHAR(50),,TRUE  
 phone,"your phone, ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter",CHAR(20),,TRUE  
 saveContinue,Flag for login (value=2),,,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `httpss://api-sandbox.tiket.com/checkout/checkout_customer?token=87da88eaaa429d5513a3a3658b01701e&salutation=Ms&firstName=ba&lastName=ca&emailAddress=testing@gmailcom&phone=%2B62878434343&saveContinue=2&output=json`
 
@@ -444,7 +444,7 @@ setelah merequest link tersebut maka user akan dibuatkan account di tiket.com us
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
 conSalutation,"contact person title ( ex: Mr.,Mrs.,Ms.)",CHAR(5),,TRUE  
@@ -458,9 +458,9 @@ noHp,Customer phone number,CHAR(20),,TRUE
 gender,Customer gender,CHAR(5),,TRUE  
 birthDate,Customer birth date,DATE,,TRUE  
 detailId,your order detail id,NUMBER,,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/checkout/checkout_customer?token=c551ad2aee8e7acf14907c0fac2644d9&conSalutation=Mr.&conFirstName=cF&conLastName=cL&conEmailAddress=cE@yahoo.com&conPhone=%2B62877777&name=ju&idCard=1234&noHp=%2B62878888&gender=m&birthDate=1990-01-01&detailId=31504&output=json`
 
@@ -543,12 +543,12 @@ detailId,your order detail id,NUMBER,,TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
 

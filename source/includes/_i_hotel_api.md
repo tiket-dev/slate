@@ -14,7 +14,7 @@ Diagram flow for Hotel API:
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 q,"Keyword (hotel name / location )",CHAR (50),,TRUE  
 startdate,Check in date,DATE,date of today,TRUE  
@@ -31,9 +31,9 @@ maxstar,set maximum star,int(9),0,FALSE
 latitude,"set the latitude of the search. Sort will be automatically uses sort by distance",float(10),0,FALSE  
 longitude,"set the longitude of the search. Sort will be automatically uses sort by distance",float(10),0,FALSE  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/search/hotel?q=Indonesia&startdate=2012-06-11&night=1&enddate=2012-06-12&room=1&adult=2&child=0&token=1c78d7bc29690cd96dfce9e0350cfc51&output=json`
 
@@ -129,14 +129,14 @@ token,for saving transaction that done by user,CHAR(128),,TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Contoh,  
 UID,"Id, country, province, city, kecamatan","Country:id, Province:17",Jika diberikan country:id maka akan menampilkan semua province di country indonesia  
 Type,Tipe yang mau dicari, "Province, city, kecamatan", Jika diberikan value province akan memberikan list province dengan keyword yang diberikan  
 Q, Keyword, Jakarta, Akan kenampilkan list city yang mengandung kata jakarta  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/search/search_area?uid=city:178&token=a2f50046418672585367579f730e50c0`
 
@@ -259,15 +259,15 @@ Q, Keyword, Jakarta, Akan kenampilkan list city yang mengandung kata jakarta
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
 page,pagging page,INT,,FALSE  
 startdate,startdate for hotel promo,INT,,FALSE  
 enddate,enddate for hotel promo,INT,,FALSE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/home/hotelDeals?token=28a6c5f0882a94a078e82ffdb1df7744&output=json`
 
@@ -366,13 +366,13 @@ enddate,enddate for hotel promo,INT,,FALSE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 q,"Keyword (hotel name / location )",CHAR (50),,TRUE  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/search/autocomplete/hotel?q=mah&token=90d2fad44172390b11527557e6250e50&output=json`
 
@@ -463,7 +463,7 @@ token,for saving transaction that done by user,CHAR(128),,TRUE
 link url to view detail can be get from search hotel, variable business_uri  
 user just need to add token in the parameter.
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 startdate,Check in date,DATE,date of today,TRUE  
 night,Total night to stay,INT(5),1,TRUE  
@@ -472,9 +472,9 @@ room,Total room that will booked by customer,INT(5),1,TRUE
 adult,Total adult,INT(5),2,TRUE  
 child,Total child,INT(5),0,  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/the-101-legian?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A4108&token=1c78d7bc29690cd96dfce9e0350cfc51&output=json`
 
@@ -625,7 +625,7 @@ Add hotel order to shopping cart.
 Plink url to view detail can be get from view detail hotel, variable book_uri  
 user just need to add token in the parameter.
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 startdate,check-in date,YYYY-MM-DD,date of today,TRUE  
 enddate,check-out date,YYYY-MM-DD,date of tomorrow,TRUE  
@@ -639,9 +639,9 @@ hotelname,hotel name,CHAR(50),,
 room_id,room id that will ordered,CHAR(10),,  
 hasPromo,if the room has promo between 1 or 0,INT(5),,  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order/add/hotel?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&minstar=0&maxstar=5&minprice=0&maxprice=1000&hotelname=0&room_id=666&hasPromo=0&token=1c78d7bc29690cd96dfce9e0350cfc51&output=json`
 
@@ -677,12 +677,12 @@ token,for saving transaction that done by user,CHAR(128),,TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order?token=8f683005261f872fe5c044f9b7085162&output=json`
 
@@ -757,12 +757,12 @@ Early stage to access checkout.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/order/checkout/119978/IDR?token=9991e3092aea96042964220181374b60&output=json`
 
@@ -802,7 +802,7 @@ Get from order page in checkout variable.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 salutation,"your title( ex: Mr.,Mrs.,Ms.)",CHAR(5),,TRUE  
 firstName,your first name,CHAR(50),,TRUE  
@@ -810,9 +810,9 @@ lastName,your last name,CHAR(50),,TRUE
 emailAddress,your email,CHAR(50),,TRUE  
 phone,"your phone, ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter",CHAR(20),,TRUE  
 saveContinue,"Flag for save unregistered user data (value=2)",,,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/checkout/checkout_customer?token=87da88eaaa429d5513a3a3658b01701e&salutation=Ms&firstName=ba&lastName=ca&emailAddress=testing@yahoocom&phone=%2B62878434343&saveContinue=2&output=json`
 
@@ -856,7 +856,7 @@ user akan dikirimkan email untuk mengubah password loginnya.
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
 salutation,"your title( ex: Mr.,Mrs.,Ms.)",CHAR(5),,TRUE  
@@ -870,9 +870,9 @@ conEmailAddress,contact person email address,CHAR(50),,TRUE
 conPhone,"contact person phone, ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter",CHAR(20),,TRUE  
 detailId,your order detail id,NUMBER,,TRUE  
 country,User country,CHAR(5),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `https://api-sandbox.tiket.com/checkout/checkout_customer?token=8f683005261f872fe5c044f9b7085162&salutation=Mrs&firstName=ba&lastName=ca&emailAddress=bibi@yahoocom&phone=%2B628888843&conSalutation=Mrs&conFirstName=a&conLastName=a&conEmailAddress=bibi@yahoocom&conPhone=%2B628888843&detailId=31406&country=id&output=json`
 
@@ -972,12 +972,12 @@ country,User country,CHAR(5),,TRUE
 
 #### Parameters
 
-[table]  
+  
 Name,Description,Format,Default,Mandatory  
 token,for saving transaction that done by user,CHAR(128),,TRUE  
-[/table]
 
-#### Input
+
+#### HTTP Request
 
     `http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
 
