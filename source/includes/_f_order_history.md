@@ -204,7 +204,7 @@ Check Transaction detail
 
 #### HTTP Request
 
-    `https://api-sandbox.tiket.com/check_order?order_id=783328&email=dwi@tiket.com&output=xml`
+`https://api-sandbox.tiket.com/check_order?order_id=783328&email=dwi@tiket.com&output=xml`
     
     
 #### Parameters
@@ -214,7 +214,7 @@ Name | Description | Format | Default | Mandatory
 ---- | ----------- | -----  | ------- | -----------
 email | customer email | VARCHAR | getToken | TRUE  
 order_id | order id want to check | NUMERIC | getToken | TRUE  
-secretkey | API secret key given by Tiket.com | CHAR(128) | TRUE  
+secretkey | API secret key given by Tiket.com | CHAR(128) | | TRUE  
 
 
 
