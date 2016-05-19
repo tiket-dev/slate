@@ -1,9 +1,8 @@
 # Flight API
 
-NOTE :  
-*Data that is provided for testing is different from the actual
+<aside class="notice">Data that is provided for development stage is different from the production stage</aside>
 
-These are the API command for flight
+These are the API commands for flight
 
 Diagram flow for Flight API:  
 
@@ -12,11 +11,10 @@ Diagram flow for Flight API:
 
 ## Search Flight
 
-first call is cache data
-
-Function flow to get updated data :  
-search - Check Update - search  
-(recommend to call Check Update function every 10 seconds)
+1. When you first call the API, it will return cache data
+2. Function flow to get updated data :  
+    search &rarr; Check Update &rarr; search  
+    (We recommend you to call the **Check Update** function every 10 seconds)
 
 search : show last cache data  
 cek update : if update > 0 its means there is an updated/ added data  
