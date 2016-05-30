@@ -3353,7 +3353,7 @@ a: 11: {
     search &rarr; Check Update &rarr; search  
     (We recommend you to call the **Check Update** function every 10 seconds)
     * Search: show last cache data  
-    * Check Update: if update > 0, its means that there is an updated data available for grab  
+    * Check Update: if update > 0, it means that there is an updated data available for grab  
     * Search: show updated data
 
 Child and Infant price will be displayed if the request exists and its value is greater than 0. If there is no infant or child variable requested, then the API will not return the variable and the value.
