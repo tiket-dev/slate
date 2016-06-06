@@ -31,32 +31,6 @@ Download surat pemberitahuan
 
 ## Search Train
 
-* NOTE : UPDATE for INFANT passenger,just now is for development server (api-sandbox.tiket.com)  
-We will inform you if its already provided in production server (api.tiket.com)
-
-#### Parameters
-
-  
-Name | Description | Format | Default | Mandatory
----- | ----------- | ------ | ------- | ---------
-d | Depart train station code | CHAR(3) |  | TRUE  
-a | Arrival train station code | CHAR(3) |  | TRUE  
-date | depart date. Result will be in | YYYY-MM-DD |  | TRUE  
-ret_date | return date. If provided, then system will return | YYYY-MM-DD |  | FALSE  
-adult | number of adult passenger (max adult+child+infant 4 persons) | INT | 1 | FALSE  
-child | number of child passenger (max adult+child+infant 4 persons) | INT | 0 | FALSE  
-infant | number of infant passenger (max adult+child+infant 4 persons) | INT |0 |FALSE  
-class | train class (ALL)" | all|bis|eks|eco | all | FALSE  
-token | for saving transaction that done by user | CHAR(128) |  | TRUE  
-  
-
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/search/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&class=all&token=80bfe5297f7c4fbaa7a1e6c022585946&output=json`
-
-#### Output
-
 ```xml
     <tiket>
     	<output_type>xml</output_type>
@@ -105,25 +79,32 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
 ```matlab
     a:5:{s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:5:{s:9:"elapstime";s:14:"0.1472";s:11:"memoryusage";s:14:"5.13MB";s:6:"status";s:3:"200";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:14:"search_queries";a:7:{s:11:"dep_station";s:3:"GMR";s:11:"arr_station";s:2:"BD";s:4:"date";s:10:"2012-06-03";s:14:"formatted_date";s:12:"03 June 2012";s:11:"train_class";s:3:"all";s:11:"count_adult";s:1:"1";s:11:"count_child";s:12:"count_infant";s:1:"0";s:1:"0";}s:10:"departures";a:1:{s:6:"result";a:6:{i:5;a:12:{s:19:"detail_availability";s:2:"90";s:11:"schedule_id";s:1:"3";s:8:"train_id";s:6:"IVHAN3";s:10:"train_name";s:11:"Argo Cantik";s:14:"departure_time";s:5:"17:00";s:12:"arrival_time";s:5:"19:30";s:10:"class_name";s:3:"bis";s:13:"subclass_name";s:1:"B";s:8:"is_promo";i:0;s:11:"price_adult";s:9:"56.000,00";s:11:"price_child";s:9:"46.000,00";s:11:"price_infant";s:8:"3.000,00";s:8:"duration";s:24:"2 h 30 m";}}}s:5:"token";s:32:"ebaa92ff1a060a7a5610b7159bd68b28";}
 ```
-    
-    
+
+* NOTE : UPDATE for INFANT passenger,just now is for development server (api-sandbox.tiket.com)  
+We will inform you if its already provided in production server (api.tiket.com)
+
+#### HTTP Request
+
+    `https://api-sandbox.tiket.com/search/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&class=all&token=80bfe5297f7c4fbaa7a1e6c022585946&output=json`
+
+#### Parameters
+  
+Name | Description | Format | Default | Mandatory
+---- | ----------- | ------ | ------- | ---------
+d | Depart train station code | CHAR(3) |  | TRUE  
+a | Arrival train station code | CHAR(3) |  | TRUE  
+date | depart date. Result will be in | YYYY-MM-DD |  | TRUE  
+ret_date | return date. If provided, then system will return | YYYY-MM-DD |  | FALSE  
+adult | number of adult passenger (max adult+child+infant 4 persons) | INT | 1 | FALSE  
+child | number of child passenger (max adult+child+infant 4 persons) | INT | 0 | FALSE  
+infant | number of infant passenger (max adult+child+infant 4 persons) | INT |0 |FALSE  
+class | train class (ALL)" | all|bis|eks|eco | all | FALSE  
+token | for saving transaction that done by user | CHAR(128) |  | TRUE  
+
+         
 ## Search Station
 
-Display all train station and their codes for use in search train API (variable d and a).
-
-Parameters
-
-  
-Name,Description,Format,Default,Mandatory  
-token,for saving transaction that done by user,CHAR(128),,TRUE  
-
-
-Input
-
-`https://api-sandbox.tiket.com/train_api/train_station?token=11b534a0394d9bb140f18bc1a87adf1a&output=json`  
-Output
-
-[xml collapse="1" title="XML Format"]  
+```xml 
 <tiket>  
 <output_type>xml</output_type>  
 <diagnostic>  
@@ -152,72 +133,30 @@ Output
 </stations>  
 <token>ebaa92ff1a060a7a5610b7159bd68b28</token>  
 </tiket>  
-[/xml]  
-[js collapse="1" title="JSON Format"]  
+```
+
+```json
 {"output_type":"json","diagnostic":{"elapstime":"0.0901","memoryusage":"3.79MB","status":"200","lang":"en","currency":"IDR"},"stations":{"station":[{"station_name":"alastuwa","city_name":"Pariaman","station_code":"ATA"},{"station_name":"ambarawa","city_name":"Lampung Tengah","station_code":"ABR"},{"station_name":"arjawinangun","city_name":"Cirebon","station_code":"AWN"}]},"token":"ebaa92ff1a060a7a5610b7159bd68b28"}  
-[/js]  
-[js collapse="1" title="Serialize Format"]  
+``` 
+
+```matlab
 a:4:{s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:5:{s:9:"elapstime";s:14:"0.0881";s:11:"memoryusage";s:14:"3.79MB";s:6:"status";s:3:"200";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:8:"stations";a:1:{s:7:"station";a:107:{i:0;a:3:{s:12:"station_name";s:8:"alastuwa";s:9:"city_name";s:8:"Pariaman";s:12:"station_code";s:3:"ATA";}i:1;a:3:{s:12:"station_name";s:8:"ambarawa";s:9:"city_name";s:14:"Lampung Tengah";s:12:"station_code";s:3:"ABR";}i:2;a:3:{s:12:"station_name";s:12:"arjawinangun";s:9:"city_name";s:7:"Cirebon";s:12:"station_code";s:3:"AWN";}i:3;a:3:{s:12:"station_name";s:14:"bandar kalipah";s:9:"city_name";s:12:"Deli Serdang";s:12:"station_code";s:3:"BAP";}i:4;}}}s:5:"token";s:32:"ebaa92ff1a060a7a5610b7159bd68b28";}  
-[/js]
+``` 
 
-## Get Train Seat Map
-
-Get train seat map.
-
-#### Parameters
-
-  
-Name,Description,Format,Default,Mandatory  
-date,"Departure date",yyyy-mm-dd,,true  
-train_id,"Train ID that choosen by user",CHAR(~),,TRUE  
-subclass,"Subclass from train that choosen by user",CHAR(~),,FALSE  
-token,"for saving transaction that done by user",CHAR(128),,TRUE  
-org,"Depart train station code",CHAR(3),,TRUE  
-dest,"Arrival train station code",CHAR(3),,TRUE  
-
+Display all train station and their codes for use in search train API (variable d and a).
 
 #### HTTP Request
 
-    `http://api-sandbox.tiket.com/general_api/get_train_seat_map?date=2015-06-30&train_id=A32&subclass=A&org=GMR&dest=BD&token=a86d0826af2e445be7c8ad36a5ab2b601358c040`
+    `https://api-sandbox.tiket.com/train_api/train_station?token=11b534a0394d9bb140f18bc1a87adf1a&output=json`  
 
-#### Output
+#### Parameters
+  
+Name | Description | Format | Default | Mandatory  
+---- | ----------- | ------ | ------- | ---------
+token | for saving transaction that done by user | CHAR(128) |  | TRUE  
 
-NOTE for seat_map_subclass :  
-[["EKSASL",1,[[1,1,1,"A","A",1],[2,1,2,"A","A",0]]]  
-structure : [ baris, kolom, seat row, seat column, subclass, status(0 : kursi kosong, 1 : kursi sudah ditempati) ]
 
-[["EKSASL",1  
-Wagon name : EKSASL  
-Wagon number : 1
-
-[1,1,1,"A","A",1]  
-Row : 1  
-Coloumn : 1  
-Seat number : 1, "A" (usually written 1A)  
-Subclass : A  
-Flag : 1 (1 = Filled, 0 = Empty)
-
-[2,1,2,"A","A",0]  
-Row : 2  
-Coloumn : 1  
-Seat number : 2, "A" (usually written 2A)  
-Subclass : A  
-Flag : 0 (1 = Filled, 0 = Empty)
-
----
-
-Note for seat_map_all :  
-Seat_map_all for all wagon layout (any subclass)  
-structure : [ seat row, seat column, subclass, status(0 : kursi kosong, 1 : kursi sudah ditempati) ]  
-[["EKSASL",1,[[1,"A","A",1],[1,"B","A",1],[1,"C","A",0],  
-Wagon name : EKSASL  
-Wagon number : 1
-
-[1,"A","A",1]  
-Row : 1  
-Coloumn : A  
-Subclass : A  
-Status : Taken (availability = 1)
+## Get Train Seat Map
 
 ```xml
     <tiket>
@@ -268,9 +207,93 @@ Status : Taken (availability = 1)
 ```matlab
     a:5:{s:10:"diagnostic";a:7:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.1015";s:11:"memoryusage";s:14:"4.62MB";s:14:"unix_timestamp";i:1435115714;s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:11:"output_type";s:9:"serialize";s:6:"result";a:23:{s:17:"train_schedule_id";s:5:"34049";s:17:"departure_station";s:3:"GMR";s:22:"departure_station_name";s:6:"Gambir";s:15:"arrival_station";s:2:"BD";s:20:"arrival_station_name";s:7:"Bandung";s:8:"train_no";s:3:"A32";s:10:"train_name";s:22:"Tiket.com Kuda Kencana";s:14:"departure_date";s:10:"2015-06-30";s:14:"departure_time";s:8:"05:30:00";s:12:"arrival_date";s:10:"2015-06-30";s:12:"arrival_time";s:8:"11:34:00";s:10:"class_code";s:1:"E";s:8:"class_id";s:3:"eks";s:12:"class_detail";s:9:"eksekutif";s:8:"subclass";s:1:"A";s:11:"price_adult";s:9:"275000.00";s:11:"price_child";s:9:"275000.00";s:12:"price_infant";s:4:"0.00";s:12:"availability";s:2:"77";s:8:"is_promo";s:1:"0";s:9:"is_active";s:1:"1";s:17:"seat_map_subclass";s:924:"[["K3AC",1,[[1,1,1,"A","J",1],[1,2,1,"B","J",1],[1,4,1,"C","J",1],[2,1,2,"A","J",1]]],["K3AC",2,[[1,1,1,"A","J",1],[1,2,1,"B","J",1],[1,4,1,"C","J",1],[2,1,2,"A","J",1],[2,2,2,"B","J",1],[2,4,2,"C","J",1],[2,5,2,"D","J",1],[3,1,3,"A","J",1],[3,2,3,"B","J",1],[3,4,3,"C","J",1],[3,5,3,"D","J",1],[4,1,4,"A","J",1],[4,2,4,"B","J",1],[4,4,4,"C","J",1],[4,5,4,"D","J",1],[10,1,10,"A","J",1],[10,2,10,"B","J",1],[10,4,10,"C","J",1],[10,5,10,"D","J",1],[11,1,11,"A","J",0],[11,2,11,"B","J",0],[11,4,11,"C","J",0],[11,5,11,"D","J",1],[12,1,12,"A","J",0],[12,2,12,"B","J",0],[12,4,12,"C","J",0],[12,5,12,"D","J",0],[13,2,13,"B","J",1],[13,4,13,"C","J",0],[13,5,13,"D","J",0]]],["K3AC",3,[[1,1,1,"A","J",1],[1,2,1,"B","J",1],[1,4,1,"C","J",1],[2,1,2,"A","J",0]]],["K3AC",4,[[1,1,1,"A","J",1],[1,2,1,"B","J",1],[1,4,1,"C","J",0],[2,1,2,"A","J",0]]],["K3AC",5,[[1,1,1,"A","J",1],[1,2,1,"B","J",1],[1,4,1,"C","J",1],[2,1,2,"A","J",0]]]]";s:9:"timestamp";s:19:"2015-06-24 09:11:09";}s:12:"login_status";s:5:"false";s:5:"token";s:40:"a86d0826af2e445be7c8ad36a5ab2b601358c040";}
 ```
+
+Get train seat map.
+
+#### HTTP Request
+
+    `http://api-sandbox.tiket.com/general_api/get_train_seat_map?date=2015-06-30&train_id=A32&subclass=A&org=GMR&dest=BD&token=a86d0826af2e445be7c8ad36a5ab2b601358c040`
+
+#### Parameters
+
+Name | Description | Format | Default | Mandatory  
+---- | ----------- | ------ | ------- | --------- 
+date | Departure date | yyyy-mm-dd |  | TRUE  
+train_id | Train ID that choosen by user | CHAR(~) |  | TRUE  
+subclass | Subclass from train that choosen by user | CHAR(~) |  | FALSE  
+token | for saving transaction that done by user | CHAR(128) |  | TRUE  
+org | Depart train station code | CHAR(3) |  | TRUE  
+dest | Arrival train station code | CHAR(3) |  | TRUE  
+
+#### Output
+
+NOTE for seat_map_subclass :  
+[["EKSASL",1,[[1,1,1,"A","A",1],[2,1,2,"A","A",0]]]  
+structure : [ baris, kolom, seat row, seat column, subclass, status(0 : kursi kosong, 1 : kursi sudah ditempati) ]
+
+[["EKSASL",1  
+Wagon name : EKSASL  
+Wagon number : 1
+
+[1,1,1,"A","A",1]  
+Row : 1  
+Coloumn : 1  
+Seat number : 1, "A" (usually written 1A)  
+Subclass : A  
+Flag : 1 (1 = Filled, 0 = Empty)
+
+[2,1,2,"A","A",0]  
+Row : 2  
+Coloumn : 1  
+Seat number : 2, "A" (usually written 2A)  
+Subclass : A  
+Flag : 0 (1 = Filled, 0 = Empty)
+
+---
+
+Note for seat_map_all :  
+Seat_map_all for all wagon layout (any subclass)  
+structure : [ seat row, seat column, subclass, status(0 : kursi kosong, 1 : kursi sudah ditempati) ]  
+[["EKSASL",1,[[1,"A","A",1],[1,"B","A",1],[1,"C","A",0],  
+Wagon name : EKSASL  
+Wagon number : 1
+
+[1,"A","A",1]  
+Row : 1  
+Coloumn : A  
+Subclass : A  
+Status : Taken (availability = 1)
     
 
 ## Add Order
+
+```xml
+    
+    	xml
+    	0
+    
+    		7.7606
+    		12.17MB
+    		200
+    		en
+    		IDR
+    
+    	success booking train
+    	13fc239d306bf7085708566b3d085b29
+    
+```
+
+
+
+```json
+    {"output_type":"json","error":"0","diagnostic":{"elapstime":"9.5301","memoryusage":"12.15MB","status":"200","lang":"en","currency":"IDR"},"status":"success booking train","token":"13fc239d306bf7085708566b3d085b29"}
+```
+
+
+
+```matlab
+    a:5:{s:11:"output_type";s:9:"serialize";s:5:"error";s:1:"0";s:10:"diagnostic";a:5:{s:9:"elapstime";s:14:"5.9200";s:11:"memoryusage";s:14:"12.15MB";s:6:"status";s:3:"200";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:6:"status";s:21:"success booking train";s:5:"token";s:32:"13fc239d306bf7085708566b3d085b29";}
+```
 
 * NOTE : UPDATE for INFANT passenger,just now is for development server (api-sandbox.tiket.com)  
 We will inform you if its already provided in production server (api.tiket.com)
@@ -279,8 +302,11 @@ Add train order to shopping cart.
 
 *Note : adult must more than or equal to infant
 
-#### Parameters
+#### HTTP Request
 
+    `https://api-sandbox.tiket.com/order/add/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&token=13fc239d306bf7085708566b3d085b29&train_id=IVHAN1&subclass=A&output=json&conSalutation=Mr&conFirstName=b&conLastName=bl&conEmailAddress=be@scom&conPhone=0878121&nameAdult1=a&IdCardAdult1=111&noHpAdult1=%2B62878222&salutationAdult1=Mr&birthDateAdult1=1990-02-02`
+
+#### Parameters
   
 Name,Description,Format,Default,Mandatory  
 d,Depart,train station code,CHAR(3),,TRUE  
@@ -312,41 +338,7 @@ salutationInfant1,"as an array like salutationInfant1 salutationInfant2 if you h
 nameInfant1,as an array like nameInfant1 nameInfant2 if you have infant passager,CHAR(50),,  
 birthDateInfant1,as an array like birthDateInfant1 birthDateInfant2 if you have infant passager : format YYYY-MM-DD [infant must below 2 years old],DATE,,  
 
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/order/add/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&token=13fc239d306bf7085708566b3d085b29&train_id=IVHAN1&subclass=A&output=json&conSalutation=Mr&conFirstName=b&conLastName=bl&conEmailAddress=be@scom&conPhone=0878121&nameAdult1=a&IdCardAdult1=111&noHpAdult1=%2B62878222&salutationAdult1=Mr&birthDateAdult1=1990-02-02`
-
-#### Output
-
-```xml
-    
-    	xml
-    	0
-    
-    		7.7606
-    		12.17MB
-    		200
-    		en
-    		IDR
-    
-    	success booking train
-    	13fc239d306bf7085708566b3d085b29
-    
-```
-
-
-
-```json
-    {"output_type":"json","error":"0","diagnostic":{"elapstime":"9.5301","memoryusage":"12.15MB","status":"200","lang":"en","currency":"IDR"},"status":"success booking train","token":"13fc239d306bf7085708566b3d085b29"}
-```
-
-
-
-```matlab
-    a:5:{s:11:"output_type";s:9:"serialize";s:5:"error";s:1:"0";s:10:"diagnostic";a:5:{s:9:"elapstime";s:14:"5.9200";s:11:"memoryusage";s:14:"12.15MB";s:6:"status";s:3:"200";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:6:"status";s:21:"success booking train";s:5:"token";s:32:"13fc239d306bf7085708566b3d085b29";}
-```
-    
+   
     
     
 ## Order
