@@ -37,16 +37,18 @@ We will inform you if its already provided in production server (api.tiket.com)
 #### Parameters
 
   
-Name,Description,Format,Default,Mandatory  
-d,Depart train station code,CHAR(3),,TRUE  
-a,Arrival train station code,CHAR(3),,TRUE  
-date,"depart date. Result will be in ",YYYY-MM-DD,,TRUE  
-ret_date,"return date. If provided, then system will return ",YYYY-MM-DD,,FALSE  
-adult,"number of adult passenger (max adult+child+infant 4 persons)",INT,1,FALSE  
-child,"number of child passenger (max adult+child+infant 4 persons)",INT,0,FALSE  
-infant,"number of infant passenger (max adult+child+infant 4 persons)",INT,0,FALSE  
-class,"train class (ALL)",all|bis|eks|eco,all,FALSE  
-token,for saving transaction that done by user,CHAR(128),,TRUE  
+Name | Description | Format | Default | Mandatory
+---- | ----------- | ------ | ------- | ---------
+d | Depart train station code | CHAR(3) |  | TRUE  
+a | Arrival train station code | CHAR(3) |  | TRUE  
+date | depart date. Result will be in | YYYY-MM-DD |  | TRUE  
+ret_date | return date. If provided, then system will return | YYYY-MM-DD |  | FALSE  
+adult | number of adult passenger (max adult+child+infant 4 persons) | INT | 1 | FALSE  
+child | number of child passenger (max adult+child+infant 4 persons) | INT | 0 | FALSE  
+infant | number of infant passenger (max adult+child+infant 4 persons) | INT |0 |FALSE  
+class | train class (ALL)" | all|bis|eks|eco | all | FALSE  
+token | for saving transaction that done by user | CHAR(128) |  | TRUE  
+  
 
 
 #### HTTP Request
