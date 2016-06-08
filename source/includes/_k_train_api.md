@@ -137,7 +137,7 @@ We will inform you if its already provided in production server (api.tiket.com)
 
 #### HTTP Request
 
-    `https://api-sandbox.tiket.com/search/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&class=all&token=80bfe5297f7c4fbaa7a1e6c022585946&output=json`
+    `GET https://api-sandbox.tiket.com/search/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&class=all&token=80bfe5297f7c4fbaa7a1e6c022585946&output=json`
 
 #### Parameters
   
@@ -149,8 +149,8 @@ date | depart date. Result will be in | YYYY-MM-DD |  | TRUE
 ret_date | return date. If provided, then system will return | YYYY-MM-DD |  | FALSE  
 adult | number of adult passenger (max adult+child+infant 4 persons) | INT | 1 | FALSE  
 child | number of child passenger (max adult+child+infant 4 persons) | INT | 0 | FALSE  
-infant | number of infant passenger (max adult+child+infant 4 persons) | INT |0 |FALSE  
-class | train class (ALL)" | all|bis|eks|eco | all | FALSE  
+infant | number of infant passenger (max adult+child+infant 4 persons) | INT | 0 |FALSE  
+class | train class (ALL) | all,bis,eks,eco | all | FALSE  
 token | for saving transaction that done by user | CHAR(128) |  | TRUE  
 
          
@@ -248,7 +248,7 @@ Display all train station and their codes for use in search train API (variable 
 
 #### HTTP Request
 
-    `https://api-sandbox.tiket.com/train_api/train_station?token=11b534a0394d9bb140f18bc1a87adf1a&output=json`  
+    `GET https://api-sandbox.tiket.com/train_api/train_station?token=11b534a0394d9bb140f18bc1a87adf1a&output=json`  
 
 #### Parameters
   
@@ -260,7 +260,7 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
 ## Get Train Seat Map
 
 ```xml
-   <tiket>
+ <tiket>
   <diagnostic>
     <status>200</status>
     <elapsetime>0.1222</elapsetime>
@@ -456,7 +456,7 @@ Get train seat map.
 
 #### HTTP Request
 
-    `http://api-sandbox.tiket.com/general_api/get_train_seat_map?date=2015-06-30&train_id=A32&subclass=A&org=GMR&dest=BD&token=a86d0826af2e445be7c8ad36a5ab2b601358c040`
+   `GET http://api-sandbox.tiket.com/general_api/get_train_seat_map?date=2015-06-30&train_id=A32&subclass=A&org=GMR&dest=BD&token=a86d0826af2e445be7c8ad36a5ab2b601358c040`
 
 #### Parameters
 
@@ -562,7 +562,7 @@ Add train order to shopping cart.
 
 #### HTTP Request
 
-    `https://api-sandbox.tiket.com/order/add/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&token=13fc239d306bf7085708566b3d085b29&train_id=IVHAN1&subclass=A&output=json&conSalutation=Mr&conFirstName=b&conLastName=bl&conEmailAddress=be@scom&conPhone=0878121&nameAdult1=a&IdCardAdult1=111&noHpAdult1=%2B62878222&salutationAdult1=Mr&birthDateAdult1=1990-02-02`
+    `GET https://api-sandbox.tiket.com/order/add/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&token=13fc239d306bf7085708566b3d085b29&train_id=IVHAN1&subclass=A&output=json&conSalutation=Mr&conFirstName=b&conLastName=bl&conEmailAddress=be@scom&conPhone=0878121&nameAdult1=a&IdCardAdult1=111&noHpAdult1=%2B62878222&salutationAdult1=Mr&birthDateAdult1=1990-02-02`
 
 #### Parameters
   
@@ -580,7 +580,7 @@ train_id | train id that choosen by user | CHAR(~) |  | TRUE
 subclass | subclass from train that choosen by user | CHAR(1) |  | TRUE  
 train_id_ret | train id that choosen by user for return |  |  |   
 subclass_ret | subclass from train that choosen by user for return |  |  |   
-conSalutation | contact person title ( ex: Mr. | Mrs. | Ms.) | CHAR(5) |  | TRUE  
+conSalutation | contact person title ( ex: Mr., Mrs., Ms.) | CHAR(5) |  | TRUE  
 conFirstName | contact person first name | CHAR(50) |  | TRUE  
 conLastName | contact person last name | CHAR(50) |  | TRUE  
 conEmailAddress | contact person email address | CHAR(50) |  | TRUE  
@@ -601,7 +601,7 @@ birthDateInfant1 | as an array like birthDateInfant1 birthDateInfant2 if you hav
        
 ## Order
 
- ```xml
+```xml
   <tiket>
   <output_type>xml</output_type>
   <myorder>
@@ -652,9 +652,9 @@ birthDateInfant1 | as an array like birthDateInfant1 birthDateInfant2 if you hav
   <login_status>false</login_status>
   <token>2279a50a996f5a54a15db6b10bfc5657</token>
 </tiket>
-   ```
+```
     
-    ```json
+```json
 {
 "output_type": "json",
 "myorder": {
@@ -689,9 +689,9 @@ birthDateInfant1 | as an array like birthDateInfant1 birthDateInfant2 if you hav
         "tax_and_charge": 14120,
         "subtotal_and_charge": 418120,
         ”delete_uri” https: //api.tiket.com/order/delete_order?order_detail_id=32754”}],"total":418120,"total_tax":14120,"total_without_tax":404000,"count_installment":0},"diagnostic":{"elapstime":"3.6239","memoryusage":"12.28MB","status":"200","lang":"en","currency":"IDR"},"checkout":"httpsss:\/\/www.tiket.com\/order\/checkout\/120687\/IDR",”login_status":"false",token":"2279a50a996f5a54a15db6b10bfc5657"}
-    ```
+```
     
-    ```matlab
+```matlab
 a: 7: {
   s: 11: "output_type";s: 9: "serialize";s: 7: "myorder";a: 7: {
       s: 8: "order_id";i: 120687;s: 8: "currency";s: 3: "IDR";s: 4: "data";a: 1: {
@@ -702,13 +702,13 @@ a: 7: {
                 }
               }
               s: 11: "order_photo";s: 40: "httpss://api.tiket.com/images/icon_kai.jpg";s: 8: "subtotal";d: 404000;s: 11: "item_charge";d: 14120;s: 14: "tax_and_charge";d: 14120;s: 19: "subtotal_and_charge";d: 418120;d: 14120;s: 10: "delete_uri";s: 40: ”https: //api.tiket.com/order/delete_order?order_detail_id=32754”;}}s:5:"total";d:418120;s:9:"total_tax";d:14120;s:17:"total_without_tax";d:404000;s:17:"count_installment";i:0;}s:10:"diagnostic";a:5:{s:9:"elapstime";s:14:"3.2849";s:11:"memoryusage";s:14:"12.28MB";s:6:"status";s:3:"200";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:8:"checkout";s:47:"httpsss://www.tiket.com/order/checkout/120687/IDR";s:8:"login_status";s:0:"false";s:5:"token";s:32:"2279a50a996f5a54a15db6b10bfc5657";}
-    ```
+```
 
 * Display user shopping cart detail
 
 #### HTTP Request
     
-        `https://api-sandbox.tiket.com/order?token=2279a50a996f5a54a15db6b10bfc5657&output=json`
+        `GET https://api-sandbox.tiket.com/order?token=2279a50a996f5a54a15db6b10bfc5657&output=json`
     
 #### Parameters
     
@@ -723,7 +723,7 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
 ## Checkout Page Request
 
 
- ```xml
+```xml
 <tiket>
   <output_type>xml</output_type>
   <next_checkout_uri>
@@ -740,9 +740,9 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
   <login_status>false</login_status>
   <token>9991e3092aea96042964220181374b60</token>
 </tiket>
-   ```
+```
     
-   ```json
+```json
 {
 "output_type": "json",
 "next_checkout_uri": "httpsss:\/\/api-sandbox.tiket.com\/checkout\/checkout_customer",
@@ -763,16 +763,16 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
   token ":"
   9991e3092 aea96042964220181374b60 "
  }
-   ```
+```
     
-   ```matlab
+```matlab
 a: 5: {
   s: 11: "output_type";s: 9: "serialize";s: 17: "next_checkout_uri";s: 57: "httpsss://api-sandbox.tiket.com/checkout/checkout_customer";s: 10: "diagnostic";a: 7: {
     s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.1132";s: 11: "memoryusage";s: 14: "6.43MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
   }
   s: 12: "login_status";s: 5: "false";s: 5: "token";s: 32: "9991e3092aea96042964220181374b60";
 }
-   ```
+```
 
 
 * Early stage to access checkout.
@@ -781,7 +781,7 @@ a: 5: {
     
 #### HTTP Request
     
-        `https://api-sandbox.tiket.com/order/checkout/119978/IDR?token=9991e3092aea96042964220181374b60&output=json`
+     `GET https://api-sandbox.tiket.com/order/checkout/119978/IDR?token=9991e3092aea96042964220181374b60&output=json`
     
 (Get from order page in checkout variable.)
     
@@ -797,159 +797,199 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
 
 ## Checkout Login
 
-* #### Parameters
+```xml
+<tiket>
+  <output_type>xml</output_type>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>1.2545</elapsetime>
+    <memoryusage>20.54MB</memoryusage>
+    <confirm>success</confirm>
+    <lang>id</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <login_status>true</login_status>
+  <token>87da88eaaa429d5513a3a3658b01701e</token>
+</tiket>
+```
     
-      
-    Name,Description,Format,Default,Mandatory  
-    salutation,"your title( ex: Mr.,Mrs.,Ms.)",CHAR(5),,TRUE  
-    firstName,your first name,CHAR(50),,TRUE  
-    lastName,your last name,CHAR(50),,TRUE  
-    emailAddress,your email,CHAR(50),,TRUE  
-    phone,"your phone, ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter",CHAR(20),,TRUE  
-    saveContinue,Flag for login (value=2),,,TRUE  
+```json
+{
+"output_type": "json",
+"diagnostic": {
+  "status": 200,
+  "elapsetime": "0.1443",
+  "memoryusage": "7.77MB",
+  "confirm": "success",
+  "error_msgs": "",
+  "lang": "en",
+  "currency": "IDR"
+},
+"login_status": "true",
+"guest_id": "21688",
+"token": "5a80dc2ccce351eeb412e835b651edb9"
+}
+```
     
-    
-    #### HTTP Request
-    
-        [code]https://api-sandbox.tiket.com/checkout/checkout_customer?token=87da88eaaa429d5513a3a3658b01701e&salutation=Ms&firstName=ba&lastName=ca&emailAddress=test@yahoocom&phone=%2B62878434343&saveContinue=2[/code]
-    
-    Setelah merequest link tersebut maka user akan dibuatkan account di tiket.com user akan dikirimkan email untuk mengubah password loginnya.
-    
-    #### Output
-    
-    ```xml
-        <tiket>
-        	<output_type>xml</output_type>
-        	<diagnostic>
-        		<status>200</status>
-        		<elapsetime>1.2545</elapsetime>
-        		<memoryusage>20.54MB</memoryusage>
-        		<confirm>success</confirm>
-        		<lang>id</lang>
-        		<currency>IDR</currency>
-        	</diagnostic>
-        	<login_status>true</login_status>
-        	<token>87da88eaaa429d5513a3a3658b01701e</token>
-        </tiket>
-    ```
-    
-    ```json
-        {"output_type":"json","diagnostic":{"status":200,"elapsetime":"0.1443","memoryusage":"7.77MB","confirm":"success","error_msgs":"","lang":"en","currency":"IDR"},"login_status":"true","guest_id":"21688","token":"5a80dc2ccce351eeb412e835b651edb9"}
-    ```
-    
-    ```matlab
-        [a:5:{s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:7:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.1628";s:11:"memoryusage";s:14:"7.77MB";s:7:"confirm";s:7:"success";s:10:"error_msgs";s:0:"";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:12:"login_status";s:4:"true";s:8:"guest_id";s:5:"21688";s:5:"token";s:32:"9d4ccf0c966e37a4c112c59ac2bc2e97";}
-    ```
+```matlab
+a: 5: {
+  s: 11: "output_type";s: 9: "serialize";s: 10: "diagnostic";a: 7: {
+    s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.1628";s: 11: "memoryusage";s: 14: "7.77MB";s: 7: "confirm";s: 7: "success";s: 10: "error_msgs";s: 0: "";s: 4: "lang";s: 2: "en";s: 8: "currency";s: 3: "IDR";
+  }
+  s: 12: "login_status";s: 4: "true";s: 8: "guest_id";s: 5: "21688";s: 5: "token";s: 32: "9d4ccf0c966e37a4c112c59ac2bc2e97";
+}
+```
 
 
+
+#### HTTP Request
+    
+        `GET https://api-sandbox.tiket.com/checkout/checkout_customer?token=87da88eaaa429d5513a3a3658b01701e&salutation=Ms&firstName=ba&lastName=ca&emailAddress=test@yahoocom&phone=%2B62878434343&saveContinue=2[/code]
+    
+Setelah merequest link tersebut maka user akan dibuatkan account di tiket.com user akan dikirimkan email untuk mengubah password loginnya.
+
+#### Parameters
+    
+Name | Description | Format | Default | Mandatory  
+---- | ----------- | ------ | ------- | ---------  
+salutation | your title ( ex: Mr.,  Mrs., Ms.) | CHAR(5) |  | TRUE  
+firstName | your first name | CHAR(50) |  | TRUE  
+lastName | your last name | CHAR(50) |  | TRUE  
+emailAddress | your email | CHAR(50) |  | TRUE  
+phone | your phone |  ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter | CHAR(20) |  | TRUE  
+saveContinue | Flag for login (value=2) |  |  | TRUE  
+
+    
+  
 ## Available Payment
 
-* #### Parameters
-    
-      
-    Name,Description,Format,Default,Mandatory  
-    token,for saving transaction that done by user,CHAR(128),,TRUE  
-    
-    
-    #### HTTP Request
-    
-        `http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
-    
-    #### Output
-    
-    ```xml
-        <tiket>
-        	<output_type>xml</output_type>
-        	<diagnostic>
-        		<status>200</status>
-        		<elapsetime>0.5620</elapsetime>
-        		<memoryusage>18.77MB</memoryusage>
-        		<confirm>success</confirm>
-        		<lang>id</lang>
-        		<currency>IDR</currency>
-        	</diagnostic>
-        	<available_payment>
-        		<link>
-        			https://api-sandbox.tiket.com/checkout/checkout_payment/1
-        		</link>
-        		<text>Kartu Kredit</text>
-        		<message/>
-        	</available_payment>
-        	<available_payment>
-        		<link>
-        			https://api-sandbox.tiket.com/checkout/checkout_payment/2
-        		</link>
-        		<text>Transfer Lewat Bank</text>
-        		<message/>
-        	</available_payment>
-        	<available_payment>
-        		<link>
-        			https://api-sandbox.tiket.com/checkout/checkout_payment/3
-        		</link>
-        		<text>KlikBCA</text>
-        		<message/>
-        	</available_payment>
-        	<available_payment>
-        		<link>
-        			https://api-sandbox.tiket.com/checkout/checkout_payment/4
-        		</link>
-        		<text>BCA KlikPay</text>
-        		<message/>
-        	</available_payment>
-        	<available_payment>
-        		<link>
-        			https://api-sandbox.tiket.com/checkout/checkout_payment/20
-        		</link>
-        		<text>COD</text>
-        		<message/>
-        	</available_payment>
-        	<token>62bc0e3bd0c127c5690125a76e11c23c</token>
-        </tiket>
-    ```
+```xml
+<tiket>
+  <output_type>xml</output_type>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>0.5620</elapsetime>
+    <memoryusage>18.77MB</memoryusage>
+    <confirm>success</confirm>
+    <lang>id</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/1
+    </link>
+    <text>Kartu Kredit</text>
+    <message/>
+  </available_payment>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/2
+    </link>
+    <text>Transfer Lewat Bank</text>
+    <message/>
+  </available_payment>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/3
+    </link>
+    <text>KlikBCA</text>
+    <message/>
+  </available_payment>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/4
+    </link>
+    <text>BCA KlikPay</text>
+    <message/>
+  </available_payment>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/20
+    </link>
+    <text>COD</text>
+    <message/>
+  </available_payment>
+  <token>62bc0e3bd0c127c5690125a76e11c23c</token>
+</tiket>
+```
     
     
+```json
+{
+"output_type": "json",
+"diagnostic": {
+  "status": 200,
+  "elapsetime": "0.5625",
+  "memoryusage": "18.74MB",
+  "confirm": "success",
+  "lang": "id",
+  "currency": "IDR"
+},
+"available_payment": [{
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/1",
+  "text": "Kartu Kredit",
+  "message": ""
+}, {
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/2",
+  "text": "Transfer Lewat Bank",
+  "message": ""
+}, {
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/3",
+  "text": "KlikBCA",
+  "message": ""
+}, {
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/4",
+  "text": "BCA KlikPay",
+  "message": ""
+}, {
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/20",
+  "text": "COD",
+  "message": ""
+}],
+"token": "62bc0e3bd0c127c5690125a76e11c23c"
+}
+```
     
-    ```json
-        {"output_type":"json","diagnostic":{"status":200,"elapsetime":"0.5625","memoryusage":"18.74MB","confirm":"success","lang":"id","currency":"IDR"},"available_payment":[{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/1","text":"Kartu Kredit","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/2","text":"Transfer Lewat Bank","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/3","text":"KlikBCA","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/4","text":"BCA KlikPay","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/20","text":"COD","message":""}],"token":"62bc0e3bd0c127c5690125a76e11c23c"}
-    ```
+```matlab
+a: 4: {
+s: 11: "output_type";s: 9: "serialize";s: 10: "diagnostic";a: 6: {
+  s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.5329";s: 11: "memoryusage";s: 14: "18.74MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+}
+s: 17: "available_payment";a: 5: {
+  i: 0;a: 3: {
+    s: 4: "link";s: 58: "https://api-sandbox.tiket.com/checkout/checkout_payment/1";s: 4: "text";s: 22: "Kartu Kredit";s: 7: "message";s: 0: "";
+  }
+  i: 1;a: 3: {
+    s: 4: "link";s: 58: "https://api-sandbox.tiket.com/checkout/checkout_payment/2";s: 4: "text";s: 24: "Transfer Lewat Bank";s: 7: "message";s: 0: "";
+  }
+  i: 2;a: 3: {
+    s: 4: "link";s: 58: "https://api-sandbox.tiket.com/checkout/checkout_payment/3";s: 4: "text";s: 7: "KlikBCA";s: 7: "message";s: 0: "";
+  }
+  i: 3;a: 3: {
+    s: 4: "link";s: 58: "https://api-sandbox.tiket.com/checkout/checkout_payment/4";s: 4: "text";s: 11: "BCA KlikPay";s: 7: "message";s: 0: "";
+  }
+  i: 4;a: 3: {
+    s: 4: "link";s: 59: "https://api-sandbox.tiket.com/checkout/checkout_payment/20";s: 4: "text";s: 3: "COD";s: 7: "message";s: 0: "";
+  }
+}
+s: 5: "token";s: 32: "62bc0e3bd0c127c5690125a76e11c23c";
+}
+```
+#### HTTP Request
     
-    
-    
-    ```matlab
-        a:4:{s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:6:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.5329";s:11:"memoryusage";s:14:"18.74MB";s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:17:"available_payment";a:5:{i:0;a:3:{s:4:"link";s:58:"https://api-sandbox.tiket.com/checkout/checkout_payment/1";s:4:"text";s:22:"Kartu Kredit";s:7:"message";s:0:"";}i:1;a:3:{s:4:"link";s:58:"https://api-sandbox.tiket.com/checkout/checkout_payment/2";s:4:"text";s:24:"Transfer Lewat Bank";s:7:"message";s:0:"";}i:2;a:3:{s:4:"link";s:58:"https://api-sandbox.tiket.com/checkout/checkout_payment/3";s:4:"text";s:7:"KlikBCA";s:7:"message";s:0:"";}i:3;a:3:{s:4:"link";s:58:"https://api-sandbox.tiket.com/checkout/checkout_payment/4";s:4:"text";s:11:"BCA KlikPay";s:7:"message";s:0:"";}i:4;a:3:{s:4:"link";s:59:"https://api-sandbox.tiket.com/checkout/checkout_payment/20";s:4:"text";s:3:"COD";s:7:"message";s:0:"";}}s:5:"token";s:32:"62bc0e3bd0c127c5690125a76e11c23c";}
-    ```
+       'GET http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e'
+
+#### Parameters
+         
+Name | Description | Format | Default | Mandatory  
+---- | ----------- | ------ | ------- | ---------  
+token | for saving transaction that done by user | CHAR(128) |  | TRUE  
+        
 
 
 ## Checkout Payment
 
-* #### Please see [Checkout Payment](http://docs.tiket.com/#checkout-payment-309) in General API
-
+Please see [Checkout Payment](http://docs.tiket.com/#checkout-payment-309) in General API
 
 
 ## Register
 
-
-* For user registration.
-    
-    #### Parameters
-    
-      
-    Name,Description,Format,Default,Mandatory  
-    firstName,your firstname,CHAR,,TRUE  
-    lastName,your lastname,CHAR,,TRUE  
-    email,"your email [must email format]",CHAR,,TRUE  
-    password,your password min 6 char,CHAR,,TRUE  
-    conPassword,confirm password,CHAR,,TRUE  
-    country,"your country [must in country list]",CHAR(50),,TRUE  
-    
-    
-    #### HTTP Request
-    
-        `https://api-sandbox.tiket.com/auth/register?token=9d941b962ff17f828046a1d45432c6d4&firstName=cob&lastName=kib&email=youjulin@gmailcom&password=hahaha&conPassword=hahaha&country=id&output=json`
-    
-    #### Output
-    
-    ```xml
+```xml
         <tiket>
         	<output_type>xml</output_type>
         	<diagnostic>
@@ -962,179 +1002,320 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
         	</diagnostic>
         	<token>9d941b962ff17f828046a1d45432c6d4</token>
         </tiket>
-    ```
+```
     
-    ```json
-        {"output_type":"json","diagnostic":{"status":200,"elapsetime":"6.3380","memoryusage":"17.45MB","confirm":"success","lang":"en","currency":"IDR"},"token":"9d941b962ff17f828046a1d45432c6d4"}
-    ```
+```json
+{
+"output_type": "json",
+"diagnostic": {
+  "status": 200,
+  "elapsetime": "6.3380",
+  "memoryusage": "17.45MB",
+  "confirm": "success",
+  "lang": "en",
+  "currency": "IDR"
+},
+"token": "9d941b962ff17f828046a1d45432c6d4"
+}
+```
     
-    ```matlab
-        a:3:{s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:6:{s:6:"status";i:200;s:10:"elapsetime";s:14:"5.7164";s:11:"memoryusage";s:14:"17.45MB";s:7:"confirm";s:7:"success";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:5:"token";s:32:"9d941b962ff17f828046a1d45432c6d4";}
-    ```
+```matlab
+a: 3: {
+s: 11: "output_type";s: 9: "serialize";s: 10: "diagnostic";a: 6: {
+  s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "5.7164";s: 11: "memoryusage";s: 14: "17.45MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "en";s: 8: "currency";s: 3: "IDR";
+}
+s: 5: "token";s: 32: "9d941b962ff17f828046a1d45432c6d4";
+}
+```
 
+* For user registration.
 
+#### HTTP Request
+    
+        'GET https://api-sandbox.tiket.com/auth/register?token=9d941b962ff17f828046a1d45432c6d4&firstName=cob&lastName=kib&email=youjulin@gmailcom&password=hahaha&conPassword=hahaha&country=id&output=json`
+    
+#### Parameters
+    
+Name | Description | Format | Default | Mandatory  
+---- | ----------- | ------ | ------- | ---------   
+firstName | your firstname | CHAR |  | TRUE  
+lastName | your lastname | CHAR |  | TRUE  
+email | your email [must email format] | CHAR |  | TRUE  
+password | your password min 6 char | CHAR |  | TRUE  
+conPassword | confirm password | CHAR |  | TRUE  
+country | your country [must in country list] | CHAR(50) |  | TRUE     
+        
+    
 ## Search Promo
 
+```xml
+<tiket>
+  <promo>
+    <list_promo>
+      <train_name>Argo Jati</train_name>
+      <train_id>IVHAN1</train_id>
+      <schedule_departure_time>18:00:00</schedule_departure_time>
+      <schedule_arrival_time>20:30:00</schedule_arrival_time>
+      <class_id>eks</class_id>
+      <detail_price_adult_formatted>IDR 106.000,00</detail_price_adult_formatted>
+      <detail_price_children_formatted>IDR 96.000,00</detail_price_children_formatted>
+      <detail_price_adult_ori>106000</detail_price_adult_ori>
+      <detail_price_children_ori>96000</detail_price_children_ori>
+      <detail_availability>100</detail_availability>
+    </list_promo>
+    <list_promo>
+      <train_name>Argo Anggrek Malam</train_name>
+      <train_id>IVHAN2</train_id>
+      <schedule_departure_time>19:00:00</schedule_departure_time>
+      <schedule_arrival_time>20:40:00</schedule_arrival_time>
+      <class_id>eks</class_id>
+      <detail_price_adult_formatted>IDR 106.000,00</detail_price_adult_formatted>
+      <detail_price_children_formatted>IDR 96.000,00</detail_price_children_formatted>
+      <detail_price_adult_ori>106000</detail_price_adult_ori>
+      <detail_price_children_ori>96000</detail_price_children_ori>
+      <detail_availability>80</detail_availability>
+    </list_promo>
+    <des>BD</des>
+    <des_name>Bandung, Bandung</des_name>
+  </promo>
+  <promo>
+    <list_promo>
+      <train_name>Argo Jati</train_name>
+      <train_id>IVHAN1</train_id>
+      <schedule_departure_time>18:00:00</schedule_departure_time>
+      <schedule_arrival_time>23:50:00</schedule_arrival_time>
+      <class_id>eks</class_id>
+      <detail_price_adult_formatted>IDR 96.000,00</detail_price_adult_formatted>
+      <detail_price_children_formatted>IDR 86.000,00</detail_price_children_formatted>
+      <detail_price_adult_ori>96000</detail_price_adult_ori>
+      <detail_price_children_ori>86000</detail_price_children_ori>
+      <detail_availability>100</detail_availability>
+    </list_promo>
+    <list_promo>
+      <train_name>Argo Anggrek Malam</train_name>
+      <train_id>IVHAN2</train_id>
+      <schedule_departure_time>19:00:00</schedule_departure_time>
+      <schedule_arrival_time>23:30:00</schedule_arrival_time>
+      <class_id>eks</class_id>
+      <detail_price_adult_formatted>IDR 96.000,00</detail_price_adult_formatted>
+      <detail_price_children_formatted>IDR 86.000,00</detail_price_children_formatted>
+      <detail_price_adult_ori>96000</detail_price_adult_ori>
+      <detail_price_children_ori>86000</detail_price_children_ori>
+      <detail_availability>80</detail_availability>
+    </list_promo>
+    <des>YK</des>
+    <des_name>Tugu Yogyakarta, Yogyakarta</des_name>
+  </promo>
+  <output_type>xml</output_type>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>5.7507</elapsetime>
+    <memoryusage>15.74MB</memoryusage>
+    <confirm>success</confirm>
+    <lang>en</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <token>4206f440696c91b855581fb2eafac225</token>
+</tiket>
+```
+    
+```json
+{
+"promo": [{
+  "list_promo": [{
+    "train_name": "Argo Jati",
+    "train_id": "IVHAN1",
+    "schedule_departure_time": "18:00:00",
+    "schedule_arrival_time": "20:30:00",
+    "class_id": "eks",
+    "detail_price_adult_formatted": "IDR 106.000,00",
+    "detail_price_children_formatted": "IDR 96.000,00",
+    "detail_price_adult_ori": 106000,
+    "detail_price_children_ori": 96000,
+    "detail_availability": "100"
+  }, {
+    "train_name": "Argo Anggrek Malam",
+    "train_id": "IVHAN2",
+    "schedule_departure_time": "19:00:00",
+    "schedule_arrival_time": "20:40:00",
+    "class_id": "eks",
+    "detail_price_adult_formatted": "IDR 106.000,00",
+    "detail_price_children_formatted": "IDR 96.000,00",
+    "detail_price_adult_ori": 106000,
+    "detail_price_children_ori": 96000,
+    "detail_availability": "80"
+  }],
+  "des": "BD",
+  "des_name": "Bandung, Bandung"
+}, {
+  "list_promo": [{
+    "train_name": "Argo Jati",
+    "train_id": "IVHAN1",
+    "schedule_departure_time": "18:00:00",
+    "schedule_arrival_time": "23:50:00",
+    "class_id": "eks",
+    "detail_price_adult_formatted": "IDR 96.000,00",
+    "detail_price_children_formatted": "IDR 86.000,00",
+    "detail_price_adult_ori": 96000,
+    "detail_price_children_ori": 86000,
+    "detail_availability": "100"
+  }, {
+    "train_name": "Argo Anggrek Malam",
+    "train_id": "IVHAN2",
+    "schedule_departure_time": "19:00:00",
+    "schedule_arrival_time": "23:30:00",
+    "class_id": "eks",
+    "detail_price_adult_formatted": "IDR 96.000,00",
+    "detail_price_children_formatted": "IDR 86.000,00",
+    "detail_price_adult_ori": 96000,
+    "detail_price_children_ori": 86000,
+    "detail_availability": "80"
+  }],
+  "des": "YK",
+  "des_name": "Tugu Yogyakarta, Yogyakarta"
+}],
+"output_type": "json",
+"diagnostic": {
+  "status": 200,
+  "elapsetime": "3.5902",
+  "memoryusage": "15.71MB",
+  "confirm": "success",
+  "lang": "en",
+  "currency": "IDR"
+},
+"token": "4206f440696c91b855581fb2eafac225"
+}
+```
+    
+```matlab
+a: 4: {
+s: 5: "promo";a: 2: {
+  i: 0;a: 3: {
+    s: 10: "list_promo";a: 3: {
+      i: 0;a: 10: {
+        s: 10: "train_name";s: 9: "Argo Jati";s: 8: "train_id";s: 6: "IVHAN1";s: 23: "schedule_departure_time";s: 8: "18:00:00";s: 21: "schedule_arrival_time";s: 8: "20:30:00";s: 8: "class_id";s: 3: "eks";s: 28: "detail_price_adult_formatted";s: 14: "IDR 106.000,00";s: 31: "detail_price_children_formatted";s: 13: "IDR 96.000,00";s: 22: "detail_price_adult_ori";d: 106000;s: 25: "detail_price_children_ori";d: 96000;s: 19: "detail_availability";s: 3: "100";
+      }
+      i: 1;a: 10: {
+        s: 10: "train_name";s: 18: "Argo Anggrek Malam";s: 8: "train_id";s: 6: "IVHAN2";s: 23: "schedule_departure_time";s: 8: "19:00:00";s: 21: "schedule_arrival_time";s: 8: "20:40:00";s: 8: "class_id";s: 3: "eks";s: 28: "detail_price_adult_formatted";s: 14: "IDR 106.000,00";s: 31: "detail_price_children_formatted";s: 13: "IDR 96.000,00";s: 22: "detail_price_adult_ori";d: 106000;s: 25: "detail_price_children_ori";d: 96000;s: 19: "detail_availability";s: 2: "80";
+      }
+    }
+    s: 3: "des";s: 2: "BD";s: 8: "des_name";s: 16: "Bandung, Bandung";
+  }
+  i: 1;a: 3: {
+    s: 10: "list_promo";a: 3: {
+      i: 0;a: 10: {
+        s: 10: "train_name";s: 9: "Argo Jati";s: 8: "train_id";s: 6: "IVHAN1";s: 23: "schedule_departure_time";s: 8: "18:00:00";s: 21: "schedule_arrival_time";s: 8: "23:50:00";s: 8: "class_id";s: 3: "eks";s: 28: "detail_price_adult_formatted";s: 13: "IDR 96.000,00";s: 31: "detail_price_children_formatted";s: 13: "IDR 86.000,00";s: 22: "detail_price_adult_ori";d: 96000;s: 25: "detail_price_children_ori";d: 86000;s: 19: "detail_availability";s: 3: "100";
+      }
+      i: 1;a: 10: {
+        s: 10: "train_name";s: 18: "Argo Anggrek Malam";s: 8: "train_id";s: 6: "IVHAN2";s: 23: "schedule_departure_time";s: 8: "19:00:00";s: 21: "schedule_arrival_time";s: 8: "23:30:00";s: 8: "class_id";s: 3: "eks";s: 28: "detail_price_adult_formatted";s: 13: "IDR 96.000,00";s: 31: "detail_price_children_formatted";s: 13: "IDR 86.000,00";s: 22: "detail_price_adult_ori";d: 96000;s: 25: "detail_price_children_ori";d: 86000;s: 19: "detail_availability";s: 2: "80";
+      }
+    }
+    s: 3: "des";s: 2: "YK";s: 8: "des_name";s: 27: "Tugu Yogyakarta, Yogyakarta";
+  }
+}
+s: 11: "output_type";s: 9: "serialize";s: 10: "diagnostic";a: 6: {
+  s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "2.7337";s: 11: "memoryusage";s: 14: "15.72MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "en";s: 8: "currency";s: 3: "IDR";
+}
+s: 5: "token";s: 32: "4206f440696c91b855581fb2eafac225";
+}
+```
 
-* #### Parameters
+#### HTTP Request
     
-      
-    Name,Description,Format,Default,Mandatory  
-    d,Departure station,CHAR,,TRUE  
-    date,Date to depart,DATE,,TRUE  
-    
-    
-    #### HTTP Request
-    
-        `https://api-sandbox.tiket.com/train_api/train_promo?d=GMR&date=2012-06-28&token=4206f440696c91b855581fb2eafac225&output=json`
-    
-    #### Output
-    
-    ```xml
-        <tiket>
-        	<promo>
-        		<list_promo>
-        			<train_name>Argo Jati</train_name>
-        			<train_id>IVHAN1</train_id>
-        			<schedule_departure_time>18:00:00</schedule_departure_time>
-        			<schedule_arrival_time>20:30:00</schedule_arrival_time>
-        			<class_id>eks</class_id>
-        			<detail_price_adult_formatted>IDR 106.000,00</detail_price_adult_formatted>
-        			<detail_price_children_formatted>IDR 96.000,00</detail_price_children_formatted>
-        			<detail_price_adult_ori>106000</detail_price_adult_ori>
-        			<detail_price_children_ori>96000</detail_price_children_ori>
-        			<detail_availability>100</detail_availability>
-        		</list_promo>
-        		<list_promo>
-        			<train_name>Argo Anggrek Malam</train_name>
-        			<train_id>IVHAN2</train_id>
-        			<schedule_departure_time>19:00:00</schedule_departure_time>
-        			<schedule_arrival_time>20:40:00</schedule_arrival_time>
-        			<class_id>eks</class_id>
-        			<detail_price_adult_formatted>IDR 106.000,00</detail_price_adult_formatted>
-        			<detail_price_children_formatted>IDR 96.000,00</detail_price_children_formatted>
-        			<detail_price_adult_ori>106000</detail_price_adult_ori>
-        			<detail_price_children_ori>96000</detail_price_children_ori>
-        			<detail_availability>80</detail_availability>
-        		</list_promo>
-        	<des>BD</des>
-        	<des_name>Bandung, Bandung</des_name>
-        	</promo>
-        	<promo>
-        		<list_promo>
-        			<train_name>Argo Jati</train_name>
-        			<train_id>IVHAN1</train_id>
-        			<schedule_departure_time>18:00:00</schedule_departure_time>
-        			<schedule_arrival_time>23:50:00</schedule_arrival_time>
-        			<class_id>eks</class_id>
-        			<detail_price_adult_formatted>IDR 96.000,00</detail_price_adult_formatted>
-        			<detail_price_children_formatted>IDR 86.000,00</detail_price_children_formatted>
-        			<detail_price_adult_ori>96000</detail_price_adult_ori>
-        			<detail_price_children_ori>86000</detail_price_children_ori>
-        			<detail_availability>100</detail_availability>
-        		</list_promo>
-        		<list_promo>
-        			<train_name>Argo Anggrek Malam</train_name>
-        			<train_id>IVHAN2</train_id>
-        			<schedule_departure_time>19:00:00</schedule_departure_time>
-        			<schedule_arrival_time>23:30:00</schedule_arrival_time>
-        			<class_id>eks</class_id>
-        			<detail_price_adult_formatted>IDR 96.000,00</detail_price_adult_formatted>
-        			<detail_price_children_formatted>IDR 86.000,00</detail_price_children_formatted>
-        			<detail_price_adult_ori>96000</detail_price_adult_ori>
-        			<detail_price_children_ori>86000</detail_price_children_ori>
-        			<detail_availability>80</detail_availability>
-        		</list_promo>
-        		<des>YK</des>
-        		<des_name>Tugu Yogyakarta, Yogyakarta</des_name>
-        	</promo>
-        	<output_type>xml</output_type>
-        	<diagnostic>
-        		<status>200</status>
-        		<elapsetime>5.7507</elapsetime>
-        		<memoryusage>15.74MB</memoryusage>
-        		<confirm>success</confirm>
-        		<lang>en</lang>
-        		<currency>IDR</currency>
-        	</diagnostic>
-        	<token>4206f440696c91b855581fb2eafac225</token>
-        </tiket>
-    ```
-    
-    ```json
-        {"promo":[{"list_promo":[{"train_name":"Argo Jati","train_id":"IVHAN1","schedule_departure_time":"18:00:00","schedule_arrival_time":"20:30:00","class_id":"eks","detail_price_adult_formatted":"IDR 106.000,00","detail_price_children_formatted":"IDR 96.000,00","detail_price_adult_ori":106000,"detail_price_children_ori":96000,"detail_availability":"100"},{"train_name":"Argo Anggrek Malam","train_id":"IVHAN2","schedule_departure_time":"19:00:00","schedule_arrival_time":"20:40:00","class_id":"eks","detail_price_adult_formatted":"IDR 106.000,00","detail_price_children_formatted":"IDR 96.000,00","detail_price_adult_ori":106000,"detail_price_children_ori":96000,"detail_availability":"80"}],"des":"BD","des_name":"Bandung, Bandung"},{"list_promo":[{"train_name":"Argo Jati","train_id":"IVHAN1","schedule_departure_time":"18:00:00","schedule_arrival_time":"23:50:00","class_id":"eks","detail_price_adult_formatted":"IDR 96.000,00","detail_price_children_formatted":"IDR 86.000,00","detail_price_adult_ori":96000,"detail_price_children_ori":86000,"detail_availability":"100"},{"train_name":"Argo Anggrek Malam","train_id":"IVHAN2","schedule_departure_time":"19:00:00","schedule_arrival_time":"23:30:00","class_id":"eks","detail_price_adult_formatted":"IDR 96.000,00","detail_price_children_formatted":"IDR 86.000,00","detail_price_adult_ori":96000,"detail_price_children_ori":86000,"detail_availability":"80"}],"des":"YK","des_name":"Tugu Yogyakarta, Yogyakarta"}],"output_type":"json","diagnostic":{"status":200,"elapsetime":"3.5902","memoryusage":"15.71MB","confirm":"success","lang":"en","currency":"IDR"},"token":"4206f440696c91b855581fb2eafac225"}
-    ```
-    
-    ```matlab
-        a:4:{s:5:"promo";a:2:{i:0;a:3:{s:10:"list_promo";a:3:{i:0;a:10:{s:10:"train_name";s:9:"Argo Jati";s:8:"train_id";s:6:"IVHAN1";s:23:"schedule_departure_time";s:8:"18:00:00";s:21:"schedule_arrival_time";s:8:"20:30:00";s:8:"class_id";s:3:"eks";s:28:"detail_price_adult_formatted";s:14:"IDR 106.000,00";s:31:"detail_price_children_formatted";s:13:"IDR 96.000,00";s:22:"detail_price_adult_ori";d:106000;s:25:"detail_price_children_ori";d:96000;s:19:"detail_availability";s:3:"100";}i:1;a:10:{s:10:"train_name";s:18:"Argo Anggrek Malam";s:8:"train_id";s:6:"IVHAN2";s:23:"schedule_departure_time";s:8:"19:00:00";s:21:"schedule_arrival_time";s:8:"20:40:00";s:8:"class_id";s:3:"eks";s:28:"detail_price_adult_formatted";s:14:"IDR 106.000,00";s:31:"detail_price_children_formatted";s:13:"IDR 96.000,00";s:22:"detail_price_adult_ori";d:106000;s:25:"detail_price_children_ori";d:96000;s:19:"detail_availability";s:2:"80";}}s:3:"des";s:2:"BD";s:8:"des_name";s:16:"Bandung, Bandung";}i:1;a:3:{s:10:"list_promo";a:3:{i:0;a:10:{s:10:"train_name";s:9:"Argo Jati";s:8:"train_id";s:6:"IVHAN1";s:23:"schedule_departure_time";s:8:"18:00:00";s:21:"schedule_arrival_time";s:8:"23:50:00";s:8:"class_id";s:3:"eks";s:28:"detail_price_adult_formatted";s:13:"IDR 96.000,00";s:31:"detail_price_children_formatted";s:13:"IDR 86.000,00";s:22:"detail_price_adult_ori";d:96000;s:25:"detail_price_children_ori";d:86000;s:19:"detail_availability";s:3:"100";}i:1;a:10:{s:10:"train_name";s:18:"Argo Anggrek Malam";s:8:"train_id";s:6:"IVHAN2";s:23:"schedule_departure_time";s:8:"19:00:00";s:21:"schedule_arrival_time";s:8:"23:30:00";s:8:"class_id";s:3:"eks";s:28:"detail_price_adult_formatted";s:13:"IDR 96.000,00";s:31:"detail_price_children_formatted";s:13:"IDR 86.000,00";s:22:"detail_price_adult_ori";d:96000;s:25:"detail_price_children_ori";d:86000;s:19:"detail_availability";s:2:"80";}}s:3:"des";s:2:"YK";s:8:"des_name";s:27:"Tugu Yogyakarta, Yogyakarta";}}s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:6:{s:6:"status";i:200;s:10:"elapsetime";s:14:"2.7337";s:11:"memoryusage";s:14:"15.72MB";s:7:"confirm";s:7:"success";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:5:"token";s:32:"4206f440696c91b855581fb2eafac225";}
-    ```
+       'GET https://api-sandbox.tiket.com/train_api/train_promo?d=GMR&date=2012-06-28&token=4206f440696c91b855581fb2eafac225&output=json`
 
-
+#### Parameters
+          
+Name | Description | Format | Default | Mandatory  
+---- | ----------- | ------ | ------- | ---------    
+d | Departure station | CHAR |  | TRUE  
+date | Date to depart | DATE |  | TRUE  
+        
 
 ## Change Train Seat
 
+```xml
+<tiket>
+  <status>xml</status>
+  <elapsetime>2.991</elapsetime>
+  <memoryusage>3.31MB</memoryusage>
+  <confirm>success</confirm>
+  <lang>id</lang>
+  <currency>IDR</currency>
+
+  <output_type>JSON</output_type>
+  <result>
+    <err_code>0</err_code>
+    <book_code>KIQWWR</book_code>
+    <wagon_code>EKS</wagon_code>
+    <wagon_no>2</wagon_no>
+    <seat>3A</seat>
+    <seat>3B</seat>
+  </result>
+  <token>2ee91e32f9113e863da4c57e235098d1</token>
+</tiket>
+```
+    
+```json
+{
+diagnostic: {
+  status: 200,
+  elapsetime: "2.9133",
+  memoryusage: "3.31MB",
+  confirm: "success",
+  lang: "id",
+  currency: "IDR"
+},
+output_type: "json",
+result: {
+  err_code: 0,
+  book_code: "KIQWWR",
+  wagon_code: "EKS",
+  wagon_no: 2,
+  seat: ["3A", "3B"]
+},
+login_status: "false",
+token: "6d360dfd1dab82b3fa42e453abafff91"
+}
+```
+    
+```matlab
+{
+diagnostic: {
+  status: 200,
+  elapsetime: "2.9133",
+  memoryusage: "3.31MB",
+  confirm: "success",
+  lang: "id",
+  currency: "IDR"
+},
+output_type: "json",
+result: {
+  err_code: 0,
+  book_code: "KIQWWR",
+  wagon_code: "EKS",
+  wagon_no: 2,
+  seat: ["3A", "3B"]
+},
+login_status: "false",
+token: "6d360dfd1dab82b3fa42e453abafff91"
+}```
+
 * Change Train Seat
+
+#### HTTP Request
     
-    #### Parameters
+         'GET http://api.tiket.com/general_api/train_change_seat?output=json&booking_code=5WWAS1&kode_wagon=EKS&nomor_wagon=2&nomor_kursi=4D&order_detail_id=327247&token=6d360dfd1dab82b3fa42e453abafff91`
     
-      
-    Name,Description,Format,Default,Mandatory  
-    booking_code,"Booking Code",CHAR(6),,TRUE  
-    kode_wagon,"Wagon Code",VARCHAR(5),,TRUE  
-    nomor_wagon,"Wagon number",VARCHAR(2),,TRUE  
-    nomor_kursi,"Seating Number",VARCHAR(3),,TRUE  
-    order_detail_id,"Order Detail ID",NUMERIC,,TRUE  
-    token,for saving transaction that done by user,CHAR(128),,TRUE  
+#### Parameters
     
-    
-    #### HTTP Request
-    
-        `http://api.tiket.com/general_api/train_change_seat?output=json&booking_code=5WWAS1&kode_wagon=EKS&nomor_wagon=2&nomor_kursi=4D&order_detail_id=327247&token=6d360dfd1dab82b3fa42e453abafff91`
-    
-    #### Output
-    
-    ```xml
-        <tiket>
-         <status>xml</status>
-        <elapsetime>2.991</elapsetime>
-        <memoryusage>3.31MB</memoryusage>
-        <confirm>success</confirm>
-        <lang>id</lang>
-        <currency>IDR</currency>
+Name | Description | Format | Default | Mandatory  
+---- | ----------- | ------ | ------- | ---------    
+booking_code | Booking Code | CHAR(6) |  | TRUE  
+kode_wagon | Wagon Code | VARCHAR(5) |  | TRUE  
+nomor_wagon | Wagon number | VARCHAR(2) |  | TRUE  
+nomor_kursi | Seating Number | VARCHAR(3) |  | TRUE  
+order_detail_id | Order Detail ID | NUMERIC |  | TRUE  
+token | for saving transaction that done by user | CHAR(128) |  | TRUE  
         
-        <output_type>JSON</output_type>
-         <result>
-         <err_code>0</err_code>
-         <book_code>KIQWWR</book_code>
-         <wagon_code>EKS</wagon_code>
-         <wagon_no>2</wagon_no>
-        <seat>3A</seat>
-        <seat>3B</seat>
-         </result>
-         <token>2ee91e32f9113e863da4c57e235098d1</token>
-        </tiket>
-        
-    ```
     
-    ```json
-        { diagnostic: { status: 200, elapsetime: "2.9133", memoryusage: "3.31MB", confirm: "success", lang: "id", currency: "IDR" }, output_type: "json", result: { err_code: 0, book_code: "KIQWWR", wagon_code: "EKS", wagon_no: 2, seat: [ "3A","3B" ] }, login_status: "false", token: "6d360dfd1dab82b3fa42e453abafff91" }
-    ```
-    
-    ```matlab
-        { diagnostic: { status: 200, elapsetime: "2.9133", memoryusage: "3.31MB", confirm: "success", lang: "id", currency: "IDR" }, output_type: "json", result: { err_code: 0, book_code: "KIQWWR", wagon_code: "EKS", wagon_no: 2, seat: [ "3A","3B" ] }, login_status: "false", token: "6d360dfd1dab82b3fa42e453abafff91" }
-    ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
