@@ -972,7 +972,7 @@ s: 5: "token";s: 32: "62bc0e3bd0c127c5690125a76e11c23c";
 ```
 #### HTTP Request
     
-       'GET http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e'
+       `GET http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
 
 #### Parameters
          
@@ -1032,7 +1032,7 @@ s: 5: "token";s: 32: "9d941b962ff17f828046a1d45432c6d4";
 
 #### HTTP Request
     
-        'GET https://api-sandbox.tiket.com/auth/register?token=9d941b962ff17f828046a1d45432c6d4&firstName=cob&lastName=kib&email=youjulin@gmailcom&password=hahaha&conPassword=hahaha&country=id&output=json`
+        `GET https://api-sandbox.tiket.com/auth/register?token=9d941b962ff17f828046a1d45432c6d4&firstName=cob&lastName=kib&email=youjulin@gmailcom&password=hahaha&conPassword=hahaha&country=id&output=json`
     
 #### Parameters
     
@@ -1222,7 +1222,7 @@ s: 5: "token";s: 32: "4206f440696c91b855581fb2eafac225";
 
 #### HTTP Request
     
-       'GET https://api-sandbox.tiket.com/train_api/train_promo?d=GMR&date=2012-06-28&token=4206f440696c91b855581fb2eafac225&output=json`
+       `GET https://api-sandbox.tiket.com/train_api/train_promo?d=GMR&date=2012-06-28&token=4206f440696c91b855581fb2eafac225&output=json`
 
 #### Parameters
           
@@ -1305,7 +1305,7 @@ token: "6d360dfd1dab82b3fa42e453abafff91"
 
 #### HTTP Request
     
-         'GET http://api.tiket.com/general_api/train_change_seat?output=json&booking_code=5WWAS1&kode_wagon=EKS&nomor_wagon=2&nomor_kursi=4D&order_detail_id=327247&token=6d360dfd1dab82b3fa42e453abafff91`
+        `GET http://api.tiket.com/general_api/train_change_seat?output=json&booking_code=5WWAS1&kode_wagon=EKS&nomor_wagon=2&nomor_kursi=4D&order_detail_id=327247&token=6d360dfd1dab82b3fa42e453abafff91`
     
 #### Parameters
     
