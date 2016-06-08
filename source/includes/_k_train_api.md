@@ -137,7 +137,7 @@ We will inform you if its already provided in production server (api.tiket.com)
 
 #### HTTP Request
 
-    `GET https://api-sandbox.tiket.com/search/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&class=all&token=80bfe5297f7c4fbaa7a1e6c022585946&output=json`
+    `GET http://api-sandbox.tiket.com/search/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&class=all&token=80bfe5297f7c4fbaa7a1e6c022585946&output=json`
 
 #### Parameters
   
@@ -248,7 +248,7 @@ Display all train station and their codes for use in search train API (variable 
 
 #### HTTP Request
 
-    `GET https://api-sandbox.tiket.com/train_api/train_station?token=11b534a0394d9bb140f18bc1a87adf1a&output=json`  
+    `GET http://api-sandbox.tiket.com/train_api/train_station?token=11b534a0394d9bb140f18bc1a87adf1a&output=json`  
 
 #### Parameters
   
@@ -562,7 +562,7 @@ Add train order to shopping cart.
 
 #### HTTP Request
 
-    `GET https://api-sandbox.tiket.com/order/add/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&token=13fc239d306bf7085708566b3d085b29&train_id=IVHAN1&subclass=A&output=json&conSalutation=Mr&conFirstName=b&conLastName=bl&conEmailAddress=be@scom&conPhone=0878121&nameAdult1=a&IdCardAdult1=111&noHpAdult1=%2B62878222&salutationAdult1=Mr&birthDateAdult1=1990-02-02`
+    `GET http://api-sandbox.tiket.com/order/add/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&token=13fc239d306bf7085708566b3d085b29&train_id=IVHAN1&subclass=A&output=json&conSalutation=Mr&conFirstName=b&conLastName=bl&conEmailAddress=be@scom&conPhone=0878121&nameAdult1=a&IdCardAdult1=111&noHpAdult1=%2B62878222&salutationAdult1=Mr&birthDateAdult1=1990-02-02`
 
 #### Parameters
   
@@ -708,7 +708,7 @@ a: 7: {
 
 #### HTTP Request
     
-        `GET https://api-sandbox.tiket.com/order?token=2279a50a996f5a54a15db6b10bfc5657&output=json`
+        `GET http://api-sandbox.tiket.com/order?token=2279a50a996f5a54a15db6b10bfc5657&output=json`
     
 #### Parameters
     
@@ -781,7 +781,7 @@ a: 5: {
     
 #### HTTP Request
     
-     `GET https://api-sandbox.tiket.com/order/checkout/119978/IDR?token=9991e3092aea96042964220181374b60&output=json`
+     `GET http://api-sandbox.tiket.com/order/checkout/119978/IDR?token=9991e3092aea96042964220181374b60&output=json`
     
 (Get from order page in checkout variable.)
     
@@ -844,7 +844,7 @@ a: 5: {
 
 #### HTTP Request
     
-        `GET https://api-sandbox.tiket.com/checkout/checkout_customer?token=87da88eaaa429d5513a3a3658b01701e&salutation=Ms&firstName=ba&lastName=ca&emailAddress=test@yahoocom&phone=%2B62878434343&saveContinue=2[/code]
+        `GET http://api-sandbox.tiket.com/checkout/checkout_customer?token=87da88eaaa429d5513a3a3658b01701e&salutation=Ms&firstName=ba&lastName=ca&emailAddress=test@yahoocom&phone=%2B62878434343&saveContinue=2[/code]
     
 Setelah merequest link tersebut maka user akan dibuatkan account di tiket.com user akan dikirimkan email untuk mengubah password loginnya.
 
@@ -1032,7 +1032,7 @@ s: 5: "token";s: 32: "9d941b962ff17f828046a1d45432c6d4";
 
 #### HTTP Request
     
-        `GET https://api-sandbox.tiket.com/auth/register?token=9d941b962ff17f828046a1d45432c6d4&firstName=cob&lastName=kib&email=youjulin@gmailcom&password=hahaha&conPassword=hahaha&country=id&output=json`
+        `GET http://api-sandbox.tiket.com/auth/register?token=9d941b962ff17f828046a1d45432c6d4&firstName=cob&lastName=kib&email=youjulin@gmailcom&password=hahaha&conPassword=hahaha&country=id&output=json`
     
 #### Parameters
     
@@ -1222,7 +1222,7 @@ s: 5: "token";s: 32: "4206f440696c91b855581fb2eafac225";
 
 #### HTTP Request
     
-       `GET https://api-sandbox.tiket.com/train_api/train_promo?d=GMR&date=2012-06-28&token=4206f440696c91b855581fb2eafac225&output=json`
+       GET https://api-sandbox.tiket.com/train_api/train_promo?d=GMR&date=2012-06-28&token=4206f440696c91b855581fb2eafac225&output=json
 
 #### Parameters
           
@@ -1308,7 +1308,7 @@ token: "6d360dfd1dab82b3fa42e453abafff91"
 
 #### HTTP Request
     
-        `GET http://api.tiket.com/general_api/train_change_seat?output=json&booking_code=5WWAS1&kode_wagon=EKS&nomor_wagon=2&nomor_kursi=4D&order_detail_id=327247&token=6d360dfd1dab82b3fa42e453abafff91`
+        GET https://api.tiket.com/general_api/train_change_seat?output=json&booking_code=5WWAS1&kode_wagon=EKS&nomor_wagon=2&nomor_kursi=4D&order_detail_id=327247&token=6d360dfd1dab82b3fa42e453abafff91
     
 #### Parameters
     
