@@ -87,13 +87,86 @@ Diagram flow for Hotel API:
 ```
 
 ```json
-{"output_type":"json","diagnostic":{"status":200,"elapsetime":"2.0788","memoryusage":"19.58MB","confirm":"success","lang":"en","currency":"IDR"},"search_queries":{"q":"Indonesia","uid":"","startdate":"2012-06-11","enddate":"2012-06-12","night":"1","room":"1","adult":"2","child":0},"result":[{"id":"2556003619","latitude":"-0.152117","longitude":"2.010164","business_uri":"https:\/\/api-sandbox.tiket.com\/the-101-legian?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A4108","province_name":"Bali","kecamatan_name":"Kuta","kelurahan_name":"Legian","photo_primary":"http:\/\/www.sandbox.tiket.com\/img\/business\/s\/k\/business-sky_pool.sq2.jpg","room_facility_name":"Non smoking rooms|In room safe|Air conditioning|Internet access â€“ LAN (complimentary)|%hotel_lcd\/plasma%|Desk|Shower|Bathrobes|Hair dryer|Mini bar|Complimentary bottled water|Television|Telephone|Slipper|Iron board on request|Hair dryer on request|Include Breakfast","wifi":"Wi-Fi available","promo_name":"","price":"478080.00","regional":"Legian - Kuta - Bali","rating":"","name":"The 101 Legian"},{"id":"2696265251","latitude":"-0.151962","longitude":"2.010245","business_uri":"https:\/\/api-sandbox.tiket.com\/the-sunset-hotel-bali?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A3623","province_name":"Bali","kecamatan_name":"","kelurahan_name":"","photo_primary":"http:\/\/www.sandbox.tiket.com\/img\/business\/s\/u\/business-sunset-hotel-001.sq2.jpg","room_facility_name":null,"wifi":"","promo_name":"","price":"377318.00","regional":"Bali","rating":"","name":"The Sunset Bali Hotel"}],"token":"1c78d7bc29690cd96dfce9e0350cfc51"}
-```
+{
+  "output_type": "json",
+  "diagnostic": {
+    "status": 200,
+    "elapsetime": "2.0788",
+    "memoryusage": "19.58MB",
+    "confirm": "success",
+    "lang": "en",
+    "currency": "IDR"
+  },
+  "search_queries": {
+    "q": "Indonesia",
+    "uid": "",
+    "startdate": "2012-06-11",
+    "enddate": "2012-06-12",
+    "night": "1",
+    "room": "1",
+    "adult": "2",
+    "child": 0
+  },
+  "result": [{
+    "id": "2556003619",
+    "latitude": "-0.152117",
+    "longitude": "2.010164",
+    "business_uri": "https:\/\/api-sandbox.tiket.com\/the-101-legian?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A4108",
+    "province_name": "Bali",
+    "kecamatan_name": "Kuta",
+    "kelurahan_name": "Legian",
+    "photo_primary": "http:\/\/www.sandbox.tiket.com\/img\/business\/s\/k\/business-sky_pool.sq2.jpg",
+    "room_facility_name": "Non smoking rooms|In room safe|Air conditioning|Internet access â€“ LAN (complimentary)|%hotel_lcd\/plasma%|Desk|Shower|Bathrobes|Hair dryer|Mini bar|Complimentary bottled water|Television|Telephone|Slipper|Iron board on request|Hair dryer on request|Include Breakfast",
+    "wifi": "Wi-Fi available",
+    "promo_name": "",
+    "price": "478080.00",
+    "regional": "Legian - Kuta - Bali",
+    "rating": "",
+    "name": "The 101 Legian"
+  }, {
+    "id": "2696265251",
+    "latitude": "-0.151962",
+    "longitude": "2.010245",
+    "business_uri": "https:\/\/api-sandbox.tiket.com\/the-sunset-hotel-bali?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A3623",
+    "province_name": "Bali",
+    "kecamatan_name": "",
+    "kelurahan_name": "",
+    "photo_primary": "http:\/\/www.sandbox.tiket.com\/img\/business\/s\/u\/business-sunset-hotel-001.sq2.jpg",
+    "room_facility_name": null,
+    "wifi": "",
+    "promo_name": "",
+    "price": "377318.00",
+    "regional": "Bali",
+    "rating": "",
+    "name": "The Sunset Bali Hotel"
+  }],
+  "token": "1c78d7bc29690cd96dfce9e0350cfc51"
+}```
 
 
 ```matlab
-a:5:{s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:6:{s:6:"status";i:200;s:10:"elapsetime";s:14:"2.3215";s:11:"memoryusage";s:14:"19.26MB";s:7:"confirm";s:7:"success";s:4:"lang";s:2:"en";s:8:"currency";s:3:"IDR";}s:14:"search_queries";a:8:{s:1:"q";s:9:"Indonesia";s:3:"uid";s:0:"";s:9:"startdate";s:10:"2012-06-11";s:7:"enddate";s:10:"2012-06-12";s:5:"night";s:1:"1";s:4:"room";s:1:"1";s:5:"adult";s:1:"2";s:5:"child";i:0;}s:6:"result";a:15:{i:0;a:15:{s:2:"id";s:10:"2556003619";s:8:"latitude";s:9:"-0.152117";s:9:"longitude";s:8:"2.010164";s:12:"business_uri";s:135:"https://api-sandbox.tiket.com/the-101-legian?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A4108";s:13:"province_name";s:4:"Bali";s:14:"kecamatan_name";s:4:"Kuta";s:14:"kelurahan_name";s:6:"Legian";s:13:"photo_primary";s:72:"http://www.sandbox.tiket.com/img/business/s/k/business-sky_pool.sq2.jpg";s:18:"room_facility_name";s:347:"Non smoking rooms|In room safe|Air conditioning|Internet access â€“ LAN (complimentary)|Television LCD/plasma screen|Desk|Shower|Bathrobes|Hair dryer|Mini bar|Complimentary bottled water|Television|Telephone|Slipper|Iron board on request|Hair dryer on request|Include Breakfast";s:4:"wifi";s:23:"Wi-Fi available";s:10:"promo_name";s:0:"";s:5:"price";s:9:"478080.00";s:8:"regional";s:20:"Legian - Kuta - Bali";s:6:"rating";s:0:"";s:4:"name";s:14:"The 101 Legian";}i:1;a:15:{s:2:"id";s:10:"2696265251";s:8:"latitude";s:9:"-0.151962";s:9:"longitude";s:8:"2.010245";s:12:"business_uri";s:142:"https://api-sandbox.tiket.com/the-sunset-hotel-bali?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A3623";s:13:"province_name";s:4:"Bali";s:14:"kecamatan_name";s:0:"";s:14:"kelurahan_name";s:0:"";s:13:"photo_primary";s:80:"http://www.sandbox.tiket.com/img/business/s/u/business-sunset-hotel-001.sq2.jpg";s:18:"room_facility_name";N;s:4:"wifi";s:0:"";s:10:"promo_name";s:0:"";s:5:"price";s:9:"377318.00";s:8:"regional";s:4:"Bali";s:6:"rating";s:0:"";s:4:"name";s:21:"The Sunset Bali Hotel";}}s:5:"token";s:32:"1c78d7bc29690cd96dfce9e0350cfc51";}
-```
+a: 5: {
+  s: 11: "output_type";s: 9: "serialize";s: 10: "diagnostic";a: 6: {
+    s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "2.3215";s: 11: "memoryusage";s: 14: "19.26MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "en";s: 8: "currency";s: 3: "IDR";
+  }
+  s: 14: "search_queries";a: 8: {
+    s: 1: "q";s: 9: "Indonesia";s: 3: "uid";s: 0: "";s: 9: "startdate";s: 10: "2012-06-11";s: 7: "enddate";s: 10: "2012-06-12";s: 5: "night";s: 1: "1";s: 4: "room";s: 1: "1";s: 5: "adult";s: 1: "2";s: 5: "child";i: 0;
+  }
+  s: 6: "result";a: 15: {
+    i: 0;a: 15: {
+      s: 2: "id";s: 10: "2556003619";s: 8: "latitude";s: 9: "-0.152117";s: 9: "longitude";s: 8: "2.010164";s: 12: "business_uri";s: 135: "https://api-sandbox.tiket.com/the-101-legian?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A4108";s: 13: "province_name";s: 4: "Bali";s: 14: "kecamatan_name";s: 4: "Kuta";s: 14: "kelurahan_name";s: 6: "Legian";s: 13: "photo_primary";s: 72: "http://www.sandbox.tiket.com/img/business/s/k/business-sky_pool.sq2.jpg";s: 18: "room_facility_name";s: 347: "Non smoking rooms|In room safe|Air conditioning|Internet access â€“ LAN (complimentary)|Television LCD/plasma screen|Desk|Shower|Bathrobes|Hair dryer|Mini bar|Complimentary bottled water|Television|Telephone|Slipper|Iron board on request|Hair dryer on request|Include Breakfast";s: 4: "wifi";s: 23: "Wi-Fi available";s: 10: "promo_name";s: 0: "";s: 5: "price";s: 9: "478080.00";s: 8: "regional";s: 20: "Legian - Kuta - Bali";s: 6: "rating";s: 0: "";s: 4: "name";s: 14: "The 101 Legian";
+    }
+    i: 1;a: 15: {
+      s: 2: "id";s: 10: "2696265251";s: 8: "latitude";s: 9: "-0.151962";s: 9: "longitude";s: 8: "2.010245";s: 12: "business_uri";s: 142: "https://api-sandbox.tiket.com/the-sunset-hotel-bali?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A3623";s: 13: "province_name";s: 4: "Bali";s: 14: "kecamatan_name";s: 0: "";s: 14: "kelurahan_name";s: 0: "";s: 13: "photo_primary";s: 80: "http://www.sandbox.tiket.com/img/business/s/u/business-sunset-hotel-001.sq2.jpg";s: 18: "room_facility_name";N;s: 4: "wifi";s: 0: "";s: 10: "promo_name";s: 0: "";s: 5: "price";s: 9: "377318.00";s: 8: "regional";s: 4: "Bali";s: 6: "rating";s: 0: "";s: 4: "name";s: 21: "The Sunset Bali Hotel";
+    }
+  }
+  s: 5: "token";s: 32: "1c78d7bc29690cd96dfce9e0350cfc51";
+}```
+
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/search/hotel?q=Indonesia&startdate=2012-06-11&night=1&enddate=2012-06-12&room=1&adult=2&child=0&token=1c78d7bc29690cd96dfce9e0350cfc51&output=json`
+    
 
 #### Parameters
 
@@ -117,10 +190,7 @@ longitude | set the longitude of the search. Sort will be automatically uses sor
 token | for saving transaction that done by user | CHAR(128) |  | TRUE
   
 
-#### HTTP Request
 
-    `https://api-sandbox.tiket.com/search/hotel?q=Indonesia&startdate=2012-06-11&night=1&enddate=2012-06-12&room=1&adult=2&child=0&token=1c78d7bc29690cd96dfce9e0350cfc51&output=json`
-    
     
 ## Search by Area
 
@@ -268,21 +338,21 @@ a: 5: {
 
 ```
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/search/search_area?uid=city:178&token=a2f50046418672585367579f730e50c0`
+    
+
 #### Parameters
 
   
-Name | Description | Contoh  
----- | ----------  | -----  
+Name | Description | Example  
+---- | ----------  | -------   
 UID | Id |  country |  province |  city |  kecamatan | Country:id |  Province:17 | Jika diberikan country:id maka akan menampilkan semua province di country indonesia  
 Type | Tipe yang mau dicari |  Province |  city |  kecamatan |  Jika diberikan value province akan memberikan list province dengan keyword yang diberikan  
 Q |  Keyword |  Jakarta |  Akan kenampilkan list city yang mengandung kata jakarta
 
 
-
-#### HTTP Request
-
-    `http://api-sandbox.tiket.com/search/search_area?uid=city:178&token=a2f50046418672585367579f730e50c0`
-    
     
 ## Search Hotel Promo
 
@@ -452,6 +522,10 @@ a: 6: {
 
 ```
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/home/hotelDeals?token=28a6c5f0882a94a078e82ffdb1df7744&output=json`
+
 
 #### Parameters
   
@@ -462,11 +536,7 @@ page | pagging page | INT |  | FALSE
 startdate | startdate for hotel promo | INT |  | FALSE  
 enddate | enddate for hotel promo | INT |  | FALSE
   
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/home/hotelDeals?token=28a6c5f0882a94a078e82ffdb1df7744&output=json`
-    
+ 
     
 ## Search Autocomplete
 
@@ -621,6 +691,10 @@ a: 4: {
 
 ```
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/search/autocomplete/hotel?q=mah&token=90d2fad44172390b11527557e6250e50&output=json`
+
 #### Parameters
   
 Name | Description | Format | Default | Mandatory  
@@ -628,11 +702,6 @@ Name | Description | Format | Default | Mandatory
 q | Keyword (hotel name / location ) | CHAR (50) |  | TRUE  
 token | for saving transaction that done by user | CHAR(128) |  | TRUE
  
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/search/autocomplete/hotel?q=mah&token=90d2fad44172390b11527557e6250e50&output=json`
-
 
 ## View Detail Hotel
 
@@ -868,6 +937,10 @@ a: 10: {
 }
 ```
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/the-101-legian?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A4108&token=1c78d7bc29690cd96dfce9e0350cfc51&output=json`
+
 
 #### Parameters
 
@@ -884,11 +957,6 @@ room | Total room that will booked by customer | INT(5) | 1 | TRUE
 adult | Total adult | INT(5) | 2 | TRUE  
 child | Total child | INT(5) | 0 |   
 token | for saving transaction that done by user | CHAR(128) |  | TRUE
-
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/the-101-legian?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&uid=business%3A4108&token=1c78d7bc29690cd96dfce9e0350cfc51&output=json`
 
     
 ## Add Order
@@ -937,6 +1005,10 @@ a: 5: {
 
 Add hotel order to shopping cart.
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/order/add/hotel?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&minstar=0&maxstar=5&minprice=0&maxprice=1000&hotelname=0&room_id=666&hasPromo=0&token=1c78d7bc29690cd96dfce9e0350cfc51&output=json`
+
 #### Parameters
 
 Plink url to view detail can be get from view detail hotel, variable book_uri  
@@ -960,19 +1032,14 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
   
 
 
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/order/add/hotel?startdate=2012-06-11&enddate=2012-06-12&night=1&room=1&adult=2&child=0&minstar=0&maxstar=5&minprice=0&maxprice=1000&hotelname=0&room_id=666&hasPromo=0&token=1c78d7bc29690cd96dfce9e0350cfc51&output=json`
-
-
 ## Order
 
 ```xml
 <tiket>
-<output_type>xml</output_type>
-<myorder>
-  <order_id>120152</order_id>
-  <data>
+  <output_type>xml</output_type>
+  <myorder>
+    <order_id>120152</order_id>
+    <data>
         <expire>60</expire>
         <order_detail_id>31406</order_detail_id>
         <order_type>hotel</order_type>
@@ -1000,24 +1067,24 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
           https://api-sandbox.tiket.com/order/delete_order?order_detail_id=31406
         </delete_uri>
       </data>
-  <total>624000</total>
-  <total_tax>106080</total_tax>
-  <total_without_tax>517920</total_without_tax>
-  <count_installment>0</count_installment>
-</myorder>
-<diagnostic>
-  <status>200</status>
-  <elapsetime>0.2612</elapsetime>
-  <memoryusage>17.87MB</memoryusage>
-  <confirm>success</confirm>
-  <lang>en</lang>
-  <currency>IDR</currency>
-</diagnostic>
-<checkout>
-  https://api-sandbox.tiket.com/order/checkout/120152/IDR
-</checkout>
-<login_status>false</login_status>
-<token>8f683005261f872fe5c044f9b7085162</token>
+    <total>624000</total>
+    <total_tax>106080</total_tax>
+    <total_without_tax>517920</total_without_tax>
+    <count_installment>0</count_installment>
+  </myorder>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>0.2612</elapsetime>
+    <memoryusage>17.87MB</memoryusage>
+    <confirm>success</confirm>
+    <lang>en</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <checkout>
+    https://api-sandbox.tiket.com/order/checkout/120152/IDR
+  </checkout>
+  <login_status>false</login_status>
+  <token>8f683005261f872fe5c044f9b7085162</token>
 </tiket>
 ```
 
@@ -1089,6 +1156,10 @@ a: 6: {
 }
 ```
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/order?token=8f683005261f872fe5c044f9b7085162&output=json`
+
 
 #### Parameters
 
@@ -1096,12 +1167,7 @@ a: 6: {
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------   
 token | for saving transaction that done by user | CHAR(128) |  | TRUE
-
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/order?token=8f683005261f872fe5c044f9b7085162&output=json`
-    
+ 
     
 ## Checkout Page Request
 
@@ -1153,6 +1219,11 @@ a: 5: {
 
 Early stage to access checkout.
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/order/checkout/119978/IDR?token=9991e3092aea96042964220181374b60&output=json`
+
+
 #### Parameters
 
   
@@ -1160,10 +1231,6 @@ Name | Description | Format | Default | Mandatory
 ---- | ----------  | -----  | ------- | ---------  
 token | for saving transaction that done by user | CHAR(128) |  | TRUE    
 
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/order/checkout/119978/IDR?token=9991e3092aea96042964220181374b60&output=json`
 
 Get from order page in checkout variable.
     
@@ -1215,6 +1282,11 @@ Get from order page in checkout variable.
 }
 ```
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/checkout/checkout_customer?token=87da88eaaa429d5513a3a3658b01701e&salutation=Ms&firstName=ba&lastName=ca&emailAddress=testing@yahoocom&phone=%2B62878434343&saveContinue=2&output=json`
+
+
 #### Parameters
 
   
@@ -1228,9 +1300,6 @@ phone | your phone |  ex: 081232323343 or +62324324234234. Don't forget to urlen
 saveContinue | Flag for save unregistered user data (value=2) |  |  | TRUE
   
 
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/checkout/checkout_customer?token=87da88eaaa429d5513a3a3658b01701e&salutation=Ms&firstName=ba&lastName=ca&emailAddress=testing@yahoocom&phone=%2B62878434343&saveContinue=2&output=json`
 
 Setelah merequest link tersebut maka user akan dibuatkan account di tiket.com  
 user akan dikirimkan email untuk mengubah password loginnya.
@@ -1422,6 +1491,11 @@ a: 11: {
 }
 ```
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/checkout/checkout_customer?token=8f683005261f872fe5c044f9b7085162&salutation=Mrs&firstName=ba&lastName=ca&emailAddress=bibi@yahoocom&phone=%2B628888843&conSalutation=Mrs&conFirstName=a&conLastName=a&conEmailAddress=bibi@yahoocom&conPhone=%2B628888843&detailId=31406&country=id&output=json`
+
+
 #### Parameters
 
   
@@ -1439,10 +1513,6 @@ conEmailAddress | contact person email address | CHAR(50) |  | TRUE
 conPhone | contact person phone |  ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter | CHAR(20) |  | TRUE  
 detailId | your order detail id | NUMBER |  | TRUE  
   
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/checkout/checkout_customer?token=8f683005261f872fe5c044f9b7085162&salutation=Mrs&firstName=ba&lastName=ca&emailAddress=bibi@yahoocom&phone=%2B628888843&conSalutation=Mrs&conFirstName=a&conLastName=a&conEmailAddress=bibi@yahoocom&conPhone=%2B628888843&detailId=31406&country=id&output=json`
 
 
 ## Available Payment
@@ -1554,19 +1624,17 @@ a: 4: {
 }
 ```
 
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
+
 #### Parameters
 
-  
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------  
 token | for saving transaction that done by user | CHAR(128) |  | TRUE  
 
 
-#### HTTP Request
-
-    `http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
- 
-    
 ## Checkout Payment
 
 Please see [Checkout Payment](http://docs.tiket.com/#checkout-payment-309) in General API
