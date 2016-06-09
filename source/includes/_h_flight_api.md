@@ -7884,13 +7884,14 @@ This is the list of field to may appears
 
 
 
-Name,Description,Format,Default,Mandatory  
-passportnoa1,"as an array like passportnoa1, passportnoa2 if you have adult passenger",CHAR(50),,TRUE  
-passportExpiryDatea1,"as an array like passportExpiryDatea1, passportExpiryDatea2 if you have adult passenger : format YYYY-MM-DD",DATE,,TRUE  
-passportissueddatea1,"as an array like passportissueddatea1, passportissueddatea2 if you have adult passenger : format YYYY-MM-DD",DATE,,TRUE  
-birthdatea1,"as an array like birthdatea1, birthdatea2 if you have adult passenger : format YYYY-MM-DD",DATE,,TRUE  
-passportissuinga1,"as an array like passportissuinga1, passportissuinga2 if you have adult passenger (select from list country ex id for indonesia)",CHAR(50),,TRUE  
-passportnationalitya1,"as an array like passportnationalitya1, passportnationalitya2 if you have adult passenger (select from list country ex id for indonesia)",CHAR(50),,TRUE
+Name | Description | Format | Default | Mandatory  
+---- | ----------  | -----  | ------- | ---------
+passportnoa1 | as an array like passportnoa1 |  passportnoa2 if you have adult passenger | CHAR(50) |  | TRUE  
+passportExpiryDatea1 | as an array like passportExpiryDatea1 |  passportExpiryDatea2 if you have adult passenger : format YYYY-MM-DD | DATE |  | TRUE  
+passportissueddatea1 | as an array like passportissueddatea1 |  passportissueddatea2 if you have adult passenger : format YYYY-MM-DD | DATE |  | TRUE  
+birthdatea1 | as an array like birthdatea1 |  birthdatea2 if you have adult passenger : format YYYY-MM-DD | DATE |  | TRUE  
+passportissuinga1 | as an array like passportissuinga1 |  passportissuinga2 if you have adult passenger (select from list country ex id for indonesia) | CHAR(50) |  | TRUE  
+passportnationalitya1 | as an array like passportnationalitya1 |  passportnationalitya2 if you have adult passenger (select from list country ex id for indonesia) | CHAR(50) |  | TRUE
 
 
 
@@ -7901,10 +7902,10 @@ Some airlines may required to submit the baggage fields, here is the example
   
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------
-dcheckinbaggagea11 | "departure baggage code for adult passanger as an array like dcheckinbaggagea11 |  dcheckinbaggagea12 if you have adult passenger and array like dcheckinbaggagea11 | dcheckinbaggagea21 if transit flight" | CHAR(18) | TRUE  
-dcheckinbaggagec11 | "departure baggage code for child passanger as an array like dcheckinbaggagec11 |  dcheckinbaggagec12 if you have adult passenge and array like dcheckinbaggagec11 |  dcheckinbaggagec21 if transit flight " | CHAR(18) | TRUE  
-rcheckinbaggagea11 | "return baggage code for adult passanger as an array like rcheckinbaggagea11 |  rcheckinbaggagea12 if you have adult passenger and array like rcheckinbaggagea11 |  rcheckinbaggagea21 if transit flight" | CHAR(18) | TRUE  
-rcheckinbaggagec11 | "return baggage cod for child passanger as an array like rcheckinbaggagec11 |  rcheckinbaggagec12 if you have adult passenger and array like rcheckinbaggagec11 |  rcheckinbaggagec21 if transit flight" | CHAR(18) | TRUE
+dcheckinbaggagea11 | departure baggage code for adult passanger as an array like dcheckinbaggagea11 |  dcheckinbaggagea12 if you have adult passenger and array like dcheckinbaggagea11 | dcheckinbaggagea21 if transit flight" | CHAR(18) | TRUE  
+dcheckinbaggagec11 | departure baggage code for child passanger as an array like dcheckinbaggagec11 |  dcheckinbaggagec12 if you have adult passenge and array like dcheckinbaggagec11 |  dcheckinbaggagec21 if transit flight " | CHAR(18) | TRUE  
+rcheckinbaggagea11 | return baggage code for adult passanger as an array like rcheckinbaggagea11 |  rcheckinbaggagea12 if you have adult passenger and array like rcheckinbaggagea11 |  rcheckinbaggagea21 if transit flight" | CHAR(18) | TRUE  
+rcheckinbaggagec11 | return baggage cod for child passanger as an array like rcheckinbaggagec11 |  rcheckinbaggagec12 if you have adult passenger and array like rcheckinbaggagec11 |  rcheckinbaggagec21 if transit flight" | CHAR(18) | TRUE
 
 
     
