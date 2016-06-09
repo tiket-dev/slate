@@ -7758,7 +7758,12 @@ After search, call this function when user choose the flight to ensure that the 
 
 <aside class="warning">By calling this API, you will hit the airlines API directly. Use this sparingly. Do not abuse!</aside>
 
-  
+#### HTTP Request
+
+`GET https://api-sandbox.tiket.com/flight_api/get_flight_data?flight_id=16825942&token=2b2f462814af7c0d2e1b40f28e2d9dff5e900f24&date=2014-05-30`
+
+#### Parameters
+
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------
 flight_id |  flight_id want to order  |  CHAR |  | TRUE  
@@ -7770,197 +7775,56 @@ token |   |  CHAR |  | TRUE
 
 This function contains response that is **required** for the next api call `Flight Add Order`. Please ensure that every field in the required field is sent when adding order
 
-#### HTTP Request
-
-`GET http://api-sandbox.tiket.com/flight_api/get_flight_data?flight_id=16825942&token=2b2f462814af7c0d2e1b40f28e2d9dff5e900f24&date=2014-05-30`
-
-
     
     
-## Get Mandala/Tiger/Airasia baggage
+## Add Order
 
-Specially for **Mandala, Tiger and airasia** flights, you must input baggage code when add order.  
-this is the baggage list.  
-  
-Name | Description | Format | Default | Mandatory  
-flight_id |  flight_id want to order  |  CHAR |  | TRUE  
-ret_flight_id |  ret_flight_id want to order for return flight  |  CHAR |  | TRUE/FALSE  
-
-
-#### HTTP Request
-
-    `http://api-sandbox.tiket.com/flight_api/list_baggage?flight_id=9670962&output=xml&token=647e7ddad6b934c97715d5b825ce2dae&output=json`
 
 ```xml
-    This XML file does not appear to have any style information associated with it. The document tree is shown below.
-    <tiket>
-    	<output_type>xml</output_type>
-    	<diagnostic>
-    		<status>200</status>
-    		<elapsetime>7.3044</elapsetime>
-    		<memoryusage>18.47MB</memoryusage>
-    		<confirm>success</confirm>
-    		<lang>id</lang>
-    		<currency>IDR</currency>
-    	</diagnostic>
-    	<departures>
-    		<detail>
-    			<dep_airport>CGK</dep_airport>
-    			<flight_no>TR2275</flight_no>
-    			<arr_airport>SIN</arr_airport>
-    			<baggage>
-    				<data>
-    					<ssr_code>AC10|10</ssr_code>
-    					<currency>IDR</currency>
-    					<fee>44000.00</fee>
-    					<size>10</size>
-    				</data>
-    				<data>
-    					<ssr_code>AC15|15</ssr_code>
-    					<currency>IDR</currency>
-    					<fee>67000.00</fee>
-    					<size>15</size>
-    				</data>
-    				<data>
-    					<ssr_code>AC20|20</ssr_code>
-    					<currency>IDR</currency>
-    					<fee>89000.00</fee>
-    					<size>20</size>
-    				</data>
-    			<baggage>
-    		</detail>
-    		<detail>
-    			<dep_airport>SIN</dep_airport>
-    			<flight_no>TR2952</flight_no>
-    			<arr_airport>SZX</arr_airport>
-    			<baggage>
-    				<data>
-    					<ssr_code>AC10|10</ssr_code>
-    					<currency>IDR</currency>
-    					<fee>100000.00</fee>
-    					<size>10</size>
-    				</data>
-    				<data>
-    					<ssr_code>AC15|15</ssr_code>
-    					<currency>IDR</currency>
-    					<fee>120000.00</fee>
-    					<size>15</size>
-    				</data>
-    				<data>
-    					<ssr_code>AC20|20</ssr_code>
-    					<currency>IDR</currency>
-    					<fee>133000.00</fee>
-    					<size>20</size>
-    				</data>
-    			<baggage>
-    		</detail>
-    	</departures>
-    	<returns>
-    	</returns>
-    	<token>647e7ddad6b934c97715d5b825ce2dae</token>
-    </tiket>
+<tiket>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>0.0447</elapsetime>
+    <memoryusage>4.16MB</memoryusage>
+    <unix_timestamp>1401938205</unix_timestamp>
+    <confirm>success</confirm>
+    <lang>id</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <output_type>xml</output_type>
+  <login_status>false</login_status>
+  <token>3fe6e7cd89ec0df92f102d0e12c19536972e2aa5</token>
+</tiket>
 ```
 
 
-
 ```json
-    {
-    	output_type: "json",
-    	diagnostic: {
-    		status: 200,
-    		elapsetime: "7.4277",
-    		memoryusage: "18.44MB",
-    		confirm: "success",
-    		lang: "id",
-    		currency: "IDR"
-    	},
-    	departures: {
-    		detail: {
-    			dep_airport: "CGK",
-    			flight_no: "TR2275",
-    			arr_airport: "DPS",
-    			baggage: {
-    				data: [
-    				{
-    					ssr_code: "AC10|10",
-    					currency: "IDR",
-    					fee: "100000.00",
-    					size: 10
-    				},
-    				{
-    					ssr_code: "AC15|15",
-    					currency: "IDR",
-    					fee: "67000.00",
-    					size: 15
-    				},
-    				{
-    					ssr_code: "AC20|20",
-    					currency: "IDR",
-    					fee: "89000.00",
-    					size: 20
-    				}
-    				]
-    			},
-    		},
-    		detail: {
-    			dep_airport: "CGK",
-    			arr_airport: "DPS",
-    			flight_no: "TR2952",
-    			baggage: {
-    				data: [
-    				{
-    					ssr_code: "AC10|10",
-    					currency: "IDR",
-    					fee: "100000.00",
-    					size: 10
-    				},
-    				{
-    					ssr_code: "AC15|15",
-    					currency: "IDR",
-    					fee: "120000.00",
-    					size: 15
-    				},
-    				{
-    					ssr_code: "AC20|20",
-    					currency: "IDR",
-    					fee: "133000.00",
-    					size: 20
-    				}
-    				]
-    			},
-    		},
-    	},
-    	returns: {
-    	},
-    	token: "647e7ddad6b934c97715d5b825ce2dae"
-    }
+{
+"diagnostic": {
+  "status": 200,
+  "elapsetime": "0.0449",
+  "memoryusage": "4.15MB",
+  "unix_timestamp": 1401938247,
+  "confirm": "success",
+  "lang": "id",
+  "currency": "IDR"
+},
+"output_type": "json",
+"login_status": "false",
+"token": "55b2746a9c8393822d58eae15f4bc92aedbda089"
+}
 ```
 
 
 
 ```matlab
-    a:4:{s:11:"output_type";s:9:"serialize";
-    s:10:"diagnostic";a:6:{s:6:"status";i:200;
-    s:10:"elapsetime";s:14:"17.3305";
-    s:11:"memoryusage";s:14:"18.44MB";
-    s:7:"confirm";s:7:"success";
-    s:4:"lang";s:2:"id";
-    s:8:"currency";s:3:"IDR";}
-    s:12:"list_baggage";a:2:{
-    s:6:"detail";a:3:{s:11:"dep_airport";s:3:"CGK";s:11:"arr_airport";s:3:"DPS";s:9:"flight_no";s:6:"TR2275";
-    s:7:"baggage";a:3{
-    s:4:"data";a:7:{i:0;a:4:{s:8:"ssr_code";s:4:"AC10";s:8:"currency";s:3:"IDR";s:3:"fee";s:8:"44000.00";s:4:"size";i:10;}i:1;a:4:{s:8:"ssr_code";s:4:"AC15";s:8:"currency";s:3:"IDR";s:3:"fee";s:8:"67000.00";s:4:"size";i:15;}i:2;a:4:{s:8:"ssr_code";s:4:"AC20";s:8:"currency";s:3:"IDR";s:3:"fee";s:8:"89000.00";s:4:"size";i:20;}
-    }}}}
-    s:6:"detail";a:3:{s:11:"dep_airport";s:3:"CGK";s:11:"arr_airport";s:3:"DPS";s:9:"flight_no";s:6:"TR2952";
-    s:7:"baggage";a:3{
-    s:4:"data";a:7:{i:0;a:4:{s:8:"ssr_code";s:4:"AC10";s:8:"currency";s:3:"IDR";s:3:"fee";s:8:"100000.00";s:4:"size";i:10;}i:1;a:4:{s:8:"ssr_code";s:4:"AC15";s:8:"currency";s:3:"IDR";s:3:"fee";s:8:"120000.00";s:4:"size";i:15;}i:2;a:4:{s:8:"ssr_code";s:4:"AC20";s:8:"currency";s:3:"IDR";s:3:"fee";s:8:"133000.00";s:4:"size";i:20;}
-    }}}}
-    s:5:"token";s:32:"647e7ddad6b934c97715d5b825ce2dae";}
+a: 4: {
+s: 10: "diagnostic";a: 7: {
+  s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.0595";s: 11: "memoryusage";s: 14: "4.15MB";s: 14: "unix_timestamp";i: 1401938329;s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+}
+s: 11: "output_type";s: 9: "serialize";s: 12: "login_status";s: 5: "false";s: 5: "token";s: 40: "bec1f8aa40aabbfeb32e0f3576a2b7fdf533505e";
+}
 ```
-    
-    
-## Add Order
-
 
 Attention!  
 - we hope the data that was use for testing is not an random word, use data that seems real  
@@ -7974,9 +7838,12 @@ Maximal passenger Adult : 6
 Maximal passenger Child : 6  
 Maximal passenger infant : 6
 
-#### Parameters
+#### HTTP Request
 
-  
+     `GET https://api-sandbox.tiket.com/order/add/flight?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&flight_id=20203327&child=1&adult=1&infant=1&conSalutation=Mrs&conFirstName=budianto&conLastName=wijaya&conPhone=%2B6287880182218&conEmailAddress=you_julin@yahoo.com&firstnamea1=susi&lastnamea1=wijaya&ida1=1116057107900001&titlea1=Mr&conOtherPhone=%2B628521342534&titlec1=Ms&firstnamec1=carreen&lastnamec1=athalia&birthdatec1=2005-02-02&titlei1=Mr&parenti1=1&firstnamei1=wendy&lastnamei1=suprato&birthdatei1=2011-06-29&output=XML`
+
+#### Parameters
+ 
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------
 token | for saving transaction that done by user | CHAR(128) |  | TRUE  
@@ -8040,61 +7907,14 @@ rcheckinbaggagea11 | "return baggage code for adult passanger as an array like r
 rcheckinbaggagec11 | "return baggage cod for child passanger as an array like rcheckinbaggagec11 |  rcheckinbaggagec12 if you have adult passenger and array like rcheckinbaggagec11 |  rcheckinbaggagec21 if transit flight" | CHAR(18) | TRUE
 
 
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/order/add/flight?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&flight_id=20203327&child=1&adult=1&infant=1&conSalutation=Mrs&conFirstName=budianto&conLastName=wijaya&conPhone=%2B6287880182218&conEmailAddress=you_julin@yahoo.com&firstnamea1=susi&lastnamea1=wijaya&ida1=1116057107900001&titlea1=Mr&conOtherPhone=%2B628521342534&titlec1=Ms&firstnamec1=carreen&lastnamec1=athalia&birthdatec1=2005-02-02&titlei1=Mr&parenti1=1&firstnamei1=wendy&lastnamei1=suprato&birthdatei1=2011-06-29&output=XML`
-
-#### Output
-
-```xml
-    <tiket>
-    <diagnostic>
-    <status>200</status>
-    <elapsetime>0.0447</elapsetime>
-    <memoryusage>4.16MB</memoryusage>
-    <unix_timestamp>1401938205</unix_timestamp>
-    <confirm>success</confirm>
-    <lang>id</lang>
-    <currency>IDR</currency>
-    </diagnostic>
-    <output_type>xml</output_type>
-    <login_status>false</login_status>
-    <token>3fe6e7cd89ec0df92f102d0e12c19536972e2aa5</token>
-    </tiket>
-```
-
-
-
-```json
-    {"diagnostic":{"status":200,"elapsetime":"0.0449","memoryusage":"4.15MB","unix_timestamp":1401938247,"confirm":"success","lang":"id","currency":"IDR"},"output_type":"json","login_status":"false","token":"55b2746a9c8393822d58eae15f4bc92aedbda089"}
-```
-
-
-
-```matlab
-    a:4:{s:10:"diagnostic";a:7:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.0595";s:11:"memoryusage";s:14:"4.15MB";s:14:"unix_timestamp";i:1401938329;s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:11:"output_type";s:9:"serialize";s:12:"login_status";s:5:"false";s:5:"token";s:40:"bec1f8aa40aabbfeb32e0f3576a2b7fdf533505e";}
-```
     
     
 ## Order
 
-#### Parameters
-
-  
-Name,Description,Format,Default,Mandatory  
-token,for saving transaction that done by user,CHAR(128),,TRUE  
-
-
-#### HTTP Request
-
-    `https://api-sandbox.tiket.com/order?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&output=xml`
-
-#### Output
 
 ```xml
-    <tiket>
-    <diagnostic>
+<tiket>
+  <diagnostic>
     <status>200</status>
     <elapsetime>0.1170</elapsetime>
     <memoryusage>6.2MB</memoryusage>
@@ -8102,9 +7922,9 @@ token,for saving transaction that done by user,CHAR(128),,TRUE
     <confirm>success</confirm>
     <lang>id</lang>
     <currency>IDR</currency>
-    </diagnostic>
-    <output_type>xml</output_type>
-    <myorder>
+  </diagnostic>
+  <output_type>xml</output_type>
+  <myorder>
     <order_id>20604252</order_id>
     <data>
     <expire>45</expire>
@@ -8192,53 +8012,182 @@ token,for saving transaction that done by user,CHAR(128),,TRUE
     <total_without_tax>1086300</total_without_tax>
     <count_installment>0</count_installment>
     <discount>
-    Dapatkan potongan hingga IDR 26.985,00 saat anda checkout . Tidak berlaku untuk Kartu Kredit.
+      Dapatkan potongan hingga IDR 26.985,00 saat anda checkout . Tidak berlaku untuk Kartu Kredit.
     </discount>
     <discount_amount>26985.00</discount_amount>
-    </myorder>
-    <checkout>https://api.tiket.com/order/checkout/20604252/IDR</checkout>
-    <login_status>false</login_status>
-    <token>4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf</token>
-    </tiket>
+  </myorder>
+  <checkout>https://api.tiket.com/order/checkout/20604252/IDR</checkout>
+  <login_status>false</login_status>
+  <token>4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf</token>
+</tiket>
 ```
 
 
 
 ```json
-    {"diagnostic":{"status":200,"elapsetime":"0.1562","memoryusage":"6.19MB","unix_timestamp":1401939129,"confirm":"success","lang":"id","currency":"IDR"},"output_type":"json","myorder":{"order_id":"20604252","data":[{"expire":40,"uri":null,"order_detail_id":"8092570","order_type":"flight","customer_price":"1086300.00","order_name":"CGK (Jakarta - Cengkareng) - DPS (Denpasar, Bali)","order_name_detail":"Lion (JT-568 - Depart)","order_detail_status":"active","detail":{"order_detail_id":"8092570","airlines_name":"Lion","flight_number":"JT-568","price_adult":"1086300.00","price_child":"0.00","price_infant":"0.00","flight_date":"25 Jun 2014","departure_time":"19:00","arrival_time":"23:00","baggage_fee":null,"departure_airport_name":"Soekarno Hatta","arrival_airport_name":"Ngurah Rai","passengers":{"adult":[{"order_passenger_id":"3079516","order_detail_id":"8092570","type":"adult","first_name":"susi","last_name":"wijaya","title":"Mr","id_number":"1116057107900001","birth_date":null,"adult_index":null,"passport_no":null,"passport_expiry":null,"passport_issuing_country":null,"passport_nationality":null,"check_in_baggage":null,"check_in_baggage_size":null,"passport_issued_date":null,"birth_country":null}]},"price":1086300,"breakdown_price":[{"category":"price adult","type":"none","value":1086300,"currency":"IDR","text":"Harga Dewasa"},{"category":"total base price","type":"price","value":1086300,"currency":"IDR","text":"Harga Total"},{"category":"baggage fee","type":"add","value":0,"currency":"IDR","text":"Biaya Bagasi"},{"category":"subsidy","type":"subtract","value":0,"currency":"IDR","text":"Subsidi"}]},"order_photo":"https:\/\/api.tiket.com\/images\/icon_lion.jpg","order_icon":"h3b","tax_and_charge":"26985.00","subtotal_and_charge":"1113285.00","delete_uri":"https:\/\/api.tiket.com\/order\/delete_order?order_detail_id=8092570"}],"total":1113285,"total_tax":26985,"total_without_tax":1086300,"count_installment":0,"promo":[],"discount":"Dapatkan potongan hingga IDR 26.985,00 saat anda checkout . Tidak berlaku untuk Kartu Kredit.","discount_amount":"26985.00"},"checkout":"https:\/\/api.tiket.com\/order\/checkout\/20604252\/IDR","login_status":"false","token":"4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf"}
+{
+"diagnostic": {
+  "status": 200,
+  "elapsetime": "0.1562",
+  "memoryusage": "6.19MB",
+  "unix_timestamp": 1401939129,
+  "confirm": "success",
+  "lang": "id",
+  "currency": "IDR"
+},
+"output_type": "json",
+"myorder": {
+  "order_id": "20604252",
+  "data": [{
+    "expire": 40,
+    "uri": null,
+    "order_detail_id": "8092570",
+    "order_type": "flight",
+    "customer_price": "1086300.00",
+    "order_name": "CGK (Jakarta - Cengkareng) - DPS (Denpasar, Bali)",
+    "order_name_detail": "Lion (JT-568 - Depart)",
+    "order_detail_status": "active",
+    "detail": {
+      "order_detail_id": "8092570",
+      "airlines_name": "Lion",
+      "flight_number": "JT-568",
+      "price_adult": "1086300.00",
+      "price_child": "0.00",
+      "price_infant": "0.00",
+      "flight_date": "25 Jun 2014",
+      "departure_time": "19:00",
+      "arrival_time": "23:00",
+      "baggage_fee": null,
+      "departure_airport_name": "Soekarno Hatta",
+      "arrival_airport_name": "Ngurah Rai",
+      "passengers": {
+        "adult": [{
+          "order_passenger_id": "3079516",
+          "order_detail_id": "8092570",
+          "type": "adult",
+          "first_name": "susi",
+          "last_name": "wijaya",
+          "title": "Mr",
+          "id_number": "1116057107900001",
+          "birth_date": null,
+          "adult_index": null,
+          "passport_no": null,
+          "passport_expiry": null,
+          "passport_issuing_country": null,
+          "passport_nationality": null,
+          "check_in_baggage": null,
+          "check_in_baggage_size": null,
+          "passport_issued_date": null,
+          "birth_country": null
+        }]
+      },
+      "price": 1086300,
+      "breakdown_price": [{
+        "category": "price adult",
+        "type": "none",
+        "value": 1086300,
+        "currency": "IDR",
+        "text": "Harga Dewasa"
+      }, {
+        "category": "total base price",
+        "type": "price",
+        "value": 1086300,
+        "currency": "IDR",
+        "text": "Harga Total"
+      }, {
+        "category": "baggage fee",
+        "type": "add",
+        "value": 0,
+        "currency": "IDR",
+        "text": "Biaya Bagasi"
+      }, {
+        "category": "subsidy",
+        "type": "subtract",
+        "value": 0,
+        "currency": "IDR",
+        "text": "Subsidi"
+      }]
+    },
+    "order_photo": "https:\/\/api.tiket.com\/images\/icon_lion.jpg",
+    "order_icon": "h3b",
+    "tax_and_charge": "26985.00",
+    "subtotal_and_charge": "1113285.00",
+    "delete_uri": "https:\/\/api.tiket.com\/order\/delete_order?order_detail_id=8092570"
+  }],
+  "total": 1113285,
+  "total_tax": 26985,
+  "total_without_tax": 1086300,
+  "count_installment": 0,
+  "promo": [],
+  "discount": "Dapatkan potongan hingga IDR 26.985,00 saat anda checkout . Tidak berlaku untuk Kartu Kredit.",
+  "discount_amount": "26985.00"
+},
+"checkout": "https:\/\/api.tiket.com\/order\/checkout\/20604252\/IDR",
+"login_status": "false",
+"token": "4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf"
+}
 ```
 
 
 
 ```matlab
-    a:6:{s:10:"diagnostic";a:7:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.0915";s:11:"memoryusage";s:14:"6.19MB";s:14:"unix_timestamp";i:1401939144;s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:11:"output_type";s:9:"serialize";s:7:"myorder";a:9:{s:8:"order_id";s:8:"20604252";s:4:"data";a:1:{i:0;a:14:{s:6:"expire";i:40;s:3:"uri";N;s:15:"order_detail_id";s:7:"8092570";s:10:"order_type";s:6:"flight";s:14:"customer_price";s:10:"1086300.00";s:10:"order_name";s:49:"CGK (Jakarta - Cengkareng) - DPS (Denpasar, Bali)";s:17:"order_name_detail";s:22:"Lion (JT-568 - Depart)";s:19:"order_detail_status";s:6:"active";s:6:"detail";a:15:{s:15:"order_detail_id";s:7:"8092570";s:13:"airlines_name";s:4:"Lion";s:13:"flight_number";s:6:"JT-568";s:11:"price_adult";s:10:"1086300.00";s:11:"price_child";s:4:"0.00";s:12:"price_infant";s:4:"0.00";s:11:"flight_date";s:11:"25 Jun 2014";s:14:"departure_time";s:5:"19:00";s:12:"arrival_time";s:5:"23:00";s:11:"baggage_fee";N;s:22:"departure_airport_name";s:14:"Soekarno Hatta";s:20:"arrival_airport_name";s:10:"Ngurah Rai";s:10:"passengers";a:1:{s:5:"adult";a:1:{i:0;a:17:{s:18:"order_passenger_id";s:7:"3079516";s:15:"order_detail_id";s:7:"8092570";s:4:"type";s:5:"adult";s:10:"first_name";s:4:"susi";s:9:"last_name";s:6:"wijaya";s:5:"title";s:2:"Mr";s:9:"id_number";s:16:"1116057107900001";s:10:"birth_date";N;s:11:"adult_index";N;s:11:"passport_no";N;s:15:"passport_expiry";N;s:24:"passport_issuing_country";N;s:20:"passport_nationality";N;s:16:"check_in_baggage";N;s:21:"check_in_baggage_size";N;s:20:"passport_issued_date";N;s:13:"birth_country";N;}}}s:5:"price";d:1086300;s:15:"breakdown_price";a:4:{i:0;a:5:{s:8:"category";s:11:"price adult";s:4:"type";s:4:"none";s:5:"value";d:1086300;s:8:"currency";s:3:"IDR";s:4:"text";s:29:"Harga Dewasa";}i:1;a:5:{s:8:"category";s:16:"total base price";s:4:"type";s:5:"price";s:5:"value";d:1086300;s:8:"currency";s:3:"IDR";s:4:"text";s:29:"Harga Total";}i:2;a:5:{s:8:"category";s:11:"baggage fee";s:4:"type";s:3:"add";s:5:"value";i:0;s:8:"currency";s:3:"IDR";s:4:"text";s:35:"Biaya Bagasi";}i:3;a:5:{s:8:"category";s:7:"subsidy";s:4:"type";s:8:"subtract";s:5:"value";d:0;s:8:"currency";s:3:"IDR";s:4:"text";s:31:"Subsidi";}}}s:11:"order_photo";s:42:"https://api.tiket.com/images/icon_lion.jpg";s:10:"order_icon";s:3:"h3b";s:14:"tax_and_charge";s:8:"26985.00";s:19:"subtotal_and_charge";s:10:"1113285.00";s:10:"delete_uri";s:64:"https://api.tiket.com/order/delete_order?order_detail_id=8092570";}}s:5:"total";d:1113285;s:9:"total_tax";d:26985;s:17:"total_without_tax";d:1086300;s:17:"count_installment";i:0;s:5:"promo";a:0:{}s:8:"discount";s:110:"Dapatkan potongan hingga IDR 26.985,00 saat anda checkout . Tidak berlaku untuk Kartu Kredit.";s:15:"discount_amount";s:8:"26985.00";}s:8:"checkout";s:49:"https://api.tiket.com/order/checkout/20604252/IDR";s:12:"login_status";s:5:"false";s:5:"token";s:40:"4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf";}
+a: 6: {
+s: 10: "diagnostic";a: 7: {
+  s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.0915";s: 11: "memoryusage";s: 14: "6.19MB";s: 14: "unix_timestamp";i: 1401939144;s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+}
+s: 11: "output_type";s: 9: "serialize";s: 7: "myorder";a: 9: {
+  s: 8: "order_id";s: 8: "20604252";s: 4: "data";a: 1: {
+    i: 0;a: 14: {
+      s: 6: "expire";i: 40;s: 3: "uri";N;s: 15: "order_detail_id";s: 7: "8092570";s: 10: "order_type";s: 6: "flight";s: 14: "customer_price";s: 10: "1086300.00";s: 10: "order_name";s: 49: "CGK (Jakarta - Cengkareng) - DPS (Denpasar, Bali)";s: 17: "order_name_detail";s: 22: "Lion (JT-568 - Depart)";s: 19: "order_detail_status";s: 6: "active";s: 6: "detail";a: 15: {
+        s: 15: "order_detail_id";s: 7: "8092570";s: 13: "airlines_name";s: 4: "Lion";s: 13: "flight_number";s: 6: "JT-568";s: 11: "price_adult";s: 10: "1086300.00";s: 11: "price_child";s: 4: "0.00";s: 12: "price_infant";s: 4: "0.00";s: 11: "flight_date";s: 11: "25 Jun 2014";s: 14: "departure_time";s: 5: "19:00";s: 12: "arrival_time";s: 5: "23:00";s: 11: "baggage_fee";N;s: 22: "departure_airport_name";s: 14: "Soekarno Hatta";s: 20: "arrival_airport_name";s: 10: "Ngurah Rai";s: 10: "passengers";a: 1: {
+          s: 5: "adult";a: 1: {
+            i: 0;a: 17: {
+              s: 18: "order_passenger_id";s: 7: "3079516";s: 15: "order_detail_id";s: 7: "8092570";s: 4: "type";s: 5: "adult";s: 10: "first_name";s: 4: "susi";s: 9: "last_name";s: 6: "wijaya";s: 5: "title";s: 2: "Mr";s: 9: "id_number";s: 16: "1116057107900001";s: 10: "birth_date";N;s: 11: "adult_index";N;s: 11: "passport_no";N;s: 15: "passport_expiry";N;s: 24: "passport_issuing_country";N;s: 20: "passport_nationality";N;s: 16: "check_in_baggage";N;s: 21: "check_in_baggage_size";N;s: 20: "passport_issued_date";N;s: 13: "birth_country";N;
+            }
+          }
+        }
+        s: 5: "price";d: 1086300;s: 15: "breakdown_price";a: 4: {
+          i: 0;a: 5: {
+            s: 8: "category";s: 11: "price adult";s: 4: "type";s: 4: "none";s: 5: "value";d: 1086300;s: 8: "currency";s: 3: "IDR";s: 4: "text";s: 29: "Harga Dewasa";
+          }
+          i: 1;a: 5: {
+            s: 8: "category";s: 16: "total base price";s: 4: "type";s: 5: "price";s: 5: "value";d: 1086300;s: 8: "currency";s: 3: "IDR";s: 4: "text";s: 29: "Harga Total";
+          }
+          i: 2;a: 5: {
+            s: 8: "category";s: 11: "baggage fee";s: 4: "type";s: 3: "add";s: 5: "value";i: 0;s: 8: "currency";s: 3: "IDR";s: 4: "text";s: 35: "Biaya Bagasi";
+          }
+          i: 3;a: 5: {
+            s: 8: "category";s: 7: "subsidy";s: 4: "type";s: 8: "subtract";s: 5: "value";d: 0;s: 8: "currency";s: 3: "IDR";s: 4: "text";s: 31: "Subsidi";
+          }
+        }
+      }
+      s: 11: "order_photo";s: 42: "https://api.tiket.com/images/icon_lion.jpg";s: 10: "order_icon";s: 3: "h3b";s: 14: "tax_and_charge";s: 8: "26985.00";s: 19: "subtotal_and_charge";s: 10: "1113285.00";s: 10: "delete_uri";s: 64: "https://api.tiket.com/order/delete_order?order_detail_id=8092570";
+    }
+  }
+  s: 5: "total";d: 1113285;s: 9: "total_tax";d: 26985;s: 17: "total_without_tax";d: 1086300;s: 17: "count_installment";i: 0;s: 5: "promo";a: 0: {}
+  s: 8: "discount";s: 110: "Dapatkan potongan hingga IDR 26.985,00 saat anda checkout . Tidak berlaku untuk Kartu Kredit.";s: 15: "discount_amount";s: 8: "26985.00";
+}
+s: 8: "checkout";s: 49: "https://api.tiket.com/order/checkout/20604252/IDR";s: 12: "login_status";s: 5: "false";s: 5: "token";s: 40: "4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf";
+}
 ```
-    
-    
-    
-## Delete Order
-
-
-link url can be get from order, variable delete_uri
-
-#### Parameters
-
-  
-Name | Description | Format | Default | Mandatory  
----- | ----------  | -----  | ------- | ---------
-order_detail_id | Order detail ID that want to delete from order | NUMBER |  | TRUE  
-token | for saving transaction that done by user | CHAR(128) |  | TRUE  
-
 
 #### HTTP Request
 
-    `https://api-sandbox.tiket.com/order/delete_order?order_detail_id=8092570&token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&output=xml`
+    `GET https://api-sandbox.tiket.com/order?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&output=xml`
 
-#### Output
+#### Parameters
+  
+Name | Description | Format | Default | Mandatory  
+---- | ----------  | -----  | ------- | ---------
+token | for saving transaction that done by user | CHAR(128) |  | TRUE  
+
+
+
+## Delete Order
 
 ```xml
-    <tiket>
-    <diagnostic>
+<tiket>
+  <diagnostic>
     <status>200</status>
     <elapsetime>0.2537</elapsetime>
     <memoryusage>5.5MB</memoryusage>
@@ -8246,28 +8195,111 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
     <confirm>success</confirm>
     <lang>id</lang>
     <currency>IDR</currency>
-    </diagnostic>
-    <output_type>xml</output_type>
-    <updateStatus>success delete order</updateStatus>
-    <login_status>false</login_status>
-    <token>4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf</token>
-    </tiket>
+  </diagnostic>
+  <output_type>xml</output_type>
+  <updateStatus>success delete order</updateStatus>
+  <login_status>false</login_status>
+  <token>4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf</token>
+</tiket>
 ```
 
 ```json
+{
+"diagnostic": {
+  "error_msgs": "Order failed to delete",
+  "status": 201,
+  "elapsetime": "0.0557",
+  "memoryusage": "4.58MB",
+  "unix_timestamp": 1401939653,
+  "lang": "id",
+  "currency": "IDR"
+},
+"output_type": "json",
+"updateStatus": "failed delete order",
+"login_status": "false",
+"token": "4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf"
+}
 ```
-
-{"diagnostic":{"error_msgs":"Order failed to delete","status":201,"elapsetime":"0.0557","memoryusage":"4.58MB","unix_timestamp":1401939653,"lang":"id","currency":"IDR"},"output_type":"json","updateStatus":"failed delete order","login_status":"false","token":"4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf"}
 
 ```matlab
-    a:5:{s:10:"diagnostic";a:7:{s:10:"error_msgs";s:22:"Order failed to delete";s:6:"status";i:201;s:10:"elapsetime";s:14:"0.0465";s:11:"memoryusage";s:14:"4.58MB";s:14:"unix_timestamp";i:1401939677;s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:11:"output_type";s:9:"serialize";s:12:"updateStatus";s:19:"failed delete order";s:12:"login_status";s:5:"false";s:5:"token";s:40:"4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf";}
-```
+a: 5: {
+s: 10: "diagnostic";a: 7: {
+  s: 10: "error_msgs";s: 22: "Order failed to delete";s: 6: "status";i: 201;s: 10: "elapsetime";s: 14: "0.0465";s: 11: "memoryusage";s: 14: "4.58MB";s: 14: "unix_timestamp";i: 1401939677;s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+}
+s: 11: "output_type";s: 9: "serialize";s: 12: "updateStatus";s: 19: "failed delete order";s: 12: "login_status";s: 5: "false";s: 5: "token";s: 40: "4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf";
+}```
+
+link url can be get from order, variable delete_uri
+
+#### HTTP Request
+
+    `GET https://api-sandbox.tiket.com/order/delete_order?order_detail_id=8092570&token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&output=xml`
+
+#### Parameters
+
+Name | Description | Format | Default | Mandatory  
+---- | ----------  | -----  | ------- | ---------
+order_detail_id | Order detail ID that want to delete from order | NUMBER |  | TRUE  
+token | for saving transaction that done by user | CHAR(128) |  | TRUE  
+
+
     
 ## Checkout Page request
+
+```xml
+<tiket>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>0.0807</elapsetime>
+    <memoryusage>4.6MB</memoryusage>
+    <unix_timestamp>1401943234</unix_timestamp>
+    <confirm>success</confirm>
+    <lang>id</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <output_type>xml</output_type>
+  <next_checkout_uri>https://api.tiket.com/checkout/checkout_customer</next_checkout_uri>
+  <login_status>false</login_status>
+  <token>4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf</token>
+</tiket>
+```
+
+```json
+{
+"diagnostic": {
+ "status": 200,
+ "elapsetime": "0.0794",
+ "memoryusage": "4.59MB",
+ "unix_timestamp": 1401943530,
+ "confirm": "success",
+ "lang": "id",
+ "currency": "IDR"
+},
+"output_type": "json",
+"next_checkout_uri": "https:\/\/api.tiket.com\/checkout\/checkout_customer",
+"login_status": "false",
+"token": "4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf"
+}
+```
+
+```matlab
+a: 5: {
+s: 10: "diagnostic";a: 7: {
+  s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.0639";s: 11: "memoryusage";s: 14: "4.59MB";s: 14: "unix_timestamp";i: 1401943547;s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+}
+s: 11: "output_type";s: 9: "serialize";s: 17: "next_checkout_uri";s: 48: "https://api.tiket.com/checkout/checkout_customer";s: 12: "login_status";s: 5: "false";s: 5: "token";s: 40: "4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf";
+}
+``` 
 
 Early stage to access checkout.
 
 link url can be get from order, variable checkout.
+
+#### HTTP Request
+
+     `GET https://api-sandbox.tiket.com/order/checkout/20604252/IDR?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf`
+
+Get from order page in checkout variable.
 
 #### Parameters
 
@@ -8277,45 +8309,74 @@ Name | Description | Format | Default | Mandatory
 token | for saving transaction that done by user | CHAR(128) |  | TRUE  
 
 
-#### HTTP Request
 
-    `https://api-sandbox.tiket.com/order/checkout/20604252/IDR?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf`
-
-Get from order page in checkout variable.
-
-#### Output
-
-```xml
-    <tiket>
-    <diagnostic>
-    <status>200</status>
-    <elapsetime>0.0807</elapsetime>
-    <memoryusage>4.6MB</memoryusage>
-    <unix_timestamp>1401943234</unix_timestamp>
-    <confirm>success</confirm>
-    <lang>id</lang>
-    <currency>IDR</currency>
-    </diagnostic>
-    <output_type>xml</output_type>
-    <next_checkout_uri>https://api.tiket.com/checkout/checkout_customer</next_checkout_uri>
-    <login_status>false</login_status>
-    <token>4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf</token>
-    </tiket>
-```
-
-```json
-    {"diagnostic":{"status":200,"elapsetime":"0.0794","memoryusage":"4.59MB","unix_timestamp":1401943530,"confirm":"success","lang":"id","currency":"IDR"},"output_type":"json","next_checkout_uri":"https:\/\/api.tiket.com\/checkout\/checkout_customer","login_status":"false","token":"4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf"}
-```
-
-```matlab
-    a:5:{s:10:"diagnostic";a:7:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.0639";s:11:"memoryusage";s:14:"4.59MB";s:14:"unix_timestamp";i:1401943547;s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:11:"output_type";s:9:"serialize";s:17:"next_checkout_uri";s:48:"https://api.tiket.com/checkout/checkout_customer";s:12:"login_status";s:5:"false";s:5:"token";s:40:"4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf";}
-```
-    
     
 ## Checkout Login - Checkout Costumer
 
-#### Parameters
+```xml
+<tiket>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>0.0897</elapsetime>
+    <memoryusage>5.01MB</memoryusage>
+    <unix_timestamp>1401959766</unix_timestamp>
+    <confirm>success</confirm>
+    <lang>id</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <output_type>xml</output_type>
+  <user_account>
+    <username>fatmamiharja@gmail.com</username>
+  </user_account>
+  <login_status>true</login_status>
+  <guest_id>167023</guest_id>
+  <token>4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf</token>
+</tiket>
+```
 
+
+
+```json
+{
+"diagnostic": {
+  "status": 200,
+  "elapsetime": "0.1441",
+  "memoryusage": "5MB",
+  "unix_timestamp": 1401959843,
+  "confirm": "success",
+  "lang": "id",
+  "currency": "IDR"
+},
+"output_type": "json",
+"user_account": {
+  "username": "fatmamiharja@gmail.com"
+},
+"login_status": "true",
+"guest_id": "167023",
+"token": "4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf"
+}
+```
+
+```matlab
+a: 6: {
+s: 10: "diagnostic";a: 7: {
+  s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.0946";s: 11: "memoryusage";s: 14: "5MB";s: 14: "unix_timestamp";i: 1401959859;s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+}
+s: 11: "output_type";s: 9: "serialize";s: 12: "user_account";a: 1: {
+  s: 8: "username";s: 22: "fatmamiharja@gmail.com";
+}
+s: 12: "login_status";s: 4: "true";s: 8: "guest_id";s: 6: "167023";s: 5: "token";s: 40: "4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf";
+}
+```  
+
+#### HTTP Request
+
+     `GET https://api-sandbox.tiket.com/checkout/checkout_customer?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&salutation=Ms&firstName=ba&lastName=ca&emailAddress=fatmamiharja@gmail.com&phone=%2B62878434343&saveContinue=2`
+
+Setelah merequest link tersebut maka user akan dibuatkan account di tiket.com  
+user akan dikirimkan email untuk mengubah password loginnya.
+
+#### Parameters
   
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------
@@ -8327,127 +8388,130 @@ phone | "your phone |  ex: 081232323343 or +62324324234234. Don't forget to urle
 saveContinue | "Flag for save unregistered user data (value=2)" |  |  | TRUE  
 
 
-#### HTTP Request
 
-    `https://api-sandbox.tiket.com/checkout/checkout_customer?token=4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf&salutation=Ms&firstName=ba&lastName=ca&emailAddress=fatmamiharja@gmail.com&phone=%2B62878434343&saveContinue=2`
-
-Setelah merequest link tersebut maka user akan dibuatkan account di tiket.com  
-user akan dikirimkan email untuk mengubah password loginnya.
-
-#### Output
-
-```xml
-    <tiket>
-    <diagnostic>
-      <status>200</status>
-      <elapsetime>0.0897</elapsetime>
-    <memoryusage>5.01MB</memoryusage>
-    <unix_timestamp>1401959766</unix_timestamp>
-    <confirm>success</confirm>
-    <lang>id</lang>
-    <currency>IDR</currency>
-    </diagnostic>
-    <output_type>xml</output_type>
-    <user_account>
-    <username>fatmamiharja@gmail.com</username>
-    </user_account>
-    <login_status>true</login_status>
-    <guest_id>167023</guest_id>
-    <token>4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf</token>
-    </tiket>
-```
-
-
-
-```json
-    {"diagnostic":{"status":200,"elapsetime":"0.1441","memoryusage":"5MB","unix_timestamp":1401959843,"confirm":"success","lang":"id","currency":"IDR"},"output_type":"json","user_account":{"username":"fatmamiharja@gmail.com"},"login_status":"true","guest_id":"167023","token":"4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf"}
-```
-
-
-
-```matlab
-    a:6:{s:10:"diagnostic";a:7:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.0946";s:11:"memoryusage";s:14:"5MB";s:14:"unix_timestamp";i:1401959859;s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:11:"output_type";s:9:"serialize";s:12:"user_account";a:1:{s:8:"username";s:22:"fatmamiharja@gmail.com";}s:12:"login_status";s:4:"true";s:8:"guest_id";s:6:"167023";s:5:"token";s:40:"4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf";}
-```
-    
     
 ## Available Payment
 
-#### Parameters
+```xml
+<tiket>
+  <output_type>xml</output_type>
+  <diagnostic>
+    <status>200</status>
+    <elapsetime>0.5620</elapsetime>
+    <memoryusage>18.77MB</memoryusage>
+    <confirm>success</confirm>
+    <lang>id</lang>
+    <currency>IDR</currency>
+  </diagnostic>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/1
+    </link>
+    <text>Kartu Kredit</text>
+    <message/>
+  </available_payment>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/2
+    </link>
+    <text>Transfer Lewat Bank</text>
+    <message/>
+  </available_payment>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/3
+    </link>
+    <text>KlikBCA</text>
+    <message/>
+  </available_payment>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/4
+    </link>
+    <text>BCA KlikPay</text>
+    <message/>
+  </available_payment>
+  <available_payment>
+    <link> https://api-sandbox.tiket.com/checkout/checkout_payment/20
+    </link>
+    <text>COD</text>
+    <message/>
+  </available_payment>
+  <token>62bc0e3bd0c127c5690125a76e11c23c</token>
+</tiket>
+```
 
-  
+
+```json
+{
+"output_type": "json",
+"diagnostic": {
+  "status": 200,
+  "elapsetime": "0.5625",
+  "memoryusage": "18.74MB",
+  "confirm": "success",
+  "lang": "id",
+  "currency": "IDR"
+},
+"available_payment": [{
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/1",
+  "text": "Kartu Kredit",
+  "message": ""
+}, {
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/2",
+  "text": "Transfer Lewat Bank",
+  "message": ""
+}, {
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/3",
+  "text": "KlikBCA",
+  "message": ""
+}, {
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/4",
+  "text": "BCA KlikPay",
+  "message": ""
+}, {
+  "link": "https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/20",
+  "text": "COD",
+  "message": ""
+}],
+"token": "62bc0e3bd0c127c5690125a76e11c23c"
+}
+```
+
+```matlab
+a: 4: {
+s: 11: "output_type";s: 9: "serialize";s: 10: "diagnostic";a: 6: {
+  s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.5329";s: 11: "memoryusage";s: 14: "18.74MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
+}
+s: 17: "available_payment";a: 5: {
+  i: 0;a: 3: {
+    s: 4: "link";s: 58: "https://api-sandbox.tiket.com/checkout/checkout_payment/1";s: 4: "text";s: 22: "Kartu Kredit";s: 7: "message";s: 0: "";
+  }
+  i: 1;a: 3: {
+    s: 4: "link";s: 58: "https://api-sandbox.tiket.com/checkout/checkout_payment/2";s: 4: "text";s: 24: "Transfer Lewat Bank";s: 7: "message";s: 0: "";
+  }
+  i: 2;a: 3: {
+    s: 4: "link";s: 58: "https://api-sandbox.tiket.com/checkout/checkout_payment/3";s: 4: "text";s: 7: "KlikBCA";s: 7: "message";s: 0: "";
+  }
+  i: 3;a: 3: {
+    s: 4: "link";s: 58: "https://api-sandbox.tiket.com/checkout/checkout_payment/4";s: 4: "text";s: 11: "BCA KlikPay";s: 7: "message";s: 0: "";
+  }
+  i: 4;a: 3: {
+    s: 4: "link";s: 59: "https://api-sandbox.tiket.com/checkout/checkout_payment/20";s: 4: "text";s: 3: "COD";s: 7: "message";s: 0: "";
+  }
+}
+s: 5: "token";s: 32: "62bc0e3bd0c127c5690125a76e11c23c";
+}
+```
+    
+#### HTTP Request
+
+   `GET http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
+
+#### Parameters
+ 
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------
 token | for saving transaction that done by user | CHAR(128) |  | TRUE  
 
 
-#### HTTP Request
 
-    `http://api-sandbox.tiket.com/checkout/checkout_payment?token=87da88eaaa429d5513a3a3658b01701e`
-
-#### Output
-
-```xml
-    <tiket>
-    	<output_type>xml</output_type>
-    	<diagnostic>
-    		<status>200</status>
-    		<elapsetime>0.5620</elapsetime>
-    		<memoryusage>18.77MB</memoryusage>
-    		<confirm>success</confirm>
-    		<lang>id</lang>
-    		<currency>IDR</currency>
-    	</diagnostic>
-    	<available_payment>
-    		<link>
-    			https://api-sandbox.tiket.com/checkout/checkout_payment/1
-    		</link>
-    		<text>Kartu Kredit</text>
-    		<message/>
-    	</available_payment>
-    	<available_payment>
-    		<link>
-    			https://api-sandbox.tiket.com/checkout/checkout_payment/2
-    		</link>
-    		<text>Transfer Lewat Bank</text>
-    		<message/>
-    	</available_payment>
-    	<available_payment>
-    		<link>
-    			https://api-sandbox.tiket.com/checkout/checkout_payment/3
-    		</link>
-    		<text>KlikBCA</text>
-    		<message/>
-    	</available_payment>
-    	<available_payment>
-    		<link>
-    			https://api-sandbox.tiket.com/checkout/checkout_payment/4
-    		</link>
-    		<text>BCA KlikPay</text>
-    		<message/>
-    	</available_payment>
-    	<available_payment>
-    		<link>
-    			https://api-sandbox.tiket.com/checkout/checkout_payment/20
-    		</link>
-    		<text>COD</text>
-    		<message/>
-    	</available_payment>
-    	<token>62bc0e3bd0c127c5690125a76e11c23c</token>
-    </tiket>
-```
-
-
-
-```json
-    {"output_type":"json","diagnostic":{"status":200,"elapsetime":"0.5625","memoryusage":"18.74MB","confirm":"success","lang":"id","currency":"IDR"},"available_payment":[{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/1","text":"Kartu Kredit","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/2","text":"Transfer Lewat Bank","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/3","text":"KlikBCA","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/4","text":"BCA KlikPay","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/20","text":"COD","message":""}],"token":"62bc0e3bd0c127c5690125a76e11c23c"}
-```
-
-
-
-```matlab
-    a:4:{s:11:"output_type";s:9:"serialize";s:10:"diagnostic";a:6:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.5329";s:11:"memoryusage";s:14:"18.74MB";s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:17:"available_payment";a:5:{i:0;a:3:{s:4:"link";s:58:"https://api-sandbox.tiket.com/checkout/checkout_payment/1";s:4:"text";s:22:"Kartu Kredit";s:7:"message";s:0:"";}i:1;a:3:{s:4:"link";s:58:"https://api-sandbox.tiket.com/checkout/checkout_payment/2";s:4:"text";s:24:"Transfer Lewat Bank";s:7:"message";s:0:"";}i:2;a:3:{s:4:"link";s:58:"https://api-sandbox.tiket.com/checkout/checkout_payment/3";s:4:"text";s:7:"KlikBCA";s:7:"message";s:0:"";}i:3;a:3:{s:4:"link";s:58:"https://api-sandbox.tiket.com/checkout/checkout_payment/4";s:4:"text";s:11:"BCA KlikPay";s:7:"message";s:0:"";}i:4;a:3:{s:4:"link";s:59:"https://api-sandbox.tiket.com/checkout/checkout_payment/20";s:4:"text";s:3:"COD";s:7:"message";s:0:"";}}s:5:"token";s:32:"62bc0e3bd0c127c5690125a76e11c23c";}
-```
-    
     
 ## Checkout Payment
 

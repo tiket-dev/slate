@@ -1,6 +1,1 @@
-a: 5: {
-  s: 10: "diagnostic";a: 6: {
-    s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.3394";s: 11: "memoryusage";s: 14: "13.48MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
-  }
-  s: 11: "output_type";s: 9: "serialize";s: 7: "results";s: 10: "1035151.00";s: 12: "login_status";s: 5: "false";s: 5: "token";s: 32: "bafeb06cc887594c1657b6bdcbfd513e";
-}
+{"output_type":"json","diagnostic":{"status":200,"elapsetime":"0.5625","memoryusage":"18.74MB","confirm":"success","lang":"id","currency":"IDR"},"available_payment":[{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/1","text":"Kartu Kredit","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/2","text":"Transfer Lewat Bank","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/3","text":"KlikBCA","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/4","text":"BCA KlikPay","message":""},{"link":"https:\/\/api-sandbox.tiket.com\/checkout\/checkout_payment\/20","text":"COD","message":""}],"token":"62bc0e3bd0c127c5690125a76e11c23c"}
