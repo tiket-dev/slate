@@ -7856,25 +7856,25 @@ adult | number of adult passenger | INT | 1 | FALSE
 conSalutation | contact person title ( ex: Mr., Mrs., Ms.) | CHAR(5) |  | TRUE  
 conFirstName | contact person first name | CHAR(50) |  | TRUE  
 conLastName | contact person last name | CHAR(50) |  | TRUE  
-conPhone | contact person phone |  ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter | CHAR(20) |  | TRUE  
+conPhone | contact person phone , ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter | CHAR(20) |  | TRUE  
 conEmailAddress | contact person email address | CHAR(50) |  | TRUE  
 firstnamea1 | as an array like firstnamea1 firstnamea2 if you have adult passager | CHAR(50) |  | TRUE  
 lastnamea1 | as an array like lastnamea1 lastnamea2 if you have adult passager | CHAR(50) |  | TRUE  
-birthdatea1 | as an array like birthdatea1 |  birthdatea2 if you have adult passenger : format YYYY-MM-DD. **Mandatory for v=2 and above** | DATE |  | FALSE/TRUE  
-ida1 | as an array like ida1 |  ida2 if you have adult passager | CHAR(50) |  | TRUE  
-titlea1 | as an array like titlea1 | titlea2 if you have adult passager : Mr., Ms., Mrs. | CHAR(5) |  | TRUE  
-conOtherPhone | "Other contact person phone |  ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter | CHAR(20) |  | FALSE  
-titlec1 | as an array like titlec1  | titlec2 if you have child passager : Mstr., Miss. | CHAR(5) |  | TRUE  
-firstnamec1 | as an array like firstnamec1 |  firstnamec2 if you have child passager | CHAR(50) |  | TRUE  
-lastnamec1 | as an array like lastnamec1 |  lastnamec2 if you have child passager | CHAR(50) |  | TRUE  
-birthdatec1 | as an array like birthdatec1 |  birthdatec2 if you have Child passager : format YYYY-MM-DD | DATE |  | TRUE  
-idc1 | as an array like idc1 |  idc2 if you have child passager | CHAR(50) |  | FALSE  
-titlei1 | as an array like titlei1  | titlei2 if you have infant passager : Mstr., Miss. | CHAR(5) |  | TRUE  
-parenti1 | as an array like parenti1  | parenti2 if you have infant passager (total infant ≤ total adult). Ex : 1 (adult 1 as parent of infant)  |  2 (adult 2 as parent of infant) | INT | 1 | TRUE  
-firstnamei1 | as an array like firstnamei1 |  firstnamei2 if you have infant passager | CHAR(50) |  | TRUE  
-lastnamei1 | as an array like lastnamei1 |  lastnamei2 if you have infant passager | CHAR(50) |  | TRUE  
-birthdatei1 | as an array like birthdatei1 |  birthdatei2 if you have infant passager : format YYYY-MM-DD | DATE |  | TRUE  
-idi1 | as an array like idi1 |  idi2 if you have child passager | CHAR(50) |  | FALSE  
+birthdatea1 | as an array like birthdatea1 , birthdatea2 if you have adult passenger : format YYYY-MM-DD. **Mandatory for v=2 and above** | DATE |  | FALSE/TRUE  
+ida1 | as an array like ida1,  ida2 if you have adult passager | CHAR(50) |  | TRUE  
+titlea1 | as an array like titlea1, titlea2 if you have adult passager : Mr., Ms., Mrs. | CHAR(5) |  | TRUE  
+conOtherPhone | Other contact person phone, ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter | CHAR(20) |  | FALSE  
+titlec1 | as an array like titlec1, titlec2 if you have child passager : Mstr., Miss. | CHAR(5) |  | TRUE  
+firstnamec1 | as an array like firstnamec1, firstnamec2 if you have child passager | CHAR(50) |  | TRUE  
+lastnamec1 | as an array like lastnamec1, lastnamec2 if you have child passager | CHAR(50) |  | TRUE  
+birthdatec1 | as an array like birthdatec1, birthdatec2 if you have Child passager : format YYYY-MM-DD | DATE |  | TRUE  
+idc1 | as an array like idc1, idc2 if you have child passager | CHAR(50) |  | FALSE  
+titlei1 | as an array like titlei1, titlei2 if you have infant passager : Mstr., Miss. | CHAR(5) |  | TRUE  
+parenti1 | as an array like parenti1, parenti2 if you have infant passager (total infant ≤ total adult). Ex : 1 (adult 1 as parent of infant)  |  2 (adult 2 as parent of infant) | INT | 1 | TRUE  
+firstnamei1 | as an array like firstnamei1, firstnamei2 if you have infant passager | CHAR(50) |  | TRUE  
+lastnamei1 | as an array like lastnamei1, lastnamei2 if you have infant passager | CHAR(50) |  | TRUE  
+birthdatei1 | as an array like birthdatei1, birthdatei2 if you have infant passager : format YYYY-MM-DD | DATE |  | TRUE  
+idi1 | as an array like idi1, idi2 if you have child passager | CHAR(50) |  | FALSE  
 
 
 #### Additional Fields According to Airlines
@@ -7886,12 +7886,12 @@ This is the list of field to may appears
 
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------
-passportnoa1 | as an array like passportnoa1 |  passportnoa2 if you have adult passenger | CHAR(50) |  | TRUE  
-passportExpiryDatea1 | as an array like passportExpiryDatea1 |  passportExpiryDatea2 if you have adult passenger : format YYYY-MM-DD | DATE |  | TRUE  
-passportissueddatea1 | as an array like passportissueddatea1 |  passportissueddatea2 if you have adult passenger : format YYYY-MM-DD | DATE |  | TRUE  
-birthdatea1 | as an array like birthdatea1 |  birthdatea2 if you have adult passenger : format YYYY-MM-DD | DATE |  | TRUE  
-passportissuinga1 | as an array like passportissuinga1 |  passportissuinga2 if you have adult passenger (select from list country ex id for indonesia) | CHAR(50) |  | TRUE  
-passportnationalitya1 | as an array like passportnationalitya1 |  passportnationalitya2 if you have adult passenger (select from list country ex id for indonesia) | CHAR(50) |  | TRUE
+passportnoa1 | as an array like passportnoa1, passportnoa2 if you have adult passenger | CHAR(50) |  | TRUE  
+passportExpiryDatea1 | as an array like passportExpiryDatea1, passportExpiryDatea2 if you have adult passenger : format YYYY-MM-DD | DATE |  | TRUE  
+passportissueddatea1 | as an array like passportissueddatea1, passportissueddatea2 if you have adult passenger : format YYYY-MM-DD | DATE |  | TRUE  
+birthdatea1 | as an array like birthdatea1, birthdatea2 if you have adult passenger : format YYYY-MM-DD | DATE |  | TRUE  
+passportissuinga1 | as an array like passportissuinga1, passportissuinga2 if you have adult passenger (select from list country ex id for indonesia) | CHAR(50) |  | TRUE  
+passportnationalitya1 | as an array like passportnationalitya1, passportnationalitya2 if you have adult passenger (select from list country ex id for indonesia) | CHAR(50) |  | TRUE
 
 
 
@@ -7902,10 +7902,10 @@ Some airlines may required to submit the baggage fields, here is the example
   
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------
-dcheckinbaggagea11 | departure baggage code for adult passanger as an array like dcheckinbaggagea11 |  dcheckinbaggagea12 if you have adult passenger and array like dcheckinbaggagea11 | dcheckinbaggagea21 if transit flight | CHAR(18) | TRUE  
-dcheckinbaggagec11 | departure baggage code for child passanger as an array like dcheckinbaggagec11 |  dcheckinbaggagec12 if you have adult passenge and array like dcheckinbaggagec11 |  dcheckinbaggagec21 if transit flight  | CHAR(18) | TRUE  
-rcheckinbaggagea11 | return baggage code for adult passanger as an array like rcheckinbaggagea11 |  rcheckinbaggagea12 if you have adult passenger and array like rcheckinbaggagea11 |  rcheckinbaggagea21 if transit flight | CHAR(18) | TRUE  
-rcheckinbaggagec11 | return baggage cod for child passanger as an array like rcheckinbaggagec11 |  rcheckinbaggagec12 if you have adult passenger and array like rcheckinbaggagec11 |  rcheckinbaggagec21 if transit flight | CHAR(18) | TRUE
+dcheckinbaggagea11 | departure baggage code for adult passanger as an array like dcheckinbaggagea11, dcheckinbaggagea12 if you have adult passenger and array like dcheckinbaggagea11 | dcheckinbaggagea21 if transit flight | CHAR(18) | TRUE  
+dcheckinbaggagec11 | departure baggage code for child passanger as an array like dcheckinbaggagec11, dcheckinbaggagec12 if you have adult passenge and array like dcheckinbaggagec11 |  dcheckinbaggagec21 if transit flight  | CHAR(18) | TRUE  
+rcheckinbaggagea11 | return baggage code for adult passanger as an array like rcheckinbaggagea11, rcheckinbaggagea12 if you have adult passenger and array like rcheckinbaggagea11 |  rcheckinbaggagea21 if transit flight | CHAR(18) | TRUE  
+rcheckinbaggagec11 | return baggage cod for child passanger as an array like rcheckinbaggagec11, rcheckinbaggagec12 if you have adult passenger and array like rcheckinbaggagec11 |  rcheckinbaggagec21 if transit flight | CHAR(18) | TRUE
 
 
     
