@@ -7870,7 +7870,7 @@ lastnamec1 | as an array like lastnamec1, lastnamec2 if you have child passager 
 birthdatec1 | as an array like birthdatec1, birthdatec2 if you have Child passager : format YYYY-MM-DD | DATE |  | TRUE  
 idc1 | as an array like idc1, idc2 if you have child passager | CHAR(50) |  | FALSE  
 titlei1 | as an array like titlei1, titlei2 if you have infant passager : Mstr., Miss. | CHAR(5) |  | TRUE  
-parenti1 | as an array like parenti1, parenti2 if you have infant passager (total infant ≤ total adult). Ex : 1 (adult 1 as parent of infant)  |  2 (adult 2 as parent of infant) | INT | 1 | TRUE  
+parenti1 | as an array like parenti1, parenti2 if you have infant passager (total infant ≤ total adult). Ex : 1 (adult 1 as parent of infant),  2 (adult 2 as parent of infant) | INT | 1 | TRUE  
 firstnamei1 | as an array like firstnamei1, firstnamei2 if you have infant passager | CHAR(50) |  | TRUE  
 lastnamei1 | as an array like lastnamei1, lastnamei2 if you have infant passager | CHAR(50) |  | TRUE  
 birthdatei1 | as an array like birthdatei1, birthdatei2 if you have infant passager : format YYYY-MM-DD | DATE |  | TRUE  
@@ -7902,10 +7902,10 @@ Some airlines may required to submit the baggage fields, here is the example
   
 Name | Description | Format | Default | Mandatory  
 ---- | ----------  | -----  | ------- | ---------
-dcheckinbaggagea11 | departure baggage code for adult passanger as an array like dcheckinbaggagea11, dcheckinbaggagea12 if you have adult passenger and array like dcheckinbaggagea11 | dcheckinbaggagea21 if transit flight | CHAR(18) | TRUE  
-dcheckinbaggagec11 | departure baggage code for child passanger as an array like dcheckinbaggagec11, dcheckinbaggagec12 if you have adult passenge and array like dcheckinbaggagec11 |  dcheckinbaggagec21 if transit flight  | CHAR(18) | TRUE  
-rcheckinbaggagea11 | return baggage code for adult passanger as an array like rcheckinbaggagea11, rcheckinbaggagea12 if you have adult passenger and array like rcheckinbaggagea11 |  rcheckinbaggagea21 if transit flight | CHAR(18) | TRUE  
-rcheckinbaggagec11 | return baggage cod for child passanger as an array like rcheckinbaggagec11, rcheckinbaggagec12 if you have adult passenger and array like rcheckinbaggagec11 |  rcheckinbaggagec21 if transit flight | CHAR(18) | TRUE
+dcheckinbaggagea11 | departure baggage code for adult passanger as an array like dcheckinbaggagea11, dcheckinbaggagea12 if you have adult passenger and array like dcheckinbaggagea11, dcheckinbaggagea21 if transit flight | CHAR(18) | TRUE  
+dcheckinbaggagec11 | departure baggage code for child passanger as an array like dcheckinbaggagec11, dcheckinbaggagec12 if you have adult passenge and array like dcheckinbaggagec11,  dcheckinbaggagec21 if transit flight  | CHAR(18) | TRUE  
+rcheckinbaggagea11 | return baggage code for adult passanger as an array like rcheckinbaggagea11, rcheckinbaggagea12 if you have adult passenger and array like rcheckinbaggagea11,  rcheckinbaggagea21 if transit flight | CHAR(18) | TRUE  
+rcheckinbaggagec11 | return baggage cod for child passanger as an array like rcheckinbaggagec11, rcheckinbaggagec12 if you have adult passenger and array like rcheckinbaggagec11,  rcheckinbaggagec21 if transit flight | CHAR(18) | TRUE
 
 
     
