@@ -7,7 +7,7 @@ These are the API command for Hotel
 
 Diagram flow for Hotel API:  
 
-[![](http://docs.tiket.com/wp-content/uploads/2012/07/API-hotel-148x300.jpg "API hotel")](http://docs.tiket.com/wp-content/uploads/2012/07/API-hotel.jpg)
+![Hotel API](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/Diagram-Flow-API-Hotel.png)
 
 
 ## Search Hotel
