@@ -6,8 +6,7 @@ These are the API commands for flight
 
 Diagram flow for Flight API:  
 
-[![](http://docs.tiket.com/wp-content/uploads/2012/07/flight-new-2-170x300.jpg "flight - new 2")](http://docs.tiket.com/wp-content/uploads/2012/07/flight-new-2.jpg)
-
+![Diagram Flow API Flight](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/Diagram-Flow-API-Flight.png)
 
 ## Search Flight
 

@@ -876,7 +876,7 @@ conSalutation | contact person title ( ex: Mr., Mrs., Ms.) | CHAR(5) |  | TRUE
 conFirstName | contact person first name | CHAR(50) |  | TRUE  
 conLastName |contact person last name | CHAR(50) |  | TRUE  
 conEmailAddress | contact person email address | CHAR(50) |  | TRUE  
-conPhone | contact person phone |  ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter | CHAR(20) |  | TRUE  
+conPhone | contact person phone, ex: 081232323343 or +62324324234234. Don't forget to urlencode + into %2B in the GET parameter | CHAR(20) |  | TRUE  
 name | Customer name | CHAR(50) |  | TRUE  
 idCard | Customer Id card | CHAR(50) |  | TRUE  
 noHp | Customer phone number | CHAR(20) |  | TRUE  
