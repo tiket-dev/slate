@@ -6,7 +6,7 @@ These are the API commands for flight
 
 Diagram flow for Flight API:  
 
-![Diagram Flow API Flight](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/Diagram-Flow-API-Flight.png)
+![Flight API](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/Diagram-Flow-API-Flight.png)
 
 ## Search Flight
 
