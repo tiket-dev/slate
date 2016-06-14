@@ -7,8 +7,7 @@ These are the API command for Event
 
 Diagram Flow for Event API:  
 
-[![](http://docs.tiket.com/wp-content/uploads/2012/07/API-event-138x300.jpg "API event")](http://docs.tiket.com/wp-content/uploads/2012/07/API-event.jpg)
-
+![Event API](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/Flow-Event.png)
 
 ## Get All Active Events
 

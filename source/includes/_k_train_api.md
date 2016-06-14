@@ -8,7 +8,7 @@ These are the API command for Train.
 
 Diagram flow for Train API:  
 
-[![](http://docs.tiket.com/wp-content/uploads/2012/07/API-train-164x300.jpg "API train")](http://docs.tiket.com/wp-content/uploads/2012/07/API-train.jpg)
+![Train API](https://raw.githubusercontent.com/tiket-dev/slate/master/source/images/Flow-Train.png)
 
 WARNING:  
 Khusus untuk penggunaan API kereta api, berikut syarat yang harus dipenuhi:  
