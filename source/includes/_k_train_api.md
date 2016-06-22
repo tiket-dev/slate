@@ -137,7 +137,7 @@ We will inform you if its already provided in production server (api.tiket.com)
 
 #### HTTP Request
 
-    GET https://api-sandbox.tiket.com/search/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&class=all&token=80bfe5297f7c4fbaa7a1e6c022585946&output=json
+    'GET https://api-sandbox.tiket.com/search/train?d=GMR&a=BD&date=2012-06-03&ret_date=&adult=1&child=0&class=all&token=80bfe5297f7c4fbaa7a1e6c022585946&output=json'
 
 #### Parameters
   
