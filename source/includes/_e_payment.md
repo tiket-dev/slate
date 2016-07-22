@@ -204,7 +204,7 @@ After you receive status code `200`, kindly create a UI that looks similar to th
 
 
 
-### Bank Transfer (Instant confirmation)
+### ATM Transfer (Bank Transfer Instant confirmation)
 
 > Status code 200 response
 
@@ -266,7 +266,11 @@ Payment using bank transfer through virtual account. Payment will be paid to Ban
 
 #### HTTP Request
 
-`GET http://api-sandbox.tiket.com/checkout/checkout_payment/35?token=4c71d60d367bbffa1b293cb663afc4e9&btn_booking=1&currency=IDR&output=json`
+`GET https://api-sandbox.tiket.com/checkout/checkout_payment/35?token=4c71d60d367bbffa1b293cb663afc4e9&btn_booking=1&currency=IDR&output=json`
+
+#### Alternate HTTP Request
+
+`GET https://api-sandbox.tiket.com/checkout/checkout_payment/37?token=4c71d60d367bbffa1b293cb663afc4e9&btn_booking=1&currency=IDR&output=json`
 
 #### Parameter
 
@@ -442,8 +446,6 @@ currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
 
 
 
-
-
 ## Payment Gateway
 
 With this method of payment, you will redirect your customer to Tiket.com's very own payment gateway. The reason for this is because there are certain security measure that cannot be shifted through API, such as hash signature process etc. Also, for Credit Card payment, the domain name **must** be Tiket.com as required for PCI-DSS compliance.
@@ -485,7 +487,7 @@ This payment gateway checks you out through our Credit Card payment gateway. We 
 
 #### HTTP Request
 
-`GET http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49`
+`GET https://sandbox.tiket.com/payment/checkout_payment?payment_type=1&checkouttoken=84ab8cba79dace1eef8edc7081147b49`
 
 <aside class="notice">Notice that the URL is <code>sandbox.tiket.com</code> for development and <code>www.tiket.com</code> for production.</aside>
 
@@ -538,11 +540,11 @@ Once customer entered the correct information and/or finish their 3DS (3 Domain 
 
 
 
-### Klikpay Payment
+### BCAKlikpay Payment
 
 Especially for Klikpay payment, you must access this link:
 
-    `http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=4`
+    `https://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=4`
 
 #### Output
 
@@ -580,7 +582,7 @@ diagnostic['status']
 
 Especially for CIMB Clicks payment, you must access this link:
 
-    `http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=31`
+    `https://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=31`
 
 #### Output
 
@@ -616,11 +618,13 @@ diagnostic['status']
 * what ever the return (200 or 300) the token cannot be used to order anymore
 
 
-### ePay BRI payment
+### ePay BRI payment (Available on production environment only)
+
+* Please contact our developer team for test this payment gateway.
 
 Especially for ePay BRI payment, you must access this link:
 
-    `http://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=33`
+    `https://sandbox.tiket.com/payment/checkout_payment?checkouttoken=84ab8cba79dace1eef8edc7081147b49&payment_type=33`
 
 #### Output
 
@@ -652,6 +656,30 @@ if use the default link (dummyConfirmPage) the view generate to API like usual a
 diagnostic['status']
 
 * what ever the return (200 or 300) the token cannot be used to order anymore
+
+
+
+
+
+### Mandiri Clickpay (Available on production environment only)
+
+* Please contact our developer team for test this payment gateway.
+
+Especially for ePay BRI payment, you must access this link:
+
+    `https://api-sandbox.tiket.com/checkout/checkout_payment/34?btn_booking=1&token=6c47ff90598a6bf05eb264ee76194cca&card_no=1234&token_response=1234`
+
+* For this payment you need an additional paramaters card number (card_no) and response token (token_response).
+
+#### Parameter
+
+Name | Description | Format    | Default   | Mandatory
+--------- | ------- | ----------- | ----------- | -----------
+token | Token acquired from gettoken | CHAR(128) |  | TRUE
+btn_booking | Set to 1 to continue checkout. Set to 0 to check the total price | INT |  | TRUE
+currency | For checkout_payment, the value must be IDR | CHAR(3) | | TRUE
+card_no | Mandiri Card Number  | INT | | TRUE
+token_response | Mandiri Token Response | INT | | TRUE
 
 
 

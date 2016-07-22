@@ -3842,7 +3842,7 @@ Get flight rute with promo price
 
 #### HTTP Request
 
-`GET http://api-sandbox.tiket.com/general_api/get_flight_promo?token=b8cca7a82b3a3575948ed43422cc6310e201c154`
+`GET https://api-sandbox.tiket.com/general_api/get_flight_promo?token=b8cca7a82b3a3575948ed43422cc6310e201c154`
 
 #### Parameters
 
@@ -3944,7 +3944,7 @@ a: 6: {
 
 #### HTTP Request
 
-`GET http://api-sandbox.tiket.com/flight_api/getNearestAirport?token=c5a32cce21b11d6e9a764ca685b5ee10378647ee&ip=182.253.203.58`
+`GET https://api-sandbox.tiket.com/flight_api/getNearestAirport?token=c5a32cce21b11d6e9a764ca685b5ee10378647ee&ip=182.253.203.58`
 
 #### Parameters
 
@@ -4021,7 +4021,7 @@ a: 4: {
 
 #### HTTP Request
 
-`GET http://api-sandbox.tiket.com/flight_api/getNearestAirport?token=905f0af68759becf520885084c42469b&latitude=-6.195062&longitude=106.803181&output=json`
+`GET https://api-sandbox.tiket.com/flight_api/getNearestAirport?token=905f0af68759becf520885084c42469b&latitude=-6.195062&longitude=106.803181&output=json`
 
 #### Parameters
 
@@ -7274,7 +7274,7 @@ If the `getLionCaptcha` return data, the captcha and sessionid must be included 
 
 #### HTTP Request
 
-`GET http://api-sandbox.tiket.com/flight_api/getLionCaptcha?token=adcefff7d50618ff205473975adf9d64&output=json`
+`GET https://api-sandbox.tiket.com/flight_api/getLionCaptcha?token=adcefff7d50618ff205473975adf9d64&output=json`
 
 #### Parameters
 

@@ -192,7 +192,7 @@ token | for saving transaction that done by user | CHAR(128) |  | TRUE
 
 
     
-## Search by Area
+## Search Area Name and ID
 
 ```xml 
 This XML file does not appear to have any style information associated with it. The document tree is shown below.
