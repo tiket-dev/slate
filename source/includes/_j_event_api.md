@@ -12,70 +12,125 @@ Diagram Flow for Event API:
 ## Get All Active Events
 
 ```xml
-    
-    	xml
-    
-    			20875
-    			Jason Mraz & His Band: Tour Is A Four Letter Word
-    			Online
-    
-    				http://www.sandbox.tiket.com/img/business/f/e/business-featured-pic1.jpg
-    
-    				http://www.sandbox.tiket.com/img/business/b/a/business-banner28.jpg
-    
-    			2012-06-22 20:00:00
-    			2012-06-22 23:00:00
-    			http://api-sandbox.tiket.com/jasonmraz
-    
-    		200
-    		0.2167
-    		15.48MB
-    		success
-    		en
-    		IDR
-    
-    	c551ad2aee8e7acf14907c0fac2644d9
-    
+<?xml version="1.0" encoding="utf-8"?>
+<tiket>
+    <diagnostic>
+        <status>200</status>
+        <elapsetime>0.1575</elapsetime>
+        <memoryusage>4.88MB</memoryusage>
+        <unix_timestamp>1470627692</unix_timestamp>
+        <confirm>success</confirm>
+        <lang>id</lang>
+        <currency>IDR</currency>
+    </diagnostic>
+    <output_type>xml</output_type>
+    <all_event>
+        <events>
+            <business_id>20099917</business_id>
+            <business_name>Universal Studios Singapore</business_name>
+            <business_live>Online</business_live>
+            <business_address1>Singapore  -  8 Sentosa Gateway</business_address1>
+            <file_name>http://www-sandbox.tiket.com/img/business/u/s/business-uss_top_banner_-1-1.jpg</file_name>
+            <event_img>http://www-sandbox.tiket.com/img/business/u/s/business-uss_home_banner_-1-.jpg</event_img>
+            <tiket_event_start></tiket_event_start>
+            <tiket_event_end></tiket_event_end>
+            <event_type>D</event_type>
+            <event_min_price>511241.00</event_min_price>
+            <event_uri>https://api-sandbox.tiket.com/universal-studios-singapore</event_uri>
+            <kecamatan_name> </kecamatan_name>
+            <city_name> </city_name>
+            <province_name>Central-Business</province_name>
+            <country_name>Singapore </country_name>
+            <continent_name></continent_name>
+        </events>
+        <events>
+            <business_id>14161</business_id>
+            <business_name>Testing Event</business_name>
+            <business_live>Online</business_live>
+            <business_address1>Lapangan D Senayan</business_address1>
+            <file_name>http://www-sandbox.tiket.com/img/business/f/u/business-future2.jpg</file_name>
+            <event_img>http://www-sandbox.tiket.com/img/business/w/e/business-weezer-home-banner-event-page1.jpg</event_img>
+            <tiket_event_start>2012-02-01 15:00:00</tiket_event_start>
+            <tiket_event_end>2018-02-01 20:00:00</tiket_event_end>
+            <event_type>B</event_type>
+            <event_min_price>10000.00</event_min_price>
+            <event_uri>https://api-sandbox.tiket.com/testing-event</event_uri>
+            <kecamatan_name>Kebayoran Baru</kecamatan_name>
+            <city_name>Jakarta Selatan</city_name>
+            <province_name>DKI Jakarta</province_name>
+            <country_name>Indonesia</country_name>
+            <continent_name>Asia</continent_name>
+        </events>
+    </all_event>
+    <login_status>true</login_status>
+    <guest_id>22691145</guest_id>
+    <login_email>wida.skydev@gmail.com</login_email>
+    <token>f9b29ac359ca5d77755e7588751c089bf96f0dc9</token>
+</tiket>
 ```
 
 
 ```json
 {
-"output_type": "json",
-"events": [{
-  "business_id": "20875",
-  "business_name": "Jason Mraz & His Band: Tour Is A Four Letter Word",
-  "business_live": "Online",
-  "file_name": "http:\/\/www.sandbox.tiket.com\/img\/business\/f\/e\/business-featured-pic1.jpg",
-  "event_img": "http:\/\/www.sandbox.tiket.com\/img\/business\/b\/a\/business-banner28.jpg",
-  "tiket_event_start": "2012-06-22 20:00:00",
-  "tiket_event_end": "2012-06-22 23:00:00",
-  "event_uri": "http:\/\/api-sandbox.tiket.com\/jasonmraz"
-}],
-"diagnostic": {
-  "status": 200,
-  "elapsetime": "0.2583",
-  "memoryusage": "15.46MB",
-  "confirm": "success",
-  "lang": "en",
-  "currency": "IDR"
-},
-"token": "c551ad2aee8e7acf14907c0fac2644d9"
+  "diagnostic": {
+    "status": 200,
+    "elapsetime": "0.0883",
+    "memoryusage": "4.87MB",
+    "unix_timestamp": 1470627748,
+    "confirm": "success",
+    "lang": "id",
+    "currency": "IDR"
+  },
+  "output_type": "json",
+  "all_event": {
+    "events": [
+      {
+        "business_id": "20099917",
+        "business_name": "Universal Studios Singapore",
+        "business_live": "Online",
+        "business_address1": "Singapore  -  8 Sentosa Gateway",
+        "file_name": "http://www-sandbox.tiket.com/img/business/u/s/business-uss_top_banner_-1-1.jpg",
+        "event_img": "http://www-sandbox.tiket.com/img/business/u/s/business-uss_home_banner_-1-.jpg",
+        "tiket_event_start": "",
+        "tiket_event_end": "",
+        "event_type": "D",
+        "event_min_price": "511241.00",
+        "event_uri": "https://api-sandbox.tiket.com/universal-studios-singapore",
+        "kecamatan_name": " ",
+        "city_name": " ",
+        "province_name": "Central-Business",
+        "country_name": "Singapore ",
+        "continent_name": null
+      },
+      {
+        "business_id": "14161",
+        "business_name": "Testing Event",
+        "business_live": "Online",
+        "business_address1": "Lapangan D Senayan",
+        "file_name": "http://www-sandbox.tiket.com/img/business/f/u/business-future2.jpg",
+        "event_img": "http://www-sandbox.tiket.com/img/business/w/e/business-weezer-home-banner-event-page1.jpg",
+        "tiket_event_start": "2012-02-01 15:00:00",
+        "tiket_event_end": "2018-02-01 20:00:00",
+        "event_type": "B",
+        "event_min_price": "10000.00",
+        "event_uri": "https://api-sandbox.tiket.com/testing-event",
+        "kecamatan_name": "Kebayoran Baru",
+        "city_name": "Jakarta Selatan",
+        "province_name": "DKI Jakarta",
+        "country_name": "Indonesia",
+        "continent_name": "Asia"
+      }
+    ]
+  },
+  "login_status": "true",
+  "guest_id": "22691145",
+  "login_email": "wida.skydev@gmail.com",
+  "token": "f9b29ac359ca5d77755e7588751c089bf96f0dc9"
 }
 ```
 
 ```matlab
-a: 4: {
-s: 11: "output_type";s: 9: "serialize";s: 6: "events";a: 1: {
-  i: 0;a: 8: {
-    s: 11: "business_id";s: 5: "20875";s: 13: "business_name";s: 49: "Jason Mraz & His Band: Tour Is A Four Letter Word";s: 13: "business_live";s: 6: "Online";s: 9: "file_name";s: 73: "http://www.sandbox.tiket.com/img/business/f/e/business-featured-pic1.jpg";s: 9: "event_img";s: 68: "http://www.sandbox.tiket.com/img/business/b/a/business-banner28.jpg";s: 17: "tiket_event_start";s: 19: "2012-06-22 20:00:00";s: 15: "tiket_event_end";s: 19: "2012-06-22 23:00:00";s: 9: "event_uri";s: 39: "http://api-sandbox.tiket.com/jasonmraz";
-  }
-}
-s: 10: "diagnostic";a: 6: {
-  s: 6: "status";i: 200;s: 10: "elapsetime";s: 14: "0.3102";s: 11: "memoryusage";s: 14: "15.45MB";s: 7: "confirm";s: 7: "success";s: 4: "lang";s: 2: "en";s: 8: "currency";s: 3: "IDR";
-}
-s: 5: "token";s: 32: "c551ad2aee8e7acf14907c0fac2644d9";
-}
+a:7:{s:10:"diagnostic";a:7:{s:6:"status";i:200;s:10:"elapsetime";s:14:"0.0903";s:11:"memoryusage";s:14:"4.87MB";s:14:"unix_timestamp";i:1470627774;s:7:"confirm";s:7:"success";s:4:"lang";s:2:"id";s:8:"currency";s:3:"IDR";}s:11:"output_type";s:9:"serialize";s:9:"all_event";a:1:{s:6:"events";a:2:{i:0;a:16:{s:11:"business_id";s:8:"20099917";s:13:"business_name";s:27:"Universal Studios Singapore";s:13:"business_live";s:6:"Online";s:17:"business_address1";s:31:"Singapore  -  8 Sentosa Gateway";s:9:"file_name";s:78:"http://www-sandbox.tiket.com/img/business/u/s/business-uss_top_banner_-1-1.jpg";s:9:"event_img";s:78:"http://www-sandbox.tiket.com/img/business/u/s/business-uss_home_banner_-1-.jpg";s:17:"tiket_event_start";s:0:"";s:15:"tiket_event_end";s:0:"";s:10:"event_type";s:1:"D";s:15:"event_min_price";s:9:"511241.00";s:9:"event_uri";s:57:"https://api-sandbox.tiket.com/universal-studios-singapore";s:14:"kecamatan_name";s:1:" ";s:9:"city_name";s:1:" ";s:13:"province_name";s:16:"Central-Business";s:12:"country_name";s:10:"Singapore ";s:14:"continent_name";N;}i:1;a:16:{s:11:"business_id";s:5:"14161";s:13:"business_name";s:13:"Testing Event";s:13:"business_live";s:6:"Online";s:17:"business_address1";s:18:"Lapangan D Senayan";s:9:"file_name";s:66:"http://www-sandbox.tiket.com/img/business/f/u/business-future2.jpg";s:9:"event_img";s:89:"http://www-sandbox.tiket.com/img/business/w/e/business-weezer-home-banner-event-page1.jpg";s:17:"tiket_event_start";s:19:"2012-02-01 15:00:00";s:15:"tiket_event_end";s:19:"2018-02-01 20:00:00";s:10:"event_type";s:1:"B";s:15:"event_min_price";s:8:"10000.00";s:9:"event_uri";s:43:"https://api-sandbox.tiket.com/testing-event";s:14:"kecamatan_name";s:14:"Kebayoran Baru";s:9:"city_name";s:15:"Jakarta Selatan";s:13:"province_name";s:11:"DKI Jakarta";s:12:"country_name";s:9:"Indonesia";s:14:"continent_name";s:4:"Asia";}}}s:12:"login_status";s:4:"true";s:8:"guest_id";s:8:"22691145";s:11:"login_email";s:21:"wida.skydev@gmail.com";s:5:"token";s:40:"f9b29ac359ca5d77755e7588751c089bf96f0dc9";}
 ```
 
 #### HTTP Request
