@@ -17,7 +17,7 @@ Both might have different content, so please don’t compare the contect from th
 
 
 ```http
-GET /apiv1/payexpress?method=getToken&secretkey=56c8624d6a62e1ab22f0d9915ff2d43c&output=[json|xml|serialize|array] HTTP/1.1
+GET /apiv1/payexpress?method=getToken&secretkey=[your-secret-key-here]&output=[json|xml|serialize|array] HTTP/1.1
 Host: api-sandbox.tiket.com
 User-Agent: twh:123456789;Partner Name;
 Content-Type: text/plain

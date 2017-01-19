@@ -5,7 +5,7 @@ These are the API command for general configurations
 ## Get Token
 
 ```http
-GET /apiv1/payexpress?method=getToken&secretkey=56c8624d6a62e1ab22f0d9915ff2d43c&output=[json|xml|serialize|array] HTTP/1.1
+GET /apiv1/payexpress?method=getToken&secretkey=[your-secret-key-here]&output=[json|xml|serialize|array] HTTP/1.1
 Host: api-sandbox.tiket.com
 User-Agent: twh:123456789;Partner Name;
 Content-Type: text/plain
@@ -61,7 +61,7 @@ Use this to access the API, the token will be active  until checkout payment. On
 
 #### HTTP Request
 
-`GET https://api-sandbox.tiket.com/apiv1/payexpress?method=getToken&secretkey=56c8624d6a62e1ab22f0d9915ff2d43c`
+`GET https://api-sandbox.tiket.com/apiv1/payexpress?method=getToken&secretkey=[your-secret-key-here]`
 
 #### Parameters
 
@@ -73,7 +73,7 @@ secretkey | API secret key given by Tiket.com | CHAR(128) |  | TRUE
 ## Renew Token
 
 ```http
-GET /apiv1/payexpress?method=getToken&secretkey=56c8624d6a62e1ab22f0d9915ff2d43c&token=712402a7c363b12d87f6b02749f6f0c91b64c47e HTTP/1.1
+GET /apiv1/payexpress?method=getToken&secretkey=[your-secret-key-here]&token=712402a7c363b12d87f6b02749f6f0c91b64c47e HTTP/1.1
 Host: api-sandbox.tiket.com
 User-Agent: twh:123456789;Partner Name;
 Content-Type: text/plain
@@ -126,7 +126,7 @@ Similar to getToken, but once the token expire, you have to call getToken again.
 
 #### HTTP Request
 
-`GET https://api-sandbox.tiket.com/apiv1/payexpress?method=getToken&secretkey=56c8624d6a62e1ab22f0d9915ff2d43c&token=712402a7c363b12d87f6b02749f6f0c91b64c47e`
+`GET https://api-sandbox.tiket.com/apiv1/payexpress?method=getToken&secretkey=[your-secret-key-here]&token=712402a7c363b12d87f6b02749f6f0c91b64c47e`
 
 #### Parameters
 

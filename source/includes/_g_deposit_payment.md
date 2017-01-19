@@ -111,7 +111,7 @@ You can use this request if you want to see your deposit balance.
 
 #### HTTP Request
 
-`http://api-sandbox.tiket.com/partner/transactionApi/get_saldo?secretkey=[SECRET_KEY]&confirmkey=[CONFIRM_KEY]&username=[USERNAME]`
+`http://api-sandbox.tiket.com/partner/transactionApi/get_saldo?secretkey=[your-secret-key-here]&confirmkey=[CONFIRM_KEY]&username=[USERNAME]`
 
 
 #### Parameters
@@ -340,7 +340,7 @@ To see the list of deposit transaction.
 
 #### HTTP Request
 
-`GET http://api-sandbox.tiket.com/partner/transactionApi?secretkey=cd919016311e870f4409b8fdcd1892fe&confirmkey=7c4d3b&username=youraffiliate@email.com&output=json`
+`GET http://api-sandbox.tiket.com/partner/transactionApi?secretkey=[your-secret-key-here]&confirmkey=7c4d3b&username=youraffiliate@email.com&output=json`
 
 #### Parameters
 
@@ -398,7 +398,7 @@ Link get from confirm_uri in show transaction by API
 
 #### HTTP Request
 
-`GET https://api-sandbox.tiket.com/partner/transactionApi/confirmPayment?order_id=154250&secretkey=e10adc3949ba59abbe56e057f20f883e&confirmkey=7c4d3b&username=you_julin@yahoo.com&textarea_note=test&tanggal=2012-12-06&output=json`
+`GET https://api-sandbox.tiket.com/partner/transactionApi/confirmPayment?order_id=154250&secretkey=[your-secret-key-here]&confirmkey=7c4d3b&username=you_julin@yahoo.com&textarea_note=test&tanggal=2012-12-06&output=json`
 
 #### Parameters
 

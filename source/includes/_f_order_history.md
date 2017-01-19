@@ -249,7 +249,7 @@ Check Transaction detail
 
 #### HTTP Request
 
-`https://api-sandbox.tiket.com/check_order?order_id=22385759&email=wida.skydev@gmail.com&output=xml&secretkey=24qwe2141bb031a22ef6b623c93a8dc9`
+`https://api-sandbox.tiket.com/check_order?order_id=22385759&email=wida.skydev@gmail.com&output=xml&secretkey=[your-secret-key-here]`
 
     
 #### Parameters

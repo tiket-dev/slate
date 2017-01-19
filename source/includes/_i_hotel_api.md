@@ -1,7 +1,8 @@
 # Hotel API
 
 NOTE :  
-*Data that is provided for testing is different from the actual
+* Data that is provided for testing is different from the actual data
+* If want to test add order hotel, please use "The Sunset Hotel and Restaurant" on Legian, Bali. Since not all hotel in development server consistently have room allotment to book.
 
 These are the API command for Hotel
 
