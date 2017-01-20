@@ -36,9 +36,14 @@ Before continuing develop your Web or Apps using Tiket.com API, you must underst
 * There is no customized PDF vouchers. The email that we send to the customers is AS IS and no changes can be done with how the PDF vouchers look.
 * Tiket.com is an OTA business and not GDS or white-label business. Our license and operation are designed as a travel agent. Tiket.com will always be held liable and responsible for any bookings, even through the Tiket.com API. Thus we require you to adhere with our policy.
 
-API are available in JSON, XML, and PHP serialized format. There are two flow of payments that you can choose:
+API are available in JSON, XML, and PHP serialized format. 
 
-* deposit: by putting money deposit at Tiket.com, you can manage your own transaction and payment. API will return insufficient fund if you have ran out of deposit. You can’t continue using the API if you haven’t deposit any.
-* regular: Tiket.com offers diverse payment channel. You can ask user to pay using API (for bank transfer and KlikBCA), or redirect them to our payment gateway (for credit card and BCA KlikPay). You don’t have to put any deposit if you are using this flow of payment.
+There are two flow of payments that you can choose:
+
+* Deposit: by putting money deposit at Tiket.com, you can manage your own transaction and payment gateway. API will return insufficient fund if you have ran out of deposit. You can’t continue using the API if you haven’t deposit any.
+* Regular: Tiket.com offers diverse payment channel. You can ask user to pay using API (for bank transfer and KlikBCA), or redirect them to our payment gateway (for credit card and BCA KlikPay). You don’t have to put any deposit if you are using this flow of payment.
 
 PS : The Development API (api-sandbox.tiket.com) will emit  SSL error when using the HTTPS protocol. This is normal. You can actually use the HTTP protocol in the Development API to avoid SSL error, but you must use HTTPS at the Production API.
+
+What if there is no flight schedule on development server (api-sandbox) for testing?
+* Please do a force update via mini dashboard on sandbox.tiket.com flight search page. First search the flight schedule you want (DEPART and RETURN) via search dashboard, after that on sandbox.tiket.com search result page you can see mini force update button on top right side of the page. Please use that to fill up the search result with respective airlines.

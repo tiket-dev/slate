@@ -12,8 +12,9 @@ We have two URL with totally different server data:
 * PG development : [sandbox.tiket.com](http://sandbox.tiket.com)
 * PG production : [www.tiket.com](https://www.tiket.com)
 
-Both might have different content, so please don’t compare the contect from the **sandbox** data with the real data at api.tiket.com/www.tiket.com.
+Both might have different content, so please don’t compare the content from the **sandbox** data with the real data at api.tiket.com/www.tiket.com.
 
+IMPORTANT NOTE : To start development, please create an account at http://sandbox.tiket.com/affiliate first to get a development server account. Your first secret key will be generated there on partner dashboard API section. After finishing UAT tests, your development secret key could be leveraged to production state on Tiket.com.
 
 
 ```http

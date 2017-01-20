@@ -6839,7 +6839,8 @@ s: 10: "diagnostic";a: 7: {
   s: 10: "error_msgs";s: 22: "Order failed to delete";s: 6: "status";i: 201;s: 10: "elapsetime";s: 14: "0.0465";s: 11: "memoryusage";s: 14: "4.58MB";s: 14: "unix_timestamp";i: 1401939677;s: 4: "lang";s: 2: "id";s: 8: "currency";s: 3: "IDR";
 }
 s: 11: "output_type";s: 9: "serialize";s: 12: "updateStatus";s: 19: "failed delete order";s: 12: "login_status";s: 5: "false";s: 5: "token";s: 40: "4a5ef3fb7627b9f2900f1aafa46b0f9f095f6aaf";
-}```
+}
+```
 
 link url can be get from order, variable delete_uri
 
