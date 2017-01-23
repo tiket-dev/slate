@@ -46,4 +46,5 @@ There are two flow of payments that you can choose:
 PS : The Development API (api-sandbox.tiket.com) will emit  SSL error when using the HTTPS protocol. This is normal. You can actually use the HTTP protocol in the Development API to avoid SSL error, but you must use HTTPS at the Production API.
 
 What if there is no flight schedule on development server (api-sandbox) for testing?
+
 * Please do a force update via mini dashboard on sandbox.tiket.com flight search page. First search the flight schedule you want (DEPART and RETURN) via search dashboard, after that on sandbox.tiket.com search result page you can see mini force update button on top right side of the page. Please use that to fill up the search result with respective airlines.
